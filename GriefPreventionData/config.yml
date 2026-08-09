@@ -1,4 +1,4 @@
-# Default values are perfect for most servers.  If you want to customize and have a question, look for the answer here first: http://dev.bukkit.org/bukkit-plugins/grief-prevention/pages/setup-and-configuration/
+# 默认值适合大多数服务器。如果你想自定义并有疑问，请先在此处查找答案：http://dev.bukkit.org/bukkit-plugins/grief-prevention/pages/setup-and-configuration/
 
 GriefPrevention:
   SeaLevelOverrides:

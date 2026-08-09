@@ -5,14 +5,14 @@ Messages:
     Text: 现在忽略领地保护。
   SuccessfulAbandon:
     Text: 领地已放弃。你现在有 {0} 个可用领地方块。
-    Notes: '0: remaining blocks'
+    Notes: '0: 剩余方块'
   RestoreNatureActivate:
     Text: 准备恢复自然地貌！右键点击恢复，或使用 /basicclaims 停止。
   RestoreNatureAggressiveActivate:
     Text: 已开启激进恢复模式。千万不要在你想保留的东西下方使用！右键激进恢复，或使用 /basicclaims 停止。
   FillModeActive:
     Text: 填充模式已开启，半径 {0}。右键点击区域进行填充。
-    Notes: '0: fill radius'
+    Notes: '0: 填充半径'
   TransferClaimPermission:
     Text: 该命令需要管理员领地权限。
   TransferClaimMissing:
@@ -31,43 +31,43 @@ Messages:
     Text: 只有领地所有者才能清除所有权限。
   UntrustIndividualAllClaims:
     Text: 已撤销 {0} 对你所有领地的访问权限。若要对单个领地单独设置，请站在该领地内。
-    Notes: '0: untrusted player'
+    Notes: '0: 被取消信任的玩家'
   UntrustEveryoneAllClaims:
     Text: 已清除你所有领地中的权限。若要对单个领地单独设置，请站在该领地内。
   NoPermissionTrust:
     Text: 你没有获得 {0} 的许可，无法在此管理权限。
-    Notes: '0: claim owner''s name'
+    Notes: '0: 领地所有者的名字'
   ClearPermissionsOneClaim:
     Text: 已清除此领地的权限。若要对所有领地设置，请站在领地外。
   UntrustIndividualSingleClaim:
     Text: 已撤销 {0} 对此领地的访问权限。若要对所有领地设置，请站在领地外。
-    Notes: '0: untrusted player'
+    Notes: '0: 被取消信任的玩家'
   OnlySellBlocks:
     Text: 领地方块只能出售，不能购买。
   BlockPurchaseCost:
     Text: 每个领地方块售价 {0}，你当前余额为 {1}。
-    Notes: '0: cost of one block; 1: player''s account balance'
+    Notes: '0: 单个方块的价格；1: 玩家账户余额'
   ClaimBlockLimit:
     Text: 你已达到领地方块上限，无法继续购买。
   InsufficientFunds:
     Text: 金币不足。需要 {0}，但你只有 {1}。
-    Notes: '0: total cost; 1: player''s account balance'
+    Notes: '0: 总价；1: 玩家账户余额'
   MaxBonusReached:
     Text: 无法再购买 {0} 个领地方块，服务器奖励上限为 {1}。
-    Notes: '0: block count; 1: bonus claims limit'
+    Notes: '0: 方块数量；1: 奖励方块上限'
   PurchaseConfirmation:
     Text: 已从你的账户扣除 {0}。你现在有 {1} 个可用领地方块。
-    Notes: '0: total cost; 1: remaining blocks'
+    Notes: '0: 总价；1: 剩余方块'
   OnlyPurchaseBlocks:
     Text: 领地方块只能购买，不能出售。
   BlockSaleValue:
     Text: 每个领地方块价值 {0}，你有 {1} 个可出售。
-    Notes: '0: block value; 1: available blocks'
+    Notes: '0: 方块价值；1: 可用方块'
   NotEnoughBlocksForSale:
     Text: 你没有足够的领地方块可出售。
   BlockSaleConfirmation:
     Text: 已向你的账户存入 {0}。你现在有 {1} 个可用领地方块。
-    Notes: '0: amount deposited; 1: remaining blocks'
+    Notes: '0: 存入金额；1: 剩余方块'
   AdminClaimsMode:
     Text: 已切换到管理员领地模式。创建的领地将免费，且其他管理员可编辑。
   BasicClaimsMode:
@@ -76,7 +76,7 @@ Messages:
     Text: 子领地模式已开启。使用铲子在现有领地内创建子领地。使用 /basicclaims 退出。
   SubdivisionVideo2:
     Text: '点击获取子领地帮助：{0}'
-    Notes: 0:video URL
+    Notes: 0:视频链接
   DeleteClaimMissing:
     Text: 此处没有领地。
   DeletionSubdivisionWarning:
@@ -87,14 +87,14 @@ Messages:
     Text: 你没有删除管理员领地的权限。
   DeleteAllSuccess:
     Text: 已删除 {0} 的全部领地。
-    Notes: '0: owner''s name'
+    Notes: '0: 所有者的名字'
   NoDeletePermission:
     Text: 你没有删除领地的权限。
   AllAdminDeleted:
     Text: 已删除所有管理员领地。
   AdjustBlocksSuccess:
     Text: '已调整 {0} 的奖励领地方块 {1}，新奖励总数为 {2}。'
-    Notes: '0: player; 1: adjustment; 2: new total'
+    Notes: '0: 玩家；1: 调整量；2: 新总数'
   NotTrappedHere:
     Text: 你可以在这里建造，自己想办法出去吧。
   RescuePending:
@@ -105,7 +105,7 @@ Messages:
     Text: 你已经参与了一场围城。
   NotSiegableThere:
     Text: '{0} 在那里未受保护。'
-    Notes: '0: defending player'
+    Notes: '0: 被围攻的玩家'
   SiegeTooFarAway:
     Text: 距离太远，无法发起围城。
   NoSiegeYourself:
@@ -114,7 +114,7 @@ Messages:
     Text: 该玩家毫无防备，去找别人吧。
   AlreadyUnderSiegePlayer:
     Text: '{0} 已被围攻，一起上吧！'
-    Notes: '0: defending player'
+    Notes: '0: 被围攻的玩家'
   AlreadyUnderSiegeArea:
     Text: 该区域已被围攻，一起上吧！
   NoSiegeAdminClaim:
@@ -123,10 +123,10 @@ Messages:
     Text: 你对该防守者或领地仍在冷却中，换个目标吧。
   SiegeAlert:
     Text: 你被围攻了！现在登出会导致死亡。你必须击败 {0}，等他放弃，或设法逃脱。
-    Notes: '0: attacker name'
+    Notes: '0: 攻击者的名字'
   SiegeConfirmed:
     Text: 围城开始！现在登出会导致死亡。你必须击败 {0}，将他击退，或认输离开。
-    Notes: '0: defender name'
+    Notes: '0: 防守者的名字'
   AbandonClaimMissing:
     Text: 请站在要删除的领地内，或使用 /abandonallclaims。
   NotYourClaim:
@@ -135,7 +135,7 @@ Messages:
     Text: 要删除子领地，请站在其内部。否则，使用 /abandontoplevelclaim 删除此领地及其所有子领地。
   AbandonSuccess:
     Text: 领地已放弃。你现在有 {0} 个可用领地方块。
-    Notes: '0: remaining claim blocks'
+    Notes: '0: 剩余领地方块'
   ConfirmAbandonAllClaims:
     Text: 确定要放弃你所有的领地吗？请使用 /abandonallclaims confirm 确认。
   CantGrantThatPermission:
@@ -144,14 +144,14 @@ Messages:
     Text: 请站在你想授予权限的领地内。
   GrantPermissionConfirmation:
     Text: 已向 {0} 授予 {1} 权限，范围：{2}。
-    Notes: '0: target player; 1: permission description; 2: scope (changed claims)'
+    Notes: '0: 目标玩家；1: 权限描述；2: 范围（变更的领地）'
   ManageUniversalPermissionsInstruction:
     Text: 若要管理所有领地的权限，请站在领地外。
   ManageOneClaimPermissionsInstruction:
     Text: 若要管理特定领地的权限，请站在该领地内。
   CollectivePublic:
     Text: 公众
-    Notes: as in 'granted the public permission to...'
+    Notes: 例如「已授予公众……权限」
   BuildPermission:
     Text: 建造
   ContainersPermission:
@@ -192,22 +192,22 @@ Messages:
     Text: 你处于 PvP 保护中，无法与他人战斗。
   NoDamageClaimedEntity:
     Text: 那属于 {0}。
-    Notes: '0: owner name'
+    Notes: '0: 所有者的名字'
   ShovelBasicClaimMode:
     Text: 铲子已切回基础领地模式。
   RemainingBlocks:
     Text: 你还可以再认领 {0} 个方块。
-    Notes: '0: remaining blocks'
+    Notes: '0: 剩余方块'
   CreativeBasicsVideo2:
     Text: '点击查看领地保护帮助：{0}'
-    Notes: '{0}: video URL'
+    Notes: '{0}: 视频链接'
   SurvivalBasicsVideo2:
     Text: '点击查看领地保护帮助：{0}'
-    Notes: '{0}: video URL'
+    Notes: '{0}: 视频链接'
   TrappedChatKeyword:
     Text: 被困;卡住
-    Notes: When mentioned in chat, players get information about the /trapped command
-      (multiple words can be separated with semi-colons)
+    Notes: 在聊天中提到这些词时，玩家会获得关于 /trapped 命令的信息
+      （多个词可用分号分隔）
   TrappedInstructions:
     Text: 你被困在别人的领地了吗？试试 /trapped 命令。
   PvPNoDrop:
@@ -224,34 +224,34 @@ Messages:
     Text: 你现在可以与其他玩家战斗了。
   NoBedPermission:
     Text: '{0} 未允许你在此睡觉。'
-    Notes: '0: claim owner'
+    Notes: '0: 领地所有者'
   NoWildernessBuckets:
     Text: 你只能在自己的领地内或地下倒出桶装液体。
   NoLavaNearOtherPlayer:
     Text: 你离 {0} 太近，无法放置岩浆。
-    Notes: '0: nearby player'
+    Notes: '0: 附近的玩家'
   TooFarAway:
     Text: 距离太远。
   BlockNotClaimed:
     Text: 该方块未被认领。
   BlockClaimed:
     Text: 该方块已被 {0} 认领。
-    Notes: '0: claim owner'
+    Notes: '0: 领地所有者'
   SiegeNoShovel:
     Text: 围城期间无法使用铲子。
   RestoreNaturePlayerInChunk:
     Text: 无法恢复，{0} 位于该区块内。
-    Notes: '0: nearby player'
+    Notes: '0: 附近的玩家'
   NoCreateClaimPermission:
     Text: 你没有认领土地的权限。
   ResizeNeedMoreBlocks:
     Text: 方块不足，无法达到该大小。还需要 {0} 个。
-    Notes: '0: how many needed'
+    Notes: '0: 还差多少'
   NoCreativeUnClaim:
     Text: 你不能放弃此领地，只能扩大或创建新领地。
   ClaimResizeSuccess:
     Text: 领地已调整大小。剩余 {0} 个可用领地方块。
-    Notes: '0: remaining blocks'
+    Notes: '0: 剩余方块'
   ResizeFailOverlap:
     Text: 无法在此调整大小，因为会与附近其他领地重叠。
   ResizeStart:
@@ -268,17 +268,17 @@ Messages:
     Text: 无法在此创建领地，因为会与你其他领地重叠。可使用 /abandonclaim 删除，或在角落使用铲子调整大小。
   CreateClaimFailOverlapOtherPlayer:
     Text: 无法在此创建领地，因为会与 {0} 的领地重叠。
-    Notes: '0: other claim owner'
+    Notes: '0: 另一位领地所有者'
   ClaimsDisabledWorld:
     Text: 此世界已禁用领地认领。
   ClaimStart:
     Text: 领地角点已设定！请在对角再次使用铲子认领矩形区域。要取消，请收起铲子。
   NewClaimTooNarrow:
     Text: 该领地太小。任何领地宽度至少为 {0} 个方块。
-    Notes: '0: minimum claim width'
+    Notes: '0: 最小领地宽度'
   CreateClaimInsufficientBlocks:
     Text: 方块不足，无法认领整个区域。还需要 {0} 个方块。
-    Notes: '0: additional blocks needed'
+    Notes: '0: 额外需要的方块数'
   AbandonClaimAdvertisement:
     Text: 要删除其他领地释放方块，请使用 /abandonclaim。
   CreateClaimFailOverlapShort:
@@ -295,34 +295,34 @@ Messages:
     Text: 被围攻期间无法修改领地。
   OnlyOwnersModifyClaims:
     Text: 只有 {0} 可以修改此领地。
-    Notes: '0: owner name'
+    Notes: '0: 所有者的名字'
   NoBuildUnderSiege:
     Text: 此领地正被 {0} 围攻，无人可以在此建造。
-    Notes: '0: attacker name'
+    Notes: '0: 攻击者的名字'
   NoBuildPvP:
     Text: PvP 战斗期间不能在领地内建造。
   NoBuildPermission:
     Text: 你没有获得 {0} 的许可，无法在此建造。
-    Notes: '0: owner name'
+    Notes: '0: 所有者的名字'
   NonSiegeMaterial:
     Text: 这种材料太坚固，无法破坏。
   NoOwnerBuildUnderSiege:
     Text: 被围攻期间不能做任何改动。
   NoAccessPermission:
     Text: 你没有获得 {0} 的许可，无法使用该物品。
-    Notes: '0: owner name.  access permission controls buttons, levers, and beds'
+    Notes: '0: 所有者的名字。访问权限控制按钮、拉杆和床'
   NoContainersSiege:
     Text: 此领地正被 {0} 围攻，现在无人可访问容器。
-    Notes: '0: attacker name'
+    Notes: '0: 攻击者的名字'
   NoContainersPermission:
     Text: 你没有获得 {0} 的许可，无法使用该物品。
-    Notes: '0: owner''s name.  containers also include crafting blocks'
+    Notes: '0: 所有者的名字。容器也包括工作台等合成方块'
   OwnerNameForAdminClaims:
     Text: 一名管理员
-    Notes: as in 'You don't have an administrator's permission to build here.'
+    Notes: 例如「你没有管理员在此建造的权限。」
   UnknownPlayerName:
     Text: 某人
-    Notes: 'Name used for unknown players. UUID will be appended if available: "someone
+    Notes: '用于未知玩家的名字。如果可用，会附加 UUID："某人
       (01234567-0123-0123-0123-0123456789ab)"'
   ClaimTooSmallForEntities:
     Text: 该领地不够大，放不下那个。请尝试扩大。
@@ -336,18 +336,18 @@ Messages:
     Text: 已自动封禁 {0}（{1}）。详情请查看日志。
   AdjustGroupBlocksSuccess:
     Text: '已为拥有 {0} 权限的玩家调整奖励领地方块 {1}，新总数为 {2}。'
-    Notes: '0: permission; 1: adjustment amount; 2: new total bonus'
+    Notes: '0: 权限；1: 调整量；2: 新的奖励总数'
   InvalidPermissionID:
     Text: 请指定玩家名，或用 [方括号] 指定权限。
   HowToClaimRegex:
     Text: (^|.*\W)how\W.*\W(claim|protect|lock)(\W.*|$)
-    Notes: This is a Java Regular Expression.  Look it up before editing!  It's used
-      to tell players about the demo video when they ask how to claim land.
+    Notes: 这是 Java 正则表达式。编辑前请先查阅资料！它用于在玩家询问如何认领土地时
+      告诉他们演示视频。
   NoBuildOutsideClaims:
     Text: 你不能在这里建造，除非先认领土地。
   PlayerOfflineTime:
     Text: '上次登录：{0} 天前。'
-    Notes: '0: number of full days since last login'
+    Notes: '0: 自上次登录以来的完整天数'
   BuildingOutsideClaims:
     Text: 其他玩家也可以在这里建造。建议创建领地来保护你的作品！
   TrappedWontWorkHere:
@@ -382,20 +382,20 @@ Messages:
     Text: '警告：活塞无法推动领地外的方块。'
   SoftMuted:
     Text: 已对 {0} 启用软静音。
-    Notes: '0: The changed player''s name.'
+    Notes: '0: 被更改的玩家名字。'
   UnSoftMuted:
     Text: 已对 {0} 取消软静音。
-    Notes: '0: The changed player''s name.'
+    Notes: '0: 被更改的玩家名字。'
   DropUnlockAdvertisement:
     Text: 除非你使用 /unlockdrops，否则其他玩家无法捡起你丢弃的物品。
   PickupBlockedExplanation:
     Text: 你无法拾取此物品，除非 {0} 使用 /unlockdrops。
-    Notes: '0: The item stack''s owner.'
+    Notes: '0: 物品堆的所有者。'
   DropUnlockConfirmation:
     Text: 已解锁你的掉落物。其他玩家现在可以捡起（直到你再次死亡）。
   DropUnlockOthersConfirmation:
     Text: 已解锁 {0} 的掉落物。
-    Notes: '0: The owner of the unlocked drops.'
+    Notes: '0: 已解锁掉落物的所有者。'
   AdvertiseACandACB:
     Text: 你可以使用 /acb 为自己增加领地方块，或使用 /adminclaims 创建免费管理员领地。
   AdvertiseAdminClaims:
@@ -404,7 +404,7 @@ Messages:
     Text: 你可以使用 /acb 为自己增加领地方块。
   NotYourPet:
     Text: 那只宠物属于 {0}，除非他通过 /givepet 赠予你。
-    Notes: '0: owner name'
+    Notes: '0: 所有者的名字'
   PetGiveawayConfirmation:
     Text: 宠物已转移。
   PetTransferCancellation:
@@ -423,7 +423,7 @@ Messages:
     Text: 你没有在此建造的权限，因此无法认领该区域。
   ShowNearbyClaims:
     Text: 找到 {0} 个领地。
-    Notes: '0: Number of claims found.'
+    Notes: '0: 找到的领地数量。'
   NoChatUntilMove:
     Text: 抱歉，你需要再移动一点才能聊天。这里有很多垃圾机器人 :)
   SiegeImmune:
@@ -444,7 +444,7 @@ Messages:
     Text: 你没有忽略任何人。
   TrustListHeader:
     Text: '此地的明确权限：'
-    Notes: '0: The claim''s owner'
+    Notes: '0: 领地所有者'
   Manage:
     Text: 管理
   Build:
@@ -481,16 +481,16 @@ Messages:
     Text: '实用命令：'
   BookLink:
     Text: '点击：{0}'
-    Notes: '{0}: video URL'
+    Notes: '{0}: 视频链接'
   BookTools:
     Text: 我们的领地工具是 {0} 和 {1}。
-    Notes: '0: claim modification tool name; 1:claim information tool name'
+    Notes: '0: 领地修改工具名；1: 领地信息工具名'
   ResizeClaimTooNarrow:
     Text: 新尺寸太小。领地宽度必须至少为 {0} 个方块。
-    Notes: '0: minimum claim width'
+    Notes: '0: 最小领地宽度'
   ResizeClaimInsufficientArea:
     Text: 这个领地太小。任何领地必须至少使用 {0} 个总领地方块。
-    Notes: '0: minimum claim area'
+    Notes: '0: 最小领地面积'
   NoProfanity:
     Text: 请文明用语。
   PlayerNotIgnorable:
@@ -509,7 +509,7 @@ Messages:
     Text: 当你在下方放置方块时，领地会自动向地下深处延伸。
   MinimumRadius:
     Text: 最小范围为 {0}。
-    Notes: '0: minimum radius'
+    Notes: '0: 最小半径'
   ClaimTooSmallForActiveBlocks:
     Text: 此领地不够大，无法支持任何活动方块（漏斗、刷怪笼、信标……）。请先扩大领地。
   TooManyActiveBlocksInClaim:
@@ -520,7 +520,7 @@ Messages:
     Text: 未找到世界。
   AdjustBlocksAllSuccess:
     Text: 已将所有在线玩家的奖励领地方块调整 {0}。
-    Notes: '0: adjustment amount'
+    Notes: '0: 调整量'
   TooMuchIpOverlap:
     Text: 抱歉，使用你当前 IP 登录的玩家过多。
   StandInSubclaim:
@@ -531,4 +531,4 @@ Messages:
     Text: 此子领地的权限现在将从父领地继承。
   NetherPortalTrapDetectionMessage:
     Text: 你似乎卡在了下界传送门里。如果确实如此，我们会在几秒后营救你！
-    Notes: Sent to player on join, if they left while inside a nether portal.
+    Notes: 玩家若在下界传送门内退出，将在加入时收到此消息。
