@@ -15,7 +15,7 @@ mysql-password:
 
 # 修改此选项后，将自动尝试翻译语言短语。
 # 语言代码列表：https://coreprotect.net/languages/
-language: en
+language: zh
 
 # 启用后，CoreProtect 将在服务器启动时检查更新。
 # 如果有可用更新，你将通过服务器控制台收到通知。

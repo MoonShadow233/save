@@ -6,7 +6,7 @@ config-version: 1036
 #设置插件应使用的默认语言代码
 #设置为 default 将使用你的系统语言。
 #你可以在客户端的语言设置中找到有效的语言代码，例如 en_us
-game-language: default
+game-language: zh-CN
 
 #选择应启用的语言
 #使用已禁用语言的客户端连接服务器时，将回退到 game-language 选项
@@ -24,7 +24,7 @@ enabled-languages:
 #1=BMCLAPI（非官方中国镜像，https://bmclapidoc.bangbang93.com）
 #你可以选择其中一个用于下载资源。
 #默认情况下，QuickShop 使用 Mojang 官方服务器下载资源。
-mojangapi-mirror: 0
+mojangapi-mirror: 1
 
 #Crowdin OTA 主机，如果你想的话可以改为自己的主机。
 crowdin-host: https://crowdinota.hikari.r2.quickshop-powered.top

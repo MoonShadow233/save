@@ -3,7 +3,7 @@
 # 命令：/balance、/pay、/vault reload。无需外部 Vault.jar。
 plugin_version: 1.7.0
 # languages_supported: ["en", "es", "fr", "de", "nl", "pl", "zh_CN", "zh_TW", "ru", "pt", "hi"]
-language: en
+language: zh-CN
 # Vault 2.0 — 兼容 Vault API 的内置经济系统
 # 命令：/balance、/vault reload。
 # currency：插件格式化金额（使用 economy.format()）时货币显示方式的全局配置。
