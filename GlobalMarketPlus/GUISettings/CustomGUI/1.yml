@@ -1,0 +1,6 @@
+Simplified-Chinese: zh-CN
+    GUI-Name: '1' #GUI的名字
+    GUI-Title: '自定义GUI' #GUI界面的标题
+    GUI-Size: 54 #GUI的大小，必须为9的倍数
+    Custom-Buttons: {} #将要编辑的GUI按钮
+	
