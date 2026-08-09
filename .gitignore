@@ -1,1 +1,4 @@
 *.jar 
+*.db
+reasonix.toml
+.reasonix
