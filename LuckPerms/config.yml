@@ -6,41 +6,41 @@
 # |                                                                                              | #
 # |                                     https://luckperms.net                                    | #
 # |                                                                                              | #
-# |  WIKI:        https://luckperms.net/wiki                                                     | #
-# |  DISCORD:     https://discord.gg/luckperms                                                   | #
-# |  BUG REPORTS: https://github.com/LuckPerms/LuckPerms/issues                                  | #
+# |  维基：        https://luckperms.net/wiki                                                     | #
+# |  Discord：     https://discord.gg/luckperms                                                   | #
+# |  Bug 反馈： https://github.com/LuckPerms/LuckPerms/issues                                  | #
 # |                                                                                              | #
-# |  Each option in this file is documented and explained here:                                  | #
+# |  本文件中的每个选项都有相应的文档和说明：                                                  | #
 # |   ==>  https://luckperms.net/wiki/Configuration                                              | #
 # |                                                                                              | #
-# |  New options are not added to this file automatically. Default values are used if an         | #
-# |  option cannot be found. The latest config versions can be obtained at the link above.       | #
+# |  新选项不会自动添加到本文件中。如果找不到某个选项，将使用默认值。                         | #
+# |  最新配置版本可在上方链接获取。                                                           | #
 # +----------------------------------------------------------------------------------------------+ #
 ####################################################################################################
 
 # +----------------------------------------------------------------------------------------------+ #
 # |                                                                                              | #
-# |                                      ESSENTIAL SETTINGS                                      | #
+# |                                       基本设置                                        | #
 # |                                                                                              | #
-# |                   Important settings that control how LuckPerms functions.                   | #
+# |                    控制 LuckPerms 运行方式的重要设置。                   | #
 # |                                                                                              | #
 # +----------------------------------------------------------------------------------------------+ #
 
-# The name of the server, used for server specific permissions.
+# 服务器的名称，用于服务器特定的权限。
 #
-# - When set to "global" this setting is effectively ignored.
-# - In all other cases, the value here is added to all players in a "server" context.
-# - See: https://luckperms.net/wiki/Context
+# - 当设为 "global" 时，此设置实际被忽略。
+# - 在其他情况下，此处的值会添加到 "server" 上下文中的所有玩家。
+# - 参见：https://luckperms.net/wiki/Context
 server: global
 
-# If the servers own UUID cache/lookup facility should be used when there is no record for a player
-# already in LuckPerms.
+# 当玩家在 LuckPerms 中尚无记录时，是否应使用服务器自带的 UUID 缓存/查找功能
+# （即玩家已在 LuckPerms 中）。
 #
-# - When this is set to 'false', commands using a player's username will not work unless the player
-#   has joined since LuckPerms was first installed.
-# - To get around this, you can use a player's uuid directly in the command, or enable this option.
-# - When this is set to 'true', the server facility is used. This may use a number of methods,
-#   including checking the servers local cache, or making a request to the Mojang API.
+# - 当设为 'false' 时，使用玩家用户名的命令将无法工作，除非该玩家
+#   在 LuckPerms 首次安装后加入过服务器。
+# - 要解决此问题，你可以在命令中直接使用玩家 UUID，或启用此选项。
+# - 当设为 'true' 时，将使用服务器功能。这可能会使用多种方法，
+#   包括检查服务器本地缓存，或向 Mojang API 发起请求。
 use-server-uuid-cache: false
 
 
@@ -48,142 +48,142 @@ use-server-uuid-cache: false
 
 # +----------------------------------------------------------------------------------------------+ #
 # |                                                                                              | #
-# |                                       STORAGE SETTINGS                                       | #
+# |                                       存储设置                                       | #
 # |                                                                                              | #
-# |                Controls which storage method LuckPerms will use to store data.               | #
+# |              控制 LuckPerms 将使用哪种存储方式来保存数据。               | #
 # |                                                                                              | #
 # +----------------------------------------------------------------------------------------------+ #
 
-# How the plugin should store data
+# 插件应如何存储数据
 #
-# - The various options are explained in more detail on the wiki:
+# - 各种选项在 wiki 上有更详细的说明：
 #   https://luckperms.net/wiki/Storage-types
 #
-# - Possible options:
+# - 可能的选项：
 #
-#   |  Remote databases - require connection information to be configured below
+#   |  远程数据库 - 需要在下文配置连接信息
 #   |=> MySQL
-#   |=> MariaDB (preferred over MySQL)
+#   |=> MariaDB（优先于 MySQL）
 #   |=> PostgreSQL
 #   |=> MongoDB
 #
-#   |  Flatfile/local database - don't require any extra configuration
-#   |=> H2 (preferred over SQLite)
+#   |  本地文件/本地数据库 - 不需要任何额外配置
+#   |=> H2（优先于 SQLite）
 #   |=> SQLite
 #
-#   |  Readable & editable text files - don't require any extra configuration
-#   |=> YAML (.yml files)
-#   |=> JSON (.json files)
-#   |=> HOCON (.conf files)
-#   |=> TOML (.toml files)
+#   |  可读可编辑的文本文件 - 不需要任何额外配置
+#   |=> YAML（.yml 文件）
+#   |=> JSON（.json 文件）
+#   |=> HOCON（.conf 文件）
+#   |=> TOML（.toml 文件）
 #   |
-#   | By default, user, group and track data is separated into different files. Data can be combined
-#   | and all stored in the same file by switching to a combined storage variant.
-#   | Just add '-combined' to the end of the storage-method, e.g. 'yaml-combined'
+#   | 默认情况下，用户、组和轨道数据被分成不同的文件。可以切换到组合存储变体，
+#   | 将数据合并存储到同一个文件中。
+#   | 只需在 storage-method 末尾添加 '-combined'，例如 'yaml-combined'
 #
-# - A H2 database is the default option.
-# - If you want to edit data manually in "traditional" storage files, we suggest using YAML.
+# - H2 数据库是默认选项。
+# - 如果你想在 "传统" 存储文件中手动编辑数据，我们建议使用 YAML。
 storage-method: h2
 
-# The following block defines the settings for remote database storage methods.
+# 以下块定义了远程数据库存储方法的设置。
 #
-# - You don't need to touch any of the settings here if you're using a local storage method!
-# - The connection detail options are shared between all remote storage types.
+# - 如果你使用的是本地存储方法，则无需修改这里的任何设置！
+# - 连接详细信息选项在所有远程存储类型之间共享。
 data:
 
-  # Define the address and port for the database.
-  # - The standard DB engine port is used by default
-  #   (MySQL: 3306, PostgreSQL: 5432, MongoDB: 27017)
-  # - Specify as "host:port" if differs
+  # 定义数据库的地址和端口。
+  # - 默认使用标准数据库引擎端口
+  #   （MySQL: 3306、PostgreSQL: 5432、MongoDB: 27017）
+  # - 如果不同，请指定为 "host:port"
   address: localhost
 
-  # The name of the database to store LuckPerms data in.
-  # - This must be created already. Don't worry about this setting if you're using MongoDB.
+  # 用于存储 LuckPerms 数据的数据库名称。
+  # - 该数据库必须已创建。如果你使用的是 MongoDB，则无需担心此设置。
   database: minecraft
 
-  # Credentials for the database.
+  # 数据库的凭据。
   username: root
   password: ''
 
-  # These settings apply to the MySQL connection pool.
-  # - The default values will be suitable for the majority of users.
-  # - Do not change these settings unless you know what you're doing!
+  # 这些设置适用于 MySQL 连接池。
+  # - 默认值适用于大多数用户。
+  # - 除非你知道自己在做什么，否则不要更改这些设置！
   pool-settings:
 
-    # Sets the maximum size of the MySQL connection pool.
-    # - Basically this value will determine the maximum number of actual
-    #   connections to the database backend.
-    # - More information about determining the size of connection pools can be found here:
+    # 设置 MySQL 连接池的最大大小。
+    # - 基本上，此值将决定实际连接的数量上限
+    #   到数据库后端的连接数。
+    # - 有关确定连接池大小的更多信息，请参见：
     #   https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing
     maximum-pool-size: 10
 
-    # Sets the minimum number of idle connections that the pool will try to maintain.
-    # - For maximum performance and responsiveness to spike demands, it is recommended to not set
-    #   this value and instead allow the pool to act as a fixed size connection pool.
-    #   (set this value to the same as 'maximum-pool-size')
+    # 设置连接池尝试保持的最小空闲连接数。
+    # - 为了在突发需求时获得最佳性能和响应速度，建议不要设置
+    #   此值，而是让连接池作为固定大小的连接池运行。
+    #   （将此值设置为与 'maximum-pool-size' 相同）
     minimum-idle: 10
 
-    # This setting controls the maximum lifetime of a connection in the pool in milliseconds.
-    # - The value should be at least 30 seconds less than any database or infrastructure imposed
-    #   connection time limit.
-    maximum-lifetime: 1800000 # 30 minutes
+    # 此设置控制连接池中连接的最大存活时间（毫秒）。
+    # - 该值应比任何数据库或基础设施施加的连接时间限制至少少 30 秒
+    #   。
+    maximum-lifetime: 1800000 # 30 分钟
 
-    # This setting controls how frequently the pool will 'ping' a connection in order to prevent it
-    # from being timed out by the database or network infrastructure, measured in milliseconds.
-    # - The value should be less than maximum-lifetime and greater than 30000 (30 seconds).
-    # - Setting the value to zero will disable the keepalive functionality.
+    # 此设置控制连接池 'ping' 连接的频率，以防止其
+    # 被数据库或网络基础设施超时，单位为毫秒。
+    # - 该值应小于 maximum-lifetime 且大于 30000（30 秒）。
+    # - 将值设为零将禁用 keepalive 功能。
     keepalive-time: 0
 
-    # This setting controls the maximum number of milliseconds that the plugin will wait for a
-    # connection from the pool, before timing out.
-    connection-timeout: 5000 # 5 seconds
+    # 此设置控制插件在超时前等待连接池连接的最大毫秒数。
+    # 即从连接池获取连接的最大等待毫秒数，超过则超时。
+    connection-timeout: 5000 # 5 秒
 
-    # This setting allows you to define extra properties for connections.
+    # 此设置允许你为连接定义额外属性。
     #
-    # By default, the following options are set to enable utf8 encoding. (you may need to remove
-    # these if you are using PostgreSQL)
+    # 默认情况下，以下选项已设置为启用 utf8 编码。（如果你使用 PostgreSQL，可能需要移除
+    # 这些选项）
     #   useUnicode: true
     #   characterEncoding: utf8
     #
-    # You can also use this section to disable SSL connections, by uncommenting the 'useSSL' and
-    # 'verifyServerCertificate' options below.
+    # 你还可以使用此部分禁用 SSL 连接，方法是取消注释下方的 'useSSL' 和
+    # 'verifyServerCertificate' 选项。
     properties:
       useUnicode: true
       characterEncoding: utf8
       #useSSL: false
       #verifyServerCertificate: false
 
-  # The prefix for all LuckPerms SQL tables.
+  # 所有 LuckPerms SQL 表的前缀。
   #
-  # - This only applies for remote SQL storage types (MySQL, MariaDB, etc).
-  # - Change this if you want to use different tables for different servers.
+  # - 这仅适用于远程 SQL 存储类型（MySQL、MariaDB 等）。
+  # - 如果你想为不同的服务器使用不同的表，请更改此选项。
   table-prefix: 'luckperms_'
 
-  # The prefix to use for all LuckPerms MongoDB collections.
+  # 用于所有 LuckPerms MongoDB 集合的前缀。
   #
-  # - This only applies for the MongoDB storage type.
-  # - Change this if you want to use different collections for different servers. The default is no
-  # prefix.
+  # - 这仅适用于 MongoDB 存储类型。
+  # - 如果你想为不同的服务器使用不同的集合，请更改此选项。默认没有
+  # 前缀。
   mongodb-collection-prefix: ''
 
-  # The connection string URI to use to connect to the MongoDB instance.
+  # 用于连接 MongoDB 实例的连接字符串 URI。
   #
-  # - When configured, this setting will override anything defined in the address, database,
-  #   username or password fields above.
-  # - If you have a connection string that starts with 'mongodb://' or 'mongodb+srv://', enter it
-  #   below.
-  # - For more information, please see https://docs.mongodb.com/manual/reference/connection-string/
+  # - 配置后，此设置将覆盖上面在 address、database、
+  #   username 或 password 字段中定义的任何内容。
+  # - 如果你有以 'mongodb://' 或 'mongodb+srv://' 开头的连接字符串，请在下面输入
+  #   。
+  # - 有关更多信息，请参阅 https://docs.mongodb.com/manual/reference/connection-string/
   mongodb-connection-uri: ''
 
-# Define settings for a "split" storage setup.
+# 定义 "分离" 存储设置的配置。
 #
-# - This allows you to define a storage method for each type of data.
-# - The connection options above still have to be correct for each type here.
+# - 这允许你为每种数据类型定义存储方法。
+# - 上面的连接选项对这里的每种类型仍然必须正确。
 split-storage:
-  # Don't touch this if you don't want to use split storage!
+  # 如果你不想使用分离存储，请不要修改此项！
   enabled: false
   methods:
-    # These options don't need to be modified if split storage isn't enabled.
+    # 如果未启用分离存储，则无需修改这些选项。
     user: h2
     group: h2
     track: h2
@@ -195,82 +195,82 @@ split-storage:
 
 # +----------------------------------------------------------------------------------------------+ #
 # |                                                                                              | #
-# |                            UPDATE PROPAGATION & MESSAGING SERVICE                            | #
+# |                          更新传播与消息服务                          | #
 # |                                                                                              | #
-# |    Controls the ways in which LuckPerms will sync data & notify other servers of changes.    | #
-# |     These options are documented on greater detail on the wiki under "Instant Updates".      | #
+# |    控制 LuckPerms 同步数据及通知其他服务器变更的方式。    | #
+# |     这些选项在 wiki 的 "Instant Updates" 部分有更详细的说明。      | #
 # |                                                                                              | #
 # +----------------------------------------------------------------------------------------------+ #
 
-# This option controls how frequently LuckPerms will perform a sync task.
+# 此选项控制 LuckPerms 执行同步任务的频率。
 #
-# - A sync task will refresh all data from the storage, and ensure that the most up-to-date data is
-#   being used by the plugin.
-# - This is disabled by default, as most users will not need it. However, if you're using a remote
-#   storage type without a messaging service setup, you may wish to set this to something like 3.
-# - Set to -1 to disable the task completely.
+# - 同步任务将从存储中刷新所有数据，并确保插件使用的是最新数据。
+#   。
+# - 默认情况下此功能被禁用，因为大多数用户不需要它。但是，如果你使用的是远程
+#   存储类型且未设置消息服务，你可能希望将其设为 3 之类的值。
+# - 设为 -1 可完全禁用此任务。
 sync-minutes: -1
 
-# If the file watcher should be enabled.
+# 是否应启用文件监视器。
 #
-# - When using a file-based storage type, LuckPerms can monitor the data files for changes, and
-#   automatically update when changes are detected.
-# - If you don't want this feature to be active, set this option to false.
+# - 使用基于文件的存储类型时，LuckPerms 可以监视数据文件的变化，并在检测到变化时
+#   自动更新。
+# - 如果你不希望此功能启用，请将此选项设为 false。
 watch-files: true
 
-# Define which messaging service should be used by the plugin.
+# 定义插件应使用哪种消息服务。
 #
-# - If enabled and configured, LuckPerms will use the messaging service to inform other connected
-#   servers of changes.
-# - Use the command "/lp networksync" to manually push changes.
-# - Data is NOT stored using this service. It is only used as a messaging platform.
+# - 如果启用并配置，LuckPerms 将使用消息服务通知其他已连接的
+#   服务器有关变更的信息。
+# - 使用命令 "/lp networksync" 手动推送变更。
+# - 此服务不会存储数据。它仅用作消息传递平台。
 #
-# - If you decide to enable this feature, you should set "sync-minutes" to -1, as there is no need
-#   for LuckPerms to poll the database for changes.
+# - 如果你决定启用此功能，应将 "sync-minutes" 设为 -1，因为
+#   LuckPerms 无需轮询数据库以获取变更。
 #
-# - Possible options:
-#   => sql       Uses the SQL database to form a queue system for communication. Will only work when
-#                'storage-method' is set to MySQL or MariaDB. This is chosen by default if the
-#                option is set to 'auto' and SQL storage is in use. Set to 'notsql' to disable this.
-#   => pluginmsg Uses the plugin messaging channels to communicate with the proxy.
-#                LuckPerms must be installed on your proxy & all connected servers backend servers.
-#                Won't work if you have more than one proxy.
-#   => lilypad   Uses LilyPad pub-sub to push changes. You need to have the LilyPad-Connect plugin
-#                installed.
-#   => redis     Uses Redis pub-sub to push changes. Your server connection info must be configured
-#                below.
-#   => rabbitmq  Uses RabbitMQ pub-sub to push changes. Your server connection info must be
-#                configured below.
-#   => nats      Uses Nats pub-sub to push changes. Your server connection info must be
-#                configured below.
-#   => custom    Uses a messaging service provided using the LuckPerms API.
-#   => auto      Attempts to automatically setup a messaging service using redis or sql.
+# - 可能的选项：
+#   => sql       使用 SQL 数据库形成通信队列系统。仅在以下情况有效
+#                'storage-method' 设为 MySQL 或 MariaDB。如果选项设为 'auto' 且使用 SQL 存储，
+#                则默认选择此项。设为 'notsql' 可禁用此项。
+#   => pluginmsg 使用插件消息通道与代理通信。
+#                LuckPerms 必须安装在你的代理及所有连接的后端服务器上。
+#                如果你有多个代理，此选项将无法工作。
+#   => lilypad   使用 LilyPad pub-sub 推送变更。你需要安装 LilyPad-Connect 插件
+#                。
+#   => redis     使用 Redis pub-sub 推送变更。你的服务器连接信息必须配置
+#                在下方。
+#   => rabbitmq  使用 RabbitMQ pub-sub 推送变更。你的服务器连接信息必须在
+#                下方配置。
+#   => nats      使用 Nats pub-sub 推送变更。你的服务器连接信息必须在
+#                下方配置。
+#   => custom    使用 LuckPerms API 提供的消息服务。
+#   => auto      尝试使用 redis 或 sql 自动设置消息服务。
 messaging-service: auto
 
-# If LuckPerms should automatically push updates after a change has been made with a command.
+# LuckPerms 是否应在通过命令进行更改后自动推送更新。
 auto-push-updates: true
 
-# If LuckPerms should push logging entries to connected servers via the messaging service.
+# LuckPerms 是否应通过消息服务将日志条目推送到已连接的服务器。
 push-log-entries: true
 
-# If LuckPerms should broadcast received logging entries to players on this platform.
+# LuckPerms 是否应在此平台上向玩家广播接收到的日志条目。
 #
-# - If you have LuckPerms installed on your backend servers as well as a BungeeCord proxy, you
-#   should set this option to false on either your backends or your proxies, to avoid players being
-#   messaged twice about log entries.
+# - 如果你在后台服务器以及 BungeeCord 代理上安装了 LuckPerms，
+#   应在后端或代理上将此选项设为 false，以避免玩家
+#   收到两次有关日志条目的消息。
 broadcast-received-log-entries: true
 
-# Settings for Redis.
-# Port 6379 is used by default; set address to "host:port" if differs
-# Multiple Redis nodes can be specified in the same format as a string list under the name "addresses".
+# Redis 的设置。
+# 默认使用端口 6379；如果不同，请将 address 设为 "host:port"
+# 可以在 "addresses" 名称下以字符串列表的相同格式指定多个 Redis 节点。
 redis:
   enabled: false
   address: localhost
   username: ''
   password: ''
-  # Settings for Redis Sentinel.
-  # Sentinel provides high availability for Redis by monitoring master/replica instances.
-  # Port 26379 is used by default for sentinel nodes.
+  # Redis Sentinel 的设置。
+  # Sentinel 通过监控主/副本实例为 Redis 提供高可用性。
+  # sentinel 节点默认使用端口 26379。
   sentinel:
     enabled: false
     master: mymaster
@@ -279,8 +279,8 @@ redis:
     username: ''
     password: ''
 
-# Settings for Nats.
-# Port 4222 is used by default; set address to "host:port" if differs
+# Nats 的设置。
+# 默认使用端口 4222；如果不同，请将 address 设为 "host:port"
 nats:
   enabled: false
   address: localhost
@@ -288,8 +288,8 @@ nats:
   password: ''
   token: ''
 
-# Settings for RabbitMQ.
-# Port 5672 is used by default; set address to "host:port" if differs
+# RabbitMQ 的设置。
+# 默认使用端口 5672；如果不同，请将 address 设为 "host:port"
 rabbitmq:
   enabled: false
   address: localhost
@@ -302,116 +302,116 @@ rabbitmq:
 
 # +----------------------------------------------------------------------------------------------+ #
 # |                                                                                              | #
-# |                                    CUSTOMIZATION SETTINGS                                    | #
+# |                                     自定义设置                                      | #
 # |                                                                                              | #
-# |              Settings that allow admins to customize the way LuckPerms operates.             | #
+# |              允许管理员自定义 LuckPerms 运行方式的设置。             | #
 # |                                                                                              | #
 # +----------------------------------------------------------------------------------------------+ #
 
-# Controls how temporary permissions/parents/meta should be accumulated.
+# 控制临时权限/父组/元数据应如何累积。
 #
-# - The default behaviour is "deny".
-# - This behaviour can also be specified when the command is executed. See the command usage
-#   documentation for more info.
+# - 默认行为是 "deny"。
+# - 也可以在执行命令时指定此行为。有关更多信息，请参阅命令用法
+#   文档。
 #
-# - Possible options:
-#   => accumulate   durations will be added to the existing expiry time
-#   => replace      durations will be replaced if the new duration is later than the current
+# - 可能的选项：
+#   => accumulate   持续时间将添加到现有到期时间
+#   => replace      如果新持续时间晚于当前时间，持续时间将被替换
 #                   expiration
-#   => deny         the command will just fail if you try to add another node with the same expiry
+#   => deny         如果你尝试添加具有相同到期时间的另一个节点，命令将直接失败
 temporary-add-behaviour: deny
 
-# Controls how LuckPerms will determine a users "primary" group.
+# 控制 LuckPerms 如何确定用户的 "primary"（主要）组。
 #
-# - The meaning and influence of "primary groups" are explained in detail on the wiki.
-# - The preferred approach is to let LuckPerms automatically determine a users primary group
-#   based on the relative weight of their parent groups.
+# - "主要组" 的含义和影响在 wiki 上有详细说明。
+# - 首选方法是让 LuckPerms 根据其父组的相对权重自动确定用户的主要组
+#   。
 #
-# - Possible options:
-#   => stored                  use the value stored against the users record in the file/database
-#   => parents-by-weight       just use the users most highly weighted parent
-#   => all-parents-by-weight   same as above, but calculates based upon all parents inherited from
-#                              both directly and indirectly
+# - 可能的选项：
+#   => stored                  使用文件/数据库中用户记录中存储的值
+#   => parents-by-weight       只使用用户权重最高的父组
+#   => all-parents-by-weight   与上述相同，但根据所有直接和间接继承的父组
+#                              进行计算
 primary-group-calculation: parents-by-weight
 
-# If the plugin should check for "extra" permissions with users run LP commands.
+# 插件是否应在用户运行 LP 命令时检查 "extra" 权限。
 #
-# - These extra permissions allow finer control over what users can do with each command, and who
-#   they have access to edit.
-# - The nature of the checks are documented on the wiki under "Argument based command permissions".
-# - Argument based permissions are *not* static, unlike the 'base' permissions, and will depend upon
-#   the arguments given within the command.
+# - 这些额外权限允许更精细地控制用户可以使用每个命令做什么，以及他们可以编辑谁
+#   的数据。
+# - 检查的性质在 wiki 的 "Argument based command permissions" 部分有说明。
+# - 与 'base' 权限不同，基于参数的权限*不是*静态的，它将取决于
+#   命令中给出的参数。
 argument-based-command-permissions: false
 
-# If the plugin should check whether senders are a member of a given group before they're able to
-# edit the groups data or add/remove other users to/from it.
-# Note: these limitations do not apply to the web editor!
+# 插件是否应检查发送者是否为给定组的成员，然后才能
+# 编辑该组的数据或向其添加/从中移除其他用户。
+# 注意：这些限制不适用于网页编辑器！
 require-sender-group-membership-to-modify: false
 
-# If the plugin should send log notifications to users whenever permissions are modified.
+# 每当权限被修改时，插件是否应向用户发送日志通知。
 #
-# - Notifications are only sent to those with the appropriate permission to receive them
-# - They can also be temporarily enabled/disabled on a per-user basis using
+# - 通知只发送给拥有相应权限接收通知的用户
+# - 也可以使用以下命令按用户临时启用/禁用
 #   '/lp log notify <on|off>'
 log-notify: true
 
-# Defines a list of log entries which should not be sent as notifications to users.
+# 定义不应作为通知发送给用户的日志条目列表。
 #
-# - Each entry in the list is a RegEx expression which is matched against the log entry description.
+# - 列表中的每个条目都是一个 RegEx 表达式，用于与日志条目描述进行匹配。
 log-notify-filtered-descriptions:
 #  - "parent add example"
 
-# If LuckPerms should automatically install translation bundles and periodically update them.
+# LuckPerms 是否应自动安装翻译包并定期更新它们。
 auto-install-translations: true
 
-# Defines the options for prefix and suffix stacking.
+# 定义前缀和后缀堆叠的选项。
 #
-# - The feature allows you to display multiple prefixes or suffixes alongside a players username in
-#   chat.
-# - It is explained and documented in more detail on the wiki under "Prefix & Suffix Stacking".
+# - 此功能允许你在聊天中玩家的用户名旁边显示多个前缀或后缀。
+#   。
+# - 在 wiki 的 "Prefix & Suffix Stacking" 部分有更详细的说明。
 #
-# - The options are divided into separate sections for prefixes and suffixes.
-# - The 'duplicates' setting refers to how duplicate elements are handled. Can be 'retain-all',
-#   'first-only' or 'last-only'.
-# - The value of 'start-spacer' is included at the start of the resultant prefix/suffix.
-# - The value of 'end-spacer' is included at the end of the resultant prefix/suffix.
-# - The value of 'middle-spacer' is included between each element in the resultant prefix/suffix.
+# - 选项分为前缀和后缀两个独立部分。
+# - 'duplicates' 设置指的是如何处理重复元素。可以是 'retain-all'、
+#   'first-only' 或 'last-only'。
+# - 'start-spacer' 的值包含在生成的前缀/后缀的开头。
+# - 'end-spacer' 的值包含在生成的前缀/后缀的末尾。
+# - 'middle-spacer' 的值包含在生成的前缀/后缀的每个元素之间。
 #
-# - Possible format options:
-#   => highest                        Selects the value with the highest weight, from all values
-#                                     held by or inherited by the player.
+# - 可能的格式选项：
+#   => highest                        从玩家持有或继承的所有值中选择权重最高的值
+#                                     。
 #
-#   => lowest                         Same as above, except takes the one with the lowest weight.
+#   => lowest                         与上述相同，只是取权重最低的值。
 #
-#   => highest_own                    Selects the value with the highest weight, but will not
-#                                     accept any inherited values.
+#   => highest_own                    选择权重最高的值，但不会
+#                                     接受任何继承的值。
 #
-#   => lowest_own                     Same as above, except takes the value with the lowest weight.
+#   => lowest_own                     与上述相同，只是取权重最低的值。
 #
-#   => highest_inherited              Selects the value with the highest weight, but will only
-#                                     accept inherited values.
+#   => highest_inherited              选择权重最高的值，但只会
+#                                     接受继承的值。
 #
-#   => lowest_inherited               Same as above, except takes the value with the lowest weight.
+#   => lowest_inherited               与上述相同，只是取权重最低的值。
 #
-#   => highest_on_track_<track>       Selects the value with the highest weight, but only if the
-#                                     value was inherited from a group on the given track.
+#   => highest_on_track_<track>       选择权重最高的值，但仅限于
+#                                     该值继承自给定轨道上的组时。
 #
-#   => lowest_on_track_<track>        Same as above, except takes the value with the lowest weight.
+#   => lowest_on_track_<track>        与上述相同，只是取权重最低的值。
 #
-#   => highest_not_on_track_<track>   Selects the value with the highest weight, but only if the
-#                                     value was inherited from a group not on the given track.
+#   => highest_not_on_track_<track>   选择权重最高的值，但仅限于
+#                                     该值继承自不在给定轨道上的组时。
 #
-#   => lowest_not_on_track_<track>    Same as above, except takes the value with the lowest weight.
+#   => lowest_not_on_track_<track>    与上述相同，只是取权重最低的值。
 #
-#   => highest_from_group_<group>     Selects the value with the highest weight, but only if the
-#                                     value was inherited from the given group.
+#   => highest_from_group_<group>     选择权重最高的值，但仅限于
+#                                     该值继承自给定组时。
 #
-#   => lowest_from_group_<group>      Same as above, except takes the value with the lowest weight.
+#   => lowest_from_group_<group>      与上述相同，只是取权重最低的值。
 #
-#   => highest_not_from_group_<group> Selects the value with the highest weight, but only if the
-#                                     value was not inherited from the given group.
+#   => highest_not_from_group_<group> 选择权重最高的值，但仅限于
+#                                     该值并非继承自给定组时。
 #
-#   => lowest_not_from_group_<group>  Same as above, except takes the value with the lowest weight.
+#   => lowest_not_from_group_<group>  与上述相同，只是取权重最低的值。
 meta-formatting:
   prefix:
     format:
@@ -433,166 +433,166 @@ meta-formatting:
 
 # +----------------------------------------------------------------------------------------------+ #
 # |                                                                                              | #
-# |                            PERMISSION CALCULATION AND INHERITANCE                            | #
+# |                          权限计算与继承                          | #
 # |                                                                                              | #
-# |    Modify the way permission checks, meta lookups and inheritance resolutions are handled.   | #
+# |    修改权限检查、元数据查找和继承解析的处理方式。   | #
 # |                                                                                              | #
 # +----------------------------------------------------------------------------------------------+ #
 
-# The algorithm LuckPerms should use when traversing the "inheritance tree".
+# LuckPerms 在遍历 "继承树" 时应使用的算法。
 #
-# - Possible options:
-#   => breadth-first            See: https://en.wikipedia.org/wiki/Breadth-first_search
-#   => depth-first-pre-order    See: https://en.wikipedia.org/wiki/Depth-first_search
-#   => depth-first-post-order   See: https://en.wikipedia.org/wiki/Depth-first_search
+# - 可能的选项：
+#   => breadth-first            参见：https://en.wikipedia.org/wiki/Breadth-first_search
+#   => depth-first-pre-order    参见：https://en.wikipedia.org/wiki/Depth-first_search
+#   => depth-first-post-order   参见：https://en.wikipedia.org/wiki/Depth-first_search
 inheritance-traversal-algorithm: depth-first-pre-order
 
-# If a final sort according to "inheritance rules" should be performed after the traversal algorithm
-# has resolved the inheritance tree.
+# 遍历算法解析继承树后，是否应根据 "继承规则" 执行最终排序。
+# 。
 #
-# "Inheritance rules" refers to things such as group weightings, primary group status, and the
-# natural contextual ordering of the group nodes.
+# "继承规则" 指的是诸如组权重、主要组状态以及组节点的自然上下文排序等内容。
+# 。
 #
-# Setting this to 'true' will allow for the inheritance rules to take priority over the structure of
-# the inheritance tree.
+# 将此设为 'true' 将允许继承规则优先于继承树的结构
+# 。
 #
-# Effectively when this setting is 'true': the tree is flattened, and rules applied afterwards,
-# and when this setting is 'false':, the rules are just applied during each step of the traversal.
+# 实际上，当此设置设为 'true' 时：树被扁平化，之后应用规则；
+# 当此设置设为 'false' 时：规则只在遍历的每个步骤中应用。
 post-traversal-inheritance-sort: false
 
-# Defines the mode used to determine whether a set of contexts are satisfied.
+# 定义用于确定一组上下文是否满足的模式。
 #
-# - Possible options:
-#   => at-least-one-value-per-key   Set A will be satisfied by another set B, if at least one of the
-#                                   key-value entries per key in A are also in B.
-#   => all-values-per-key           Set A will be satisfied by another set B, if all key-value
-#                                   entries in A are also in B.
+# - 可能的选项：
+#   => at-least-one-value-per-key   如果 A 中每个键的键值条目至少有一个也在 B 中，
+#                                   则集合 A 将被集合 B 满足。
+#   => all-values-per-key           如果 A 中的所有键值条目也在 B 中，
+#                                   则集合 A 将被集合 B 满足。
 context-satisfy-mode: at-least-one-value-per-key
 
-# LuckPerms has a number of built-in contexts. These can be disabled by adding the context key to
-# the list below.
+# LuckPerms 有许多内置上下文。可以通过将上下文键添加到
+# 下面的列表来禁用它们。
 disabled-contexts:
 #  - "world"
 
 # +----------------------------------------------------------------------------------------------+ #
-# | Permission resolution settings                                                               | #
+# | 权限解析设置                                                               | #
 # +----------------------------------------------------------------------------------------------+ #
 
-# If users on this server should have their global permissions applied.
-# When set to false, only server specific permissions will apply for users on this server
+# 此服务器上的用户是否应应用其全局权限。
+# 设为 false 时，仅服务器特定的权限将应用于此服务器上的用户
 include-global: true
 
-# If users on this server should have their global world permissions applied.
-# When set to false, only world specific permissions will apply for users on this server
+# 此服务器上的用户是否应应用其全局世界权限。
+# 设为 false 时，仅特定于世界的权限将应用于此服务器上的用户
 include-global-world: true
 
-# If users on this server should have global (non-server specific) groups applied
+# 此服务器上的用户是否应应用全局（非服务器特定）组
 apply-global-groups: true
 
-# If users on this server should have global (non-world specific) groups applied
+# 此服务器上的用户是否应应用全局（非世界特定）组
 apply-global-world-groups: true
 
 # +----------------------------------------------------------------------------------------------+ #
-# | Meta lookup settings                                                                         | #
+# | 元数据查找设置                                                                         | #
 # +----------------------------------------------------------------------------------------------+ #
 
-# Defines how meta values should be selected.
+# 定义应如何选择元数据值。
 #
-# - Possible options:
-#   => inheritance      Selects the meta value that was inherited first
-#   => highest-number   Selects the highest numerical meta value
-#   => lowest-number    Selects the lowest numerical meta value
+# - 可能的选项：
+#   => inheritance      选择最先继承的元数据值
+#   => highest-number   选择最高的数值元数据值
+#   => lowest-number    选择最低的数值元数据值
 meta-value-selection-default: inheritance
 
-# Defines how meta values should be selected per key.
+# 定义每个键应如何选择元数据值。
 meta-value-selection:
 #  max-homes: highest-number
 
 # +----------------------------------------------------------------------------------------------+ #
-# | Inheritance settings                                                                         | #
+# | 继承设置                                                                         | #
 # +----------------------------------------------------------------------------------------------+ #
 
-# If the plugin should apply wildcard permissions.
+# 插件是否应应用通配符权限。
 #
-# - If set to true, LuckPerms will detect wildcard permissions, and resolve & apply all registered
-#   permissions matching the wildcard.
+# - 如果设为 true，LuckPerms 将检测通配符权限，并解析和应用所有匹配通配符的已注册权限。
+#   。
 apply-wildcards: true
 
-# If LuckPerms should resolve and apply permissions according to the Sponge style implicit wildcard
-# inheritance system.
+# LuckPerms 是否应根据 Sponge 风格的隐式通配符继承系统解析和应用权限。
+# 。
 #
-# - That being: If a user has been granted "example", then the player should have also be
-#   automatically granted "example.function", "example.another", "example.deeper.nesting",
-#   and so on.
+# - 也就是说：如果用户被授予 "example"，那么该玩家还应被自动授予
+#   "example.function"、"example.another"、"example.deeper.nesting" 等权限。
+#   等等。
 apply-sponge-implicit-wildcards: false
 
-# If the plugin should apply negated Bukkit default permissions before it considers wildcard
-# assignments.
+# 插件是否应在考虑通配符分配之前应用否定的 Bukkit 默认权限。
+# 。
 #
-# - Plugin authors can define permissions which explicitly should not be given automatically to OPs.
-#   This is usually used for so called "anti-permissions" - permissions which, when granted, apply
-#   something negative.
-# - If this option is set to true, LuckPerms will consider any negated declarations made by
-#   plugins before it considers wildcards. (similar to the way the OP system works)
-# - If this option is set to false, LuckPerms will consider any wildcard assignments first.
+# - 插件作者可以定义明确不应自动授予 OP 的权限。
+#   这通常用于所谓的 "反权限"——即授予后会产生负面效果的权限。
+#   。
+# - 如果此选项设为 true，LuckPerms 将在考虑通配符之前考虑插件所做的任何否定声明
+#   。（类似于 OP 系统的运作方式）
+# - 如果此选项设为 false，LuckPerms 将首先考虑任何通配符分配。
 apply-default-negated-permissions-before-wildcards: false
 
-# If the plugin should parse regex permissions.
+# 插件是否应解析正则表达式权限。
 #
-# - If set to true, LuckPerms will detect regex permissions, marked with "r=" at the start of the
-#   node, and resolve & apply all registered permissions matching the regex.
+# - 如果设为 true，LuckPerms 将检测正则表达式权限（以 "r=" 开头标记的节点），
+#   并解析和应用所有匹配该正则表达式的已注册权限。
 apply-regex: true
 
-# If the plugin should complete and apply shorthand permissions.
+# 插件是否应完成并应用速记权限。
 #
-# - If set to true, LuckPerms will detect and expand shorthand node patterns.
+# - 如果设为 true，LuckPerms 将检测并展开速记节点模式。
 apply-shorthand: true
 
-# If the plugin should apply Bukkit child permissions.
+# 插件是否应应用 Bukkit 子权限。
 #
-# - Plugin authors can define custom permissions structures for their plugin, which will be resolved
-#   and used by LuckPerms if this setting is enabled.
+# - 插件作者可以为其插件定义自定义权限结构，如果启用此设置，
+#   LuckPerms 将解析并使用这些结构。
 apply-bukkit-child-permissions: true
 
-# If the plugin should apply Bukkit default permissions.
+# 插件是否应应用 Bukkit 默认权限。
 #
-# - Plugin authors can define permissions which should be given to all users by default, or setup
-#   permissions which should/shouldn't be given to opped players.
-# - If this option is set to false, LuckPerms will ignore these defaults.
+# - 插件作者可以定义默认应授予所有用户的权限，或设置应该/不应该
+#   授予 OP 玩家的权限。
+# - 如果此选项设为 false，LuckPerms 将忽略这些默认值。
 apply-bukkit-default-permissions: true
 
-# If the plugin should apply attachment permissions.
+# 插件是否应应用附加权限。
 #
-# - Other plugins on the server are able to add their own "permission attachments" to players.
-# - This allows them to grant players additional permissions which last until the end of the
-#   session, or until they're removed.
-# - If this option is set to false, LuckPerms will not include these attachment permissions when
-#   considering if a player should have access to a certain permission.
+# - 服务器上的其他插件可以向玩家添加自己的 "权限附加"。
+# - 这允许他们授予玩家额外的权限，这些权限持续到会话结束，
+#   或直到被移除。
+# - 如果此选项设为 false，LuckPerms 在考虑玩家是否拥有某个权限时
+#   将不包含这些附加权限。
 apply-bukkit-attachment-permissions: true
 
 # +----------------------------------------------------------------------------------------------+ #
-# | Extra settings                                                                               | #
+# | 额外设置                                                                               | #
 # +----------------------------------------------------------------------------------------------+ #
 
-# A list of context calculators which will be skipped when calculating contexts.
+# 计算上下文时将跳过的上下文计算器列表。
 #
-# - You can disable context calculators by either:
-#   => specifying the Java class name used by the calculator (e.g. com.example.ExampleCalculator)
-#   => specifying a sub-section of the Java package used by the calculator (e.g. com.example)
+# - 你可以通过以下任一方式禁用上下文计算器：
+#   => 指定计算器使用的 Java 类名（例如 com.example.ExampleCalculator）
+#   => 指定计算器使用的 Java 包的子部分（例如 com.example）
 disabled-context-calculators: []
 
-# Allows you to set "aliases" for the worlds sent forward for context calculation.
+# 允许你为发送用于上下文计算的世界设置 "别名"。
 #
-# - These aliases are provided in addition to the real world name. Applied recursively.
-# - Remove the comment characters for the default aliases to apply.
+# - 这些别名是在真实世界名称之外提供的。递归应用。
+# - 移除默认别名的注释字符即可应用。
 world-rewrite:
 #  world_nether: world
 #  world_the_end: world
 
-# Define special group weights for this server.
+# 为此服务器定义特殊的组权重。
 #
-# - Group weights can also be applied directly to group data, using the setweight command.
-# - This section allows weights to be set on a per-server basis.
+# - 也可以使用 setweight 命令直接将组权重应用于组数据。
+# - 此部分允许按服务器设置权重。
 group-weight:
 #  admin: 10
 
@@ -601,162 +601,162 @@ group-weight:
 
 # +----------------------------------------------------------------------------------------------+ #
 # |                                                                                              | #
-# |                                      FINE TUNING OPTIONS                                     | #
+# |                                       微调选项                                     | #
 # |                                                                                              | #
-# |     A number of more niche settings for tweaking and changing behaviour. The section also    | #
-# | contains toggles for some more specialised features. It is only necessary to make changes to | #
-# |                  these options if you want to fine-tune LuckPerms behaviour.                 | #
+# |     一些用于微调和改变行为的更专业设置。此部分还包含    | #
+# | 一些更专业功能的开关。只有在你想要微调 LuckPerms 行为时才需要    | #
+# |              修改这些选项。                 | #
 # |                                                                                              | #
 # +----------------------------------------------------------------------------------------------+ #
 
 # +----------------------------------------------------------------------------------------------+ #
-# | Server Operator (OP) settings                                                                | #
+# | 服务器管理员（OP）设置                                                                | #
 # +----------------------------------------------------------------------------------------------+ #
 
-# Controls whether server operators should exist at all.
+# 控制服务器管理员是否应该存在。
 #
-# - When set to 'false', all players will be de-opped, and the /op and /deop commands will be
-#   disabled. Note that vanilla features like the spawn-protection require an operator on the
-#   server to work.
+# - 设为 'false' 时，所有玩家将被取消 OP，/op 和 /deop 命令将被
+#   禁用。请注意，像出生点保护这样的原版功能需要服务器上有
+#   管理员才能工作。
 enable-ops: true
 
-# Enables or disables a special permission based system in LuckPerms for controlling OP status.
+# 启用或禁用 LuckPerms 中用于控制 OP 状态的基于权限的特殊系统。
 #
-# - If set to true, any user with the permission "luckperms.autoop" will automatically be granted
-#   server operator status. This permission can be inherited, or set on specific servers/worlds,
-#   temporarily, etc.
-# - Additionally, setting this to true will force the "enable-ops" option above to false. All users
-#   will be de-opped unless they have the permission node, and the op/deop commands will be
-#   disabled.
-# - It is recommended that you use this option instead of assigning a single '*' permission.
+# - 如果设为 true，任何拥有 "luckperms.autoop" 权限的用户都将自动获得
+#   服务器管理员状态。此权限可以被继承，或设置在特定的服务器/世界上，
+#   或临时设置等。
+# - 此外，将此设为 true 将强制上面的 "enable-ops" 选项为 false。除非用户拥有权限节点，
+#   否则所有用户将被取消 OP，op/deop 命令将被
+#   禁用。
+# - 建议你使用此选项，而不是分配单个 '*' 权限。
 auto-op: false
 
-# Defines if "opped" players should be able to use all LuckPerms commands by default.
+# 定义 "op" 玩家默认是否可以使用所有 LuckPerms 命令。
 #
-# - Set to false to only allow users who have the permissions access to the commands
+# - 设为 false 以仅允许拥有相应权限的用户访问这些命令
 commands-allow-op: true
 
 # +----------------------------------------------------------------------------------------------+ #
-# | Vault integration settings                                                                   | #
+# | Vault 集成设置                                                                   | #
 # +----------------------------------------------------------------------------------------------+ #
 
-# If Vault lookups for offline players on the main server thread should be enabled.
+# 是否应启用主服务器线程上离线玩家的 Vault 查找。
 #
-# LuckPerms has a "catch" for plugins attempting to perform unsafe offline player data lookups
-# from the main server thread. This catch raises an exception (causes an error to occur) when unsafe
-# lookups are made, instead of allowing the lookup to happen, which would likely cause the server
-# to lag.
+# LuckPerms 对尝试在主服务器线程上执行不安全的离线玩家数据查找的插件有一个 "捕获" 机制。
+# 当进行不安全的查找时，此捕获会引发异常（导致错误发生），
+# 而不是允许查找发生，因为允许查找可能会导致服务器
+# 卡顿。
 #
-# However, if you're willing to accept the consequences, the catch can be disabled by setting this
-# option to 'true.
+# 但是，如果你愿意接受后果，可以通过将此选项设为 'true' 来禁用此捕获。
+# 。
 vault-unsafe-lookups: false
 
-# If LuckPerms should use the 'display name' of a group when returning groups in Vault API calls.
+# 在 Vault API 调用中返回组时，LuckPerms 是否应使用组的 '显示名称'。
 #
-# - When this option is set to true, the display name of the group is returned.
-# - When this option is set to false, the standard name/id of the group is returned.
+# - 当此选项设为 true 时，返回组的显示名称。
+# - 当此选项设为 false 时，返回组的标准名称/id。
 vault-group-use-displaynames: true
 
-# Controls which group LuckPerms should use for NPC players when handling Vault requests.
+# 控制 LuckPerms 在处理 Vault 请求时应为 NPC 玩家使用哪个组。
 #
-# - As NPCs aren't actually real players, LuckPerms does not load any user data for them. This
-#   becomes an issue when plugins want to check for their permissions using Vault.
-# - As a solution, Vault checks for NPCs fallback to a group, which is defined below.
+# - 由于 NPC 实际上不是真正的玩家，LuckPerms 不会为它们加载任何用户数据。当插件想要使用 Vault 检查它们的权限时，
+#   这就成了一个问题。
+# - 作为解决方案，Vault 对 NPC 的检查会回退到下面定义的组。
 vault-npc-group: default
 
-# Controls how LuckPerms should consider the OP status of NPC players when handing Vault requests.
+# 控制 LuckPerms 在处理 Vault 请求时应如何考虑 NPC 玩家的 OP 状态。
 #
-# - If you want NPCs to have the same permissions as "normal" players, set this option to false.
-# - If you want NPCs to have OP status, set this option to true.
+# - 如果你希望 NPC 拥有与 "普通" 玩家相同的权限，请将此选项设为 false。
+# - 如果你希望 NPC 拥有 OP 状态，请将此选项设为 true。
 vault-npc-op-status: false
 
-# If the vault-server option below should be used.
+# 是否应使用下面的 vault-server 选项。
 #
-# - When this option is set to false, the server value defined above under "server" is used.
+# - 当此选项设为 false 时，使用上面 "server" 下定义的服务器值。
 use-vault-server: false
 
-# The name of the server used within Vault operations.
+# 在 Vault 操作中使用的服务器名称。
 #
-# - If you don't want Vault operations to be server specific, set this to "global".
-# - Will only take effect if use-vault-server is set to true above.
+# - 如果你不希望 Vault 操作与服务器相关，请将其设为 "global"。
+# - 仅当上面的 use-vault-server 设为 true 时才会生效。
 vault-server: global
 
-# If global permissions should be considered when retrieving meta or player groups
+# 在检索元数据或玩家组时是否应考虑全局权限
 vault-include-global: true
 
-# If Vault operations should ignore any world arguments if supplied.
+# 如果提供了世界参数，Vault 操作是否应忽略它们。
 vault-ignore-world: false
 
 # +----------------------------------------------------------------------------------------------+ #
-# | Miscellaneous (and rarely used) settings                                                     | #
+# | 其他（很少使用的）设置                                                     | #
 # +----------------------------------------------------------------------------------------------+ #
 
-# If LuckPerms should produce extra logging output when it handles logins.
+# LuckPerms 在处理登录时是否应产生额外的日志输出。
 #
-# - Useful if you're having issues with UUID forwarding or data not being loaded.
+# - 如果你遇到 UUID 转发或数据未加载的问题，此选项很有用。
 debug-logins: false
 
-# If LuckPerms should allow usernames with non alphanumeric characters.
+# LuckPerms 是否应允许包含非字母数字字符的用户名。
 #
-# - Note that due to the design of the storage implementation, usernames must still be 16 characters
-#   or less.
+# - 请注意，由于存储实现的设计，用户名仍然必须为 16 个字符
+#   或更少。
 allow-invalid-usernames: false
 
-# If LuckPerms should not require users to confirm bulkupdate operations.
+# LuckPerms 是否不应要求用户确认批量更新操作。
 #
-# - When set to true, operations will be executed immediately.
-# - This is not recommended, as bulkupdate has the potential to irreversibly delete large amounts of
-#   data, and is not designed to be executed automatically.
-# - If automation is needed, users should prefer using the LuckPerms API.
+# - 设为 true 时，操作将立即执行。
+# - 不建议这样做，因为批量更新有可能不可逆地删除大量数据，
+#   而且它不适合自动执行。
+# - 如果需要自动化，用户应优先使用 LuckPerms API。
 skip-bulkupdate-confirmation: false
 
-# If LuckPerms should prevent bulkupdate operations.
+# LuckPerms 是否应阻止批量更新操作。
 #
-# - When set to true, bulkupdate operations (the /lp bulkupdate command) will not work.
-# - When set to false, bulkupdate operations will be allowed via the console.
+# - 设为 true 时，批量更新操作（/lp bulkupdate 命令）将无法工作。
+# - 设为 false 时，将通过控制台允许批量更新操作。
 disable-bulkupdate: false
 
-# If LuckPerms should allow a users primary group to be removed with the 'parent remove' command.
+# LuckPerms 是否应允许使用 'parent remove' 命令移除用户的主要组。
 #
-# - When this happens, the plugin will set their primary group back to default.
+# - 发生这种情况时，插件会将他们的主要组设回默认值。
 prevent-primary-group-removal: false
 
-# If LuckPerms should update the list of commands sent to the client when permissions are changed.
+# 当权限更改时，LuckPerms 是否应更新发送给客户端的命令列表。
 update-client-command-list: true
 
-# If LuckPerms should attempt to register "Brigadier" command list data for its commands.
+# LuckPerms 是否应尝试为其命令注册 "Brigadier" 命令列表数据。
 register-command-list-data: true
 
-# If LuckPerms should attempt to resolve Vanilla command target selectors for LP commands.
-# See here for more info: https://minecraft.wiki/w/Target_selectors
+# LuckPerms 是否应尝试为 LP 命令解析原版命令目标选择器。
+# 更多信息请参见：https://minecraft.wiki/w/Target_selectors
 resolve-command-selectors: false
 
-# If the plugin should run in "read-only" mode for commands.
+# 插件是否应针对命令以 "只读" 模式运行。
 #
-# In this mode, players or the console will only be able to execute commands that read or view
-# data, and will not be able to execute any LP commands that modify data.
+# 在此模式下，玩家或控制台只能执行读取或查看数据的命令，
+# 而无法执行任何修改数据的 LP 命令。
 #
-# If enabling read-only mode for just players, be aware that some other plugins may allow players
-# to execute commands as the console, allowing them to run LP commands indirectly.
+# 如果仅为玩家启用只读模式，请注意一些其他插件可能允许玩家
+# 以控制台身份执行命令，从而间接运行 LP 命令。
 #
-# Note: This does not affect interactions with LuckPerms via the API.
+# 注意：这不影响通过 API 与 LuckPerms 的交互。
 commands-read-only-mode:
   players: false
   console: false
 
-# If LuckPerms commands should be disabled. When true, this will prevent all LP commands from being
-# executed. In a sense this is a more extreme version of read-only mode (see above).
+# 是否应禁用 LuckPerms 命令。设为 true 时，这将阻止所有 LP 命令被
+# 执行。从某种意义上说，这是只读模式（见上文）的更极端版本。
 #
-# LuckPerms will still act as the permission manager, but server administrators will be unable to
-# make changes via commands.
+# LuckPerms 仍将充当权限管理器，但服务器管理员将无法
+# 通过命令进行更改。
 #
-# If disabling commands just for players, be aware that some other plugins may allow players to
-# execute commands as the console, allowing them to run commands indirectly.
+# 如果仅为玩家禁用命令，请注意一些其他插件可能允许玩家
+# 以控制台身份执行命令，从而间接运行命令。
 #
-# If commands are disabled for both players and the console, LuckPerms will not attempt to register
-# a command with the server at all & in a sense will be invisible to both players and admins.
+# 如果同时为玩家和控制台禁用命令，LuckPerms 将不会尝试向服务器注册
+# 任何命令，从某种意义上说，对玩家和管理员都将不可见。
 #
-# Note: This does not affect interactions with LuckPerms via the API.
+# 注意：这不影响通过 API 与 LuckPerms 的交互。
 disable-luckperms-commands:
   players: false
   console: false

@@ -1,20 +1,20 @@
-# EssentialsX kit configuration.
-# If no kits are defined in this file, the plugin will attempt to copy them from 'config.yml'.
+# EssentialsX 套件（kit）配置。
+# 如果此文件中未定义任何套件，插件将尝试从 'config.yml' 中复制套件。
 
-# All items MUST be followed by a quantity.
-# Kit names should be in lowercase and will be treated as such in permissions and costs.
-# Syntax: - item[:durability] amount [enchantment:level]... [itemmeta:value]...
-# For detailed information on item meta, visit https://wiki.ess3.net/wiki/Item_Meta
+# 所有物品后都必须跟一个数量。
+# 套件名称应使用小写字母，在权限和费用中也将按小写处理。
+# 语法：- item[:durability] amount [enchantment:level]... [itemmeta:value]...
+# 有关物品元数据（item meta）的详细信息，请访问 https://wiki.ess3.net/wiki/Item_Meta
 #
-# To make a kit execute a command, add '/<command>' to the item list. Use {USERNAME} to reference the player receiving the kit.
-# Use {PLAYER} to display the player's display name instead of the username.
-# 'delay' refers to the cooldown between how often you can use each kit, measured in seconds. Set to -1 for a one-time kit.
+# 要让套件执行命令，请在物品列表中添加 '/<command>'。使用 {USERNAME} 引用收到套件的玩家。
+# 使用 {PLAYER} 显示玩家的显示名称而非用户名。
+# 'delay' 指每个套件可以使用的冷却时间（单位：秒）。设为 -1 表示一次性套件。
 #
-# You can also organize kits into separate files within the 'kits' subdirectory.
-# Essentials will treat all '.yml' files in the subdirectory as valid kit files and add them along with those in here.
-# Each file in the 'kits' subdirectory must be formatted the same as this file.
+# 你也可以将套件整理到 'kits' 子目录下的独立文件中。
+# Essentials 会将子目录中的所有 '.yml' 文件视为有效的套件文件，并与本文件中的套件一并加载。
+# 'kits' 子目录中的每个文件都必须与本文件的格式相同。
 #
-# For more information, refer to https://wiki.ess3.net/wiki/Kits
+# 更多信息请参阅 https://wiki.ess3.net/wiki/Kits
 
 kits:
   tools:

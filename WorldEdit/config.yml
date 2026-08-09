@@ -1,19 +1,19 @@
 #
-# WorldEdit's Configuration File
+# WorldEdit 的配置文件
 #
-# About editing this file:
-# - DO NOT USE TABS. You MUST use spaces or Bukkit will complain and post
-#   errors. If you use an editor, like Notepad++ (recommended for Windows
-#   users), you must configure it to "replace tabs with spaces."
-#   This can be changed in Settings > Preferences > Language Menu.
-# - Don't get rid of indentations. They are indented so some entries that are
-#   in categories, like "max-blocks-changed", are placed in the "limits"
-#   category.
-# - If you want to check the format of this file before putting it
-#   into WorldEdit, paste it into http://yaml-online-parser.appspot.com/
-#   and see if it gives you "ERROR:".
-# - Lines starting with # are comments, so they are ignored.
-# - If you want to allow blocks, make sure to change "disallowed-blocks" to []
+# 关于编辑此文件：
+# - 请勿使用制表符（Tab）。你必须使用空格，否则 Bukkit 会报错并输出
+#   错误信息。如果你使用编辑器，例如 Notepad++（推荐 Windows
+#   用户使用），你必须将其配置为“用空格替换制表符”。
+#   这可以在“设置 > 首选项 > 语言菜单”中更改。
+# - 不要删除缩进。有些条目位于分类中，
+#   例如 "max-blocks-changed" 被放在 "limits"
+#   分类下。
+# - 如果你想在放入 WorldEdit 前检查此文件的格式，请
+#   将其粘贴到 http://yaml-online-parser.appspot.com/
+#   并查看是否出现 "ERROR:"。
+# - 以 # 开头的行是注释，因此会被忽略。
+# - 如果你想允许某些方块，请确保将 "disallowed-blocks" 改为 []
 #
 
 limits:
@@ -101,14 +101,14 @@ use-inventory:
 logging:
     log-commands: false
     file: worldedit.log
-    # The format of custom log message. This is java general format string (java.util.Formatter). Arguments are:
-    #   1$ : date - a Date object representing event time of the log record.
-    #   2$ : source - a string representing the caller, if available; otherwise, the logger's name.
-    #   3$ : logger - the logger's name.
-    #   4$ : level - the log level.
-    #   5$ : message - the formatted log message returned from the Formatter.formatMessage(LogRecord) method. It uses java.text formatting and does not use the java.util.Formatter format argument.
-    #   6$ : thrown - a string representing the throwable associated with the log record and its backtrace beginning with a newline character, if any; otherwise, an empty string.
-    # For details see:
+    # 自定义日志消息的格式。这是 Java 通用格式字符串（java.util.Formatter）。参数依次为：
+    #   1$ : date - 表示日志记录事件发生时间的 Date 对象。
+    #   2$ : source - 表示调用者的字符串；如果没有调用者，则为记录器的名称。
+    #   3$ : logger - 记录器的名称。
+    #   4$ : level - 日志级别。
+    #   5$ : message - 由 Formatter.formatMessage(LogRecord) 方法返回的格式化日志消息。它使用 java.text 格式化，不使用 java.util.Formatter 的格式参数。
+    #   6$ : thrown - 表示与该日志记录关联的异常（throwable）及其回溯的字符串，以换行符开头；如果没有，则为空字符串。
+    # 有关详细信息，请参阅：
     #   https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html
     #   https://docs.oracle.com/javase/8/docs/api/java/util/logging/SimpleFormatter.html#format-java.util.logging.LogRecord-
     format: "[%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS %4$s]: %5$s%6$s%n"

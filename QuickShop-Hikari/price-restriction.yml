@@ -1,20 +1,20 @@
 version: 3
-whole-number-only: false  # This option not control by enable option, always enabled
-undefined: # This option not control by enable option, always enabled
-  min: 0.01 # Can be zero if you want player create a free shop
-  max: 999999999999999999999999999.99 # Actually this can be up to 1.7976931348623157E308
+whole-number-only: false  # 此选项不受 enable 选项控制，始终启用
+undefined: # 此选项不受 enable 选项控制，始终启用
+  min: 0.01 # 若想让玩家创建免费商店，可设为 0
+  max: 999999999999999999999999999.99 # 实际上最高可达 1.7976931348623157E308
 enable: false
-rules: # Rules set
-  example: # Rules name, used for identifier and permission node (quickshop.price.restriction.bypass.<name>)
-    #items section SUPPORT Item Expression!
+rules: # 规则集
+  example: # 规则名称，用作标识符和权限节点（quickshop.price.restriction.bypass.<name>）
+    #items 部分支持物品表达式！
     #https://quickshop-community.github.io/QuickShop-Hikari-Documents/docs/modules/item-expression
-    items: # Items in the rule (https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html), or the reference the item lookup table by adding @ before the name
+    items: # 规则中的物品（https://hub.spigotmc.org/javadocs/spigot/org/bukkit/Material.html），或在名称前添加 @ 以引用物品查找表
       - STONE_SWORD
       - STONE_PICKAXE
       - STONE_AXE
       - STONE_SHOVEL
       - STONE_HOE
-    currency: # Currency name, If your plugin doesn't support multi-currency (Vault API), this section won't be used
+    currency: # 货币名称，如果你的插件不支持多货币（Vault API），此部分将不会被使用
       - '*'
-    min: 1.0 # Min price (double)
-    max: 50.0 # Max price (double)
+    min: 1.0 # 最低价格（double）
+    max: 50.0 # 最高价格（double）

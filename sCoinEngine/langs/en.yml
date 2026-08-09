@@ -1,13 +1,13 @@
-# English Language File for sCoinEngine
-# Placeholders:
-# %player%, %target% - Player names
-# %amount%, %formatted_amount% - Numeric and formatted currency values
-# %currency_singular%, %currency_plural%, %currency_symbol% - Currency names/symbol
-# %balance%, %formatted_balance% - Player's balance
-# %rank%, %page%, %max_pages% - Baltop specific
-# %currencies% - List of available currency IDs
+# sCoinEngine 的英文语言文件
+# 占位符：
+# %player%、%target% - 玩家名称
+# %amount%、%formatted_amount% - 数字及格式化后的货币数值
+# %currency_singular%、%currency_plural%、%currency_symbol% - 货币名称/货币符号
+# %balance%、%formatted_balance% - 玩家的余额
+# %rank%、%page%、%max_pages% - 排行榜（Baltop）专用
+# %currencies% - 可用货币 ID 的列表
 
-# General errors
+# 通用错误
 no-permission: "&cYou do not have permission to use this command."
 player-not-found: "&cPlayer '%target%' not found or is not online."
 must-be-player: "&cThis command can only be run by a player."
@@ -15,29 +15,29 @@ invalid-amount: "&cThe amount must be a positive number."
 invalid-currency: "&cCurrency '%currency%' does not exist. Available: %currencies%"
 insufficient-funds: "&cYou do not have enough %currency_plural%."
 
-# Balance command
+# 余额命令
 balance-self: "&aYour Balance (%currency_plural%): &f%formatted_balance%"
 balance-other: "&a%target%'s Balance (%currency_plural%): &f%formatted_balance%"
 
-# Pay command
+# 转账（Pay）命令
 pay-self: "&cYou cannot pay yourself."
 pay-success-sender: "&aYou sent &f%formatted_amount% &ato &f%target%&a."
 pay-success-receiver: "&aYou received &f%formatted_amount% &afrom &f%player%&a."
 currency-not-payable: "&c%currency_plural% cannot be traded between players."
 max-balance-reached-other: "&c%target% has reached their maximum balance for %currency_plural%."
 
-# Eco admin commands
+# Eco 管理命令
 eco-gave: "&aYou gave &f%formatted_amount% &ato &f%target%&a."
 eco-took: "&aYou took &f%formatted_amount% &afrom &f%target%&a."
 eco-set: "&aYou set &f%target%&a's balance to &f%formatted_amount%&a."
 plugin-reloaded: "&aSuccessfully reloaded all sCoinEngine configurations."
 
-# Baltop command
+# 排行榜（Baltop）命令
 baltop-header: "&6--- Top Balances for %currency_plural% (Page %page%/%max_pages%) ---"
 baltop-no-entries: "&cThere are no balances to display for this currency."
 baltop-footer: "&6--------------------------------------------------"
 
-# New Feature Messages
+# 新功能消息
 lost-money-on-death: "&cYou lost &f%formatted_amount% %currency_plural% &cupon death."
 withdraw-disabled: "&cYou cannot withdraw %currency_plural% as a physical item."
 withdraw-success: "&aYou have withdrawn &f%formatted_amount%&a."

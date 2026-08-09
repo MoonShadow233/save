@@ -1,5 +1,5 @@
-# Configuration for the random teleport command.
-# Use the /settpr command in-game to set random teleport locations.
+# 随机传送（random teleport）命令的配置。
+# 在游戏内使用 /settpr 命令设置随机传送位置。
 
 default-location: '{world}'
 excluded-biomes:

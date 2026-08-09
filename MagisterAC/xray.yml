@@ -1,7 +1,7 @@
-# Internal config version — do not edit. Enables one-time automatic migrations
-# (e.g. upgrading older installs onto engine-mode 2 + 'air' in hidden-blocks, the
-# only setting that hides cave-exposed ores). Deleting this file regenerates it
-# with the current defaults.
+# 内部配置版本——请勿修改。用于启用一次性自动迁移
+# （例如将旧版本升级到 engine-mode 2，并在 hidden-blocks 中加入 'air'——
+# 这是唯一能隐藏洞穴中裸露矿石的设置）。删除此文件会以
+# 当前的默认值重新生成它。
 config-version: 3
 
 xray:
@@ -10,55 +10,55 @@ xray:
   mask-ores: true
 
   # ─────────────────────────────────────────────────────────────────────────
-  #  Obfuscation engine
+  #  混淆引擎
   #
-  #  AUTO   — (recommended, default) On Paper and its forks (Purpur, Pufferfish,
-  #           Folia) this drives the server's NATIVE anti-xray engine — the ONLY
-  #           engine that truly defeats X-ray, because it rewrites chunk data
-  #           BEFORE it is sent, at full render distance. The first time it is
-  #           enabled the plugin writes the settings into the server config and
-  #           asks for ONE restart; until you restart, a built-in stopgap masks
-  #           fully-enclosed ores near players. After that one restart, no further
-  #           restarts are ever needed. On plain Spigot (no native engine) AUTO
-  #           uses the built-in stopgap directly.
-  #  PAPER  — identical to AUTO on Paper forks (kept as an explicit alias).
-  #  LEGACY — built-in stopgap engine ONLY (never native, never a restart). It
-  #           reacts AFTER chunks are sent, so it can only hide ores fully encased
-  #           near a player — it does NOT stop a determined X-ray client. Use it
-  #           only if you truly cannot restart the server even once.
-  #  OFF    — disable block obfuscation entirely.
+  #  AUTO   —（推荐，默认）在 Paper 及其分支（Purpur、Pufferfish、
+  #           Folia）上，它驱动服务器自带的原生反 X-ray 引擎——这是唯一
+  #           能真正对抗 X-ray 的引擎，因为它会在区块数据发送之前
+  #           以完整渲染距离重写数据。首次启用时，
+  #           插件会将设置写入服务器配置，并要求重启一次；
+  #           在重启之前，内置的过渡方案会屏蔽玩家附近
+  #           完全封闭的矿石。经过这一次重启之后，
+  #           就不再需要任何进一步重启。在纯 Spigot（无原生引擎）上，AUTO
+  #           会直接使用内置的过渡方案。
+  #  PAPER  — 与 Paper 分支上的 AUTO 相同（作为显式别名保留）。
+  #  LEGACY — 仅使用内置过渡方案（绝不使用原生引擎，也无需重启）。它
+  #           在区块发送之后才生效，因此只能隐藏完全包裹的
+  #           矿石——它无法阻止意志坚定的 X-ray 客户端。仅当
+  #           你的服务器确实一次都无法重启时再使用它。
+  #  OFF    — 完全禁用方块混淆。
   #
-  #  Why a restart? Paper reads its anti-xray settings only at startup, so turning
-  #  the native engine on for the first time needs exactly one restart to apply.
+  #  为什么需要重启？Paper 只在启动时读取反 X-ray 设置，因此首次
+  #  启用原生引擎恰好需要一次重启才能生效。
   # ─────────────────────────────────────────────────────────────────────────
   obfuscation:
     engine: AUTO
 
-    # Native Paper anti-xray settings — used by the AUTO/PAPER engine. Applied to
-    # config/paper-world-defaults.yml on Paper 1.19+, or paper.yml on 1.16–1.18,
-    # plus any per-world <world>/paper-world.yml that overrides anti-xray. A server
-    # RESTART is required the first time these change — Paper reads them only at
-    # startup. (The LEGACY stopgap engine does NOT need a restart.)
+    # 原生 Paper 反 X-ray 设置——由 AUTO/PAPER 引擎使用。将应用于
+    # Paper 1.19+ 上的 config/paper-world-defaults.yml，或 1.16–1.18 上的 paper.yml，
+    # 以及任何覆盖反 X-ray 设置的逐世界 <world>/paper-world.yml。这些设置
+    # 首次变更时需要重启服务器——Paper 只在启动时读取它们。
+    # （LEGACY 过渡方案引擎不需要重启。）
     paper:
-      # engine-mode 2 (default) floods solid rock with FAKE ores and, because 'air'
-      # is in hidden-blocks below, also hides ores exposed to caves/air — the ONLY
-      # setup that truly defeats an XRay client (PaperMC docs). engine-mode 1 is
-      # lighter but CANNOT hide cave-exposed ores, so on cave-riddled 1.21 worlds a
-      # cheater still sees almost everything — do not use it to stop XRay.
-      # engine-mode 3 = like 2 but per-layer (about half the network cost, same hiding).
-      # Note: 'air' in hidden-blocks can cost some client FPS; remove it (and keep
-      # mode 2) if you must, but then cave-exposed ores become visible again.
+      # engine-mode 2（默认）用假矿石铺满实心岩石，并且由于下面的
+      # hidden-blocks 中包含 'air'，它同时也会隐藏暴露在洞穴/空气中的矿石——
+      # 这是唯一能真正击败 XRay 客户端的配置（PaperMC 文档）。engine-mode 1
+      # 更轻量，但无法隐藏洞穴中暴露的矿石，因此在洞穴密布的 1.21 世界中，
+      # 作弊者仍能看到几乎所有东西——不要用它来阻止 XRay。
+      # engine-mode 3 = 与 2 类似，但按层处理（网络开销约减半，隐藏效果相同）。
+      # 注意：hidden-blocks 中的 'air' 可能消耗客户端部分 FPS；如果确实需要，
+      # 可以将其移除（并保留模式 2），但那样洞穴中暴露的矿石将再次可见。
       engine-mode: 2
-      # Obfuscate everything from world-bottom up to this Y. Most ores, dungeon
-      # spawners and buried chests sit below 64. Raise toward 128+ to also cover
-      # high-mountain emerald/copper (heavier on CPU).
+      # 混淆从世界底部到该 Y 高度之间的所有方块。大多数矿石、地牢
+      # 刷怪笼和埋藏的箱子都在 64 以下。调高到 128+ 可同时覆盖
+      # 高山上的绿宝石/铜（对 CPU 负担更重）。
       max-block-height: 64
       update-radius: 2
-      # Ores that should never be revealed through walls (also used as the palette
-      # of fake ores under engine-mode 2). 'air' MUST stay here — it is what hides
-      # ores exposed to caves/air. NOTE: tile entities (spawner, chest, trapped_chest)
-      # are NOT valid here under engine-mode 2 — Paper silently ignores them. They go
-      # in replacement-blocks below instead.
+      # 绝不应透过墙壁显示的矿石（也用作 engine-mode 2 下假矿石的调色板）。
+      # 'air' 必须保留在此处——它正是隐藏暴露于洞穴/空气中的矿石的关键。
+      # 注意：在 engine-mode 2 下，方块实体（spawner、chest、trapped_chest）
+      # 在此处无效——Paper 会静默忽略它们。它们应放入
+      # 下面的 replacement-blocks。
       hidden-blocks:
         - air
         - copper_ore
@@ -80,11 +80,11 @@ xray:
         - deepslate_emerald_ore
         - nether_quartz_ore
         - ancient_debris
-      # Bulk terrain blocks that engine-mode 2 also replaces with fake ores, so a
-      # cheater cannot pick real veins out of the surrounding rock. Include every
-      # common stone variant or its tell-tale shape leaks. Tile entities placed here
-      # ARE masked when buried out of sight — this is how spawners/chests get hidden
-      # (only while not exposed to air).
+      # engine-mode 2 同样会用假矿石替换的大块地形方块，这样作弊者
+      # 就无法从周围的岩石中挑出真正的矿脉。必须包含每一种
+      # 常见的石头变体，否则其特有的形状会泄露信息。放在这里的方块实体
+      # 在被埋藏且不可见时会得到掩盖——刷怪笼/箱子正是以此方式隐藏的
+      # （仅当它们不暴露于空气时）。
       replacement-blocks:
         - stone
         - deepslate
@@ -98,23 +98,23 @@ xray:
         - chest
         - trapped_chest
 
-    # LEGACY engine only (Spigot fallback):
+    # 仅 LEGACY 引擎（Spigot 回退方案）：
     enabled: true
     move-threshold: 4.0
     scan-radius: 20
     reveal-radius: 2
 
   # ─────────────────────────────────────────────────────────────────────────
-  #  Entity hiding — stops XRay/ESP clients from seeing mobs through walls.
-  #  Requires Paper 1.18+ (uses player.hideEntity). Players are never hidden.
+  #  实体隐藏——防止 XRay/ESP 客户端透过墙壁看到生物。
+  #  需要 Paper 1.18+（使用 player.hideEntity）。玩家永远不会被隐藏。
   # ─────────────────────────────────────────────────────────────────────────
   entity-hide:
     enabled: true
-    # How far (blocks) to evaluate entities for each player.
+    # 为每个玩家评估实体的距离（方块）。
     distance: 48
-    # Max entities processed per player per pass (perf cap).
+    # 每轮扫描中每个玩家最多处理的实体数（性能上限）。
     max-per-player: 40
-    # Ticks between occlusion passes (lower = snappier, heavier).
+    # 两次遮挡扫描之间的 tick 数（越低响应越快，负担越重）。
     interval-ticks: 4
 
   track:

@@ -1,29 +1,29 @@
-# QuickShop-Hikari GUI Configuration
-# Configure the appearance and layout of all GUI menus
+# QuickShop-Hikari 图形界面配置
+# 配置所有 GUI 菜单的外观与布局
 # 
-# Each icon supports:
-#   material: The material type (e.g., PAPER, BARRIER, LIME_CONCRETE)
-#   name: Display name (supports MiniMessage format)
-#   lore: List of lore lines (supports MiniMessage format)
-#   custom-model-data: Custom model data for resource packs (integer, optional)
-#   slot: The slot position in the inventory (0-53)
-#   amount: Item amount (default: 1)
+# 每个图标支持以下属性：
+#   material: 材质类型（例如 PAPER、BARRIER、LIME_CONCRETE）
+#   name: 显示名称（支持 MiniMessage 格式）
+#   lore: 物品描述行列表（支持 MiniMessage 格式）
+#   custom-model-data: 资源包的自定义模型数据（整数，可选）
+#   slot: 物品栏中的槽位（0-53）
+#   amount: 物品数量（默认：1）
 #
-# TEXT OPTIONS:
-#   1. Direct inline text: Write MiniMessage formatted text directly
-#      Example: name: "<bold><green>Buy Items</green></bold>"
+# 文本选项：
+#   1. 直接内联文本：直接编写 MiniMessage 格式的文本
+#      示例：name: "<bold><green>Buy Items</green></bold>"
 #
-#   2. Empty name: Use a single space " " for blank display names
-#      Example: name: " "
+#   2. 空名称：使用单个空格 " " 作为空白显示名称
+#      示例：name: " "
 #
-# MiniMessage format reference: https://docs.advntr.dev/minimessage/format.html
-# Common tags: <bold>, <italic>, <red>, <green>, <yellow>, <aqua>, <gradient:color1:color2>
-# If you wish to use a value from the language file for display names or lore, start your value with "lang:"
+# MiniMessage 格式参考：https://docs.advntr.dev/minimessage/format.html
+# 常用标签：<bold>、<italic>、<red>、<green>、<yellow>、<aqua>、<gradient:color1:color2>
+# 如果想使用语言文件中的值作为显示名称或描述，请在值前加上 "lang:"
 
 version: 3
 
 # ===================
-# GLOBAL STYLE SETTINGS
+# 全局样式设置
 # ===================
 style:
   border-material: GRAY_STAINED_GLASS_PANE
@@ -32,29 +32,29 @@ style:
   accent-neutral: LIGHT_BLUE_CONCRETE
 
 # ===================
-# TRADE MENU
+# 交易菜单
 # ===================
 trade:
   title: lang:gui.trade.title
   rows: 6
   
-  # Border configuration - gray for a modern look
+  # 边框配置 - 灰色营造现代感
   border:
     material: GRAY_STAINED_GLASS_PANE
     name: ' '
     custom-model-data: 0
     rows:
-      # Top, middle separator, bottom
+      # 顶部、中间分隔、底部
       - 1
       - 4
       - 6
   
-  # Shop item display (the item being traded) - centered in row 2
+  # 商店物品显示（正在交易的物品）- 位于第 2 行居中
   shop-item:
     slot: 13
-  # Note: material, name, lore are from the actual shop item
+  # 注意：material、name、lore 均取自实际商店物品
 
-  # Info icons row (row 3)
+  # 信息图标行（第 3 行）
   info-stock:
     material: CHEST
     name: lang:gui.trade.info-stock.display
@@ -79,15 +79,15 @@ trade:
     custom-model-data: 0
     slot: 23
   
-  # Custom amount button - NAME_TAG for intuitive "enter amount"
+  # 自定义数量按钮 - 使用 NAME_TAG 直观表示"输入数量"
   custom-amount:
     material: NAME_TAG
     name: lang:gui.trade.custom-amount.display
     custom-model-data: 0
     slot: 43
   
-  # Quantity buttons (row 5) - color-coded by buy/sell
-  # {0} = total price
+  # 数量按钮（第 5 行）- 按购买/出售区分颜色
+  # {0} = 总价
   quantity-buttons:
     material-buy: LIME_CONCRETE
     material-sell: ORANGE_CONCRETE
@@ -109,7 +109,7 @@ trade:
     lore:
     - lang:gui.trade.quantity-button.lore
   
-  # Close button - centered at bottom
+  # 关闭按钮 - 位于底部居中
   close:
     material: BARRIER
     name: lang:gui.shared.close.display
@@ -117,7 +117,7 @@ trade:
     slot: 49
 
 # ===================
-# KEEPER MENU (Shop Owner Control Panel)
+# 店主菜单（店主控制面板）
 # ===================
 keeper:
   title: lang:gui.keeper.title
@@ -128,16 +128,16 @@ keeper:
     name: ' '
     custom-model-data: 0
     rows:
-      # Separator and bottom
+      # 分隔行与底部
       - 2
       - 4
   
-  # Shop item preview - top center
+  # 商店物品预览 - 顶部居中
   shop-item:
     slot: 4
   
-  # Change price button - GOLD_NUGGET for "price"
-  # {0} = current price
+  # 修改价格按钮 - 使用 GOLD_NUGGET 表示"价格"
+  # {0} = 当前价格
   change-price:
     material: GOLD_NUGGET
     name: lang:gui.keeper.change-price.display
@@ -146,8 +146,8 @@ keeper:
     custom-model-data: 0
     slot: 19
   
-  # Mode toggle (buy/sell/frozen) - concrete for clean look
-  # {0} = current mode, {1} = next mode
+  # 模式切换（购买/出售/冻结）- 使用混凝土保持简洁外观
+  # {0} = 当前模式，{1} = 下一模式
   mode-toggle:
     selling:
       material: LIME_CONCRETE
@@ -170,7 +170,7 @@ keeper:
     - lang:gui.keeper.inventory.lore
     slot: 22
   
-  # Staff management button
+  # 店员管理按钮
   staff:
     material: PLAYER_HEAD
     name: lang:gui.keeper.staff.display
@@ -179,7 +179,7 @@ keeper:
     custom-model-data: 0
     slot: 23
   
-  # History button
+  # 历史记录按钮
   history:
     material: BOOK
     name: lang:gui.keeper.history.display
@@ -188,7 +188,7 @@ keeper:
     custom-model-data: 0
     slot: 24
   
-  # Remove shop button - TNT for dramatic effect
+  # 移除商店按钮 - 使用 TNT 营造醒目效果
   remove:
     material: TNT
     name: lang:gui.keeper.remove.display
@@ -197,7 +197,7 @@ keeper:
     custom-model-data: 0
     slot: 25
   
-  # Close/back button - OAK_DOOR for "exit"
+  # 关闭/返回按钮 - 使用 OAK_DOOR 表示"退出"
   close:
     material: OAK_DOOR
     name: lang:gui.shared.close.display
@@ -205,14 +205,14 @@ keeper:
     slot: 31
 
 # ===================
-# STAFF MENU
+# 店员菜单
 # ===================
 staff:
   title: lang:gui.staff.title
   rows: 6
   
-  # Row 1 has borders in empty slots (buttons override border at their slots)
-  # Row 6 is the pagination/control row at bottom
+  # 第 1 行在空槽位显示边框（按钮在其所在槽位覆盖边框）
+  # 第 6 行是底部的分页/控制行
   border:
     material: GRAY_STAINED_GLASS_PANE
     name: ' '
@@ -221,8 +221,8 @@ staff:
     - 1
     - 6
   
-  # Search button - opens chat input for player search
-  # {0} = current search query or "None"
+  # 搜索按钮 - 打开聊天输入框以搜索玩家
+  # {0} = 当前搜索关键词或 "None"
   search:
     material: ANVIL
     name: lang:gui.staff.search.display
@@ -231,7 +231,7 @@ staff:
     custom-model-data: 0
     slot: 0
   
-  # Add staff button - EMERALD (green = add)
+  # 添加店员按钮 - 使用 EMERALD（绿色 = 添加）
   add-staff:
     material: EMERALD
     name: lang:gui.staff.add-staff.display
@@ -240,14 +240,14 @@ staff:
     custom-model-data: 0
     slot: 4
   
-  # Back button - OAK_DOOR for "go back"
+  # 返回按钮 - 使用 OAK_DOOR 表示"返回"
   back:
     material: OAK_DOOR
     name: lang:gui.shared.back.display
     custom-model-data: 0
     slot: 8
   
-  # Pagination controls (bottom row)
+  # 分页控制（底部行）
   previous-page:
     material: ARROW
     name: lang:gui.shared.previous-page.display
@@ -266,11 +266,11 @@ staff:
     custom-model-data: 0
     slot: 49
   
-  # Staff list starts at row 2 (slot 9+)
+  # 店员列表从第 2 行开始（槽位 9+）
   list-start-slot: 9
 
 # ===================
-# HISTORY MENU
+# 历史记录菜单
 # ===================
 history:
   title: lang:history.shop.gui-title
@@ -291,7 +291,7 @@ history:
     - lang:history.shop.log-icon-description-with-store-name
     custom-model-data: 0
   
-  # Summary icon
+  # 汇总图标
   summary:
     material: OAK_SIGN
     name: lang:history.shop.summary-icon-title
@@ -300,7 +300,7 @@ history:
     custom-model-data: 0
     slot: 0
   
-  # Shop info (single shop)
+  # 商店信息（单个商店）
   shop-info:
     material: PLAYER_HEAD
     lore:
@@ -308,14 +308,14 @@ history:
     custom-model-data: 0
     slot: 4
   
-  # Multiple shops info
+  # 多商店信息
   multi-shop-info:
     material: CHEST
     name: lang:history.shop.multi-shops-icon-title
     custom-model-data: 0
     slot: 4
   
-  # Top customers
+  # 最佳顾客
   top-customers:
     material: DIAMOND
     name: lang:history.shop.top-n-valuable-customers-title
@@ -345,14 +345,14 @@ history:
   list-start-slot: 9
 
 # ===================
-# BROWSE MENU (Market Browser)
+# 浏览菜单（市场浏览）
 # ===================
 browse:
   title: lang:gui.browse.title
   rows: 6
   
-  # Row 1 has borders in empty slots (buttons override border at their slots)
-  # Row 6 is the pagination/control row at bottom
+  # 第 1 行在空槽位显示边框（按钮在其所在槽位覆盖边框）
+  # 第 6 行是底部的分页/控制行
   border:
     material: GRAY_STAINED_GLASS_PANE
     name: ' '
@@ -365,8 +365,8 @@ browse:
     lore:
     - lang:gui.browse.shop-item.lore
   
-  # Search button - opens chat input for item search
-  # {0} = current search query or "None"
+  # 搜索按钮 - 打开聊天输入框以搜索物品
+  # {0} = 当前搜索关键词或 "None"
   search:
     material: ANVIL
     name: lang:gui.browse.search.display
@@ -375,8 +375,8 @@ browse:
     custom-model-data: 0
     slot: 0
   
-  # Sort button - cycles through sort options
-  # {0} = current sort mode
+  # 排序按钮 - 循环切换排序选项
+  # {0} = 当前排序方式
   sort:
     material: HOPPER
     name: lang:gui.browse.sort.display
@@ -388,8 +388,8 @@ browse:
   grouped-item:
     display: lang:gui.browse.grouped-item.display
   
-  # Filter button - cycles through filter options
-  # {0} = current filter
+  # 筛选按钮 - 循环切换筛选选项
+  # {0} = 当前筛选条件
   filter:
     material: NAME_TAG
     name: lang:gui.browse.filter.display
@@ -398,8 +398,8 @@ browse:
     custom-model-data: 0
     slot: 4
   
-  # Stock filter toggle - show only shops with available stock/space
-  # {0} = ON or OFF
+  # 库存筛选开关 - 仅显示有可用库存/空间的商店
+  # {0} = 开启或关闭
   stock-filter:
     material: CHEST
     name: lang:gui.browse.stock-filter.display
@@ -408,21 +408,21 @@ browse:
     custom-model-data: 0
     slot: 6
   
-  # Close button
+  # 关闭按钮
   close:
     material: BARRIER
     name: lang:gui.shared.close.display
     custom-model-data: 0
     slot: 8
   
-  # Back button (for shop list page)
+  # 返回按钮（用于商店列表页）
   back:
     material: OAK_DOOR
     name: lang:gui.shared.back.display
     custom-model-data: 0
     slot: 8
   
-  # Pagination controls (bottom row)
+  # 分页控制（底部行）
   previous-page:
     material: ARROW
     name: lang:gui.shared.previous-page.display
@@ -444,7 +444,7 @@ browse:
   list-start-slot: 9
 
 # ===================
-# SHARED ICONS
+# 共享图标
 # ===================
 shared:
   previous-page:

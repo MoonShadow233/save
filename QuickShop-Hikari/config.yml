@@ -1,209 +1,209 @@
-# QuickShop-Hikari Plugin Configuration
+# QuickShop-Hikari 插件配置文件
 
-#Do not touch this if you don't know what you're doing!
+#如果你不知道自己在干什么，请不要动它！
 config-version: 1036
 
-#Set the default language code the plugin should use
-#Set it to default will use your system language.
-#You can find the valid language code in your client language settings, like en_us
+#设置插件应使用的默认语言代码
+#设置为 default 将使用你的系统语言。
+#你可以在客户端的语言设置中找到有效的语言代码，例如 en_us
 game-language: default
 
-#Choose which languages should be enabled
-#Any client connect to server that using disabled language, will fallback to game-language option there
-#Set to - '*' to enable all available languages
-#The language files will automatically update thorough Crowdin OTA system, you can translate it there:
+#选择应启用的语言
+#使用已禁用语言的客户端连接服务器时，将回退到 game-language 选项
+#设置为 - '*' 以启用所有可用语言
+#语言文件将通过 Crowdin OTA 系统自动更新，你可以在这里翻译：
 #https://crowdin.com/project/qs-hikari
-#If you want custom the language file, use language override system:
+#如果你想自定义语言文件，请使用语言覆盖系统：
 #https://quickshop-community.github.io/QuickShop-Hikari-Documents/docs/modules/localization
 enabled-languages:
 - '*'
 
-#Setting the game language file download channel, like item name, effect translations etc.
-#We will get those files from mojang resources server:
-#0=Official
-#1=BMCLAPI (Unofficial China Mirror, https://bmclapidoc.bangbang93.com)
-#You can choose which one you want to use for downloading resources.
-#By default, QuickShop use Mojang official server to downloading resources.
+#设置游戏语言文件下载渠道，如物品名称、效果翻译等。
+#我们将从 mojang 资源服务器获取这些文件：
+#0=官方
+#1=BMCLAPI（非官方中国镜像，https://bmclapidoc.bangbang93.com）
+#你可以选择其中一个用于下载资源。
+#默认情况下，QuickShop 使用 Mojang 官方服务器下载资源。
 mojangapi-mirror: 0
 
-#Crowdin OTA host, you can change it to your own host if you want.
+#Crowdin OTA 主机，如果你想的话可以改为自己的主机。
 crowdin-host: https://crowdinota.hikari.r2.quickshop-powered.top
 
-#Use Crowdin OTA to update language files?
+#是否使用 Crowdin OTA 更新语言文件？
 use-crowdin-ota: true
 
-#This enables the developer mode, do not touch this if you don't not know what it does!
+#这将启用开发者模式，如果你不知道它是干什么的，请不要动它！
 dev-mode: false
 
-#configurations related to taxes.
+#与税收相关的配置。
 shop-tax:
   
-  #The type of tax system to use.
-  #basic = basic tax system
-  #progressive = progressive tax system
+  #要使用的税收系统类型。
+  #basic = 基础税制
+  #progressive = 累进税制
   type: basic
   
-  #The fake player where the tax money goes to.
-  #Set this to "" to disable it (Taxing will still work but not deposit to any account)
+  #税收资金存入的虚拟玩家账户。
+  #设置为 "" 以禁用它（税收仍会生效，但不会存入任何账户）
   account: tax
   
-  #Whether to show taxes paid on shop transactions.
+  #是否在商店交易时显示已缴税款。
   show: false
   
-  # Disable taxes for unlimited shop
+  # 对无限商店禁用税收
   disable-for-unlimited-shop: false
   
-  #who to apply the tax to, be it the shop or the player interacting with the shop.
-  #the person that the tax is applied to will have the permission check ran on them to see if they
-  #should be taxed be it the player or the shop owner or both.
-  #player = apply tax to the player who is interacting with the shop.
-  #shop = apply tax to the shop owner.
-  #both = apply tax to both the player and the shop owner.
+  #税收应用于谁，是商店还是与商店互动的玩家。
+  #被征税的对象将接受权限检查，以确定他们是否
+  #应被征税，无论是玩家、商店所有者还是两者。
+  #player = 对与商店互动的玩家征税。
+  #shop = 对商店所有者征税。
+  #both = 对玩家和商店所有者都征税。
   apply-to: player
   
-  #the basic tax system configuration.
+  #基础税收系统的配置。
   basic:
     
-    #Tax amount (decimal)
+    #税额（小数）
     rate: 0.05
   
   # =========================================
-  # Progressive Tax System
+  # 累进税制
   # =========================================
-  # This system applies tax rates based on the player's balance.
-  # The higher the balance, the higher the tax rate applied.
+  # 该系统根据玩家的余额应用税率。
+  # 余额越高，适用的税率越高。
   #
-  # Bracket format:
+  # 分档格式：
   #   <upper-balance>: <tax-rate>
   #
-  # Meaning:
-  #   - If the player's balance is LESS THAN OR EQUAL TO the upper-balance,
-  #     the corresponding tax rate will be used.
-  #   - Tax rates are decimals:
+  # 含义：
+  #   - 如果玩家的余额小于或等于上限余额，
+  #     则将使用相应的税率。
+  #   - 税率是小数：
   #       0.01 = 1%
   #       0.05 = 5%
   #       0.10 = 10%
   #
-  # Special value:
-  #   - Use -1 as the upper-balance to represent "no upper limit"
-  #     (internally mapped to a very large value).
+  # 特殊值：
+  #   - 使用 -1 作为上限余额来表示“无上限”
+  #     （内部映射为一个非常大的值）。
   #
-  # Example:
+  # 示例：
   #   10000: 0.01
-  #   - Players with ≤ 10,000 balance are taxed 1%
+  #   - 余额 ≤ 10,000 的玩家将被征收 1% 的税
   progressive:
     
     # -----------------------------------------
-    # Tax Brackets
+    # 税率分档
     # -----------------------------------------
-    # Recommended to keep brackets ordered from lowest to highest
-    # for readability (ordering is enforced internally).
+    # 建议按从低到高的顺序排列分档
+    # 以便阅读（内部会强制排序）。
     brackets:
-      #New / low-balance players
+      #新手 / 低余额玩家
       #≤ 10,000 → 1%
       '10000': 0.01
-      #Early progression
+      #早期发展阶段
       #≤ 50,000 → 2%
       '50000': 0.02
-      #Mid-game economy
+      #中期经济
       #≤ 250,000 → 3%
       '250000': 0.03
-      #Wealthy players
+      #富裕玩家
       #≤ 1,000,000 → 5%
       '1000000': 0.05
-      #Very wealthy players
+      #非常富裕的玩家
       #≤ 5,000,000 → 8%
       '5000000': 0.08
-      #Ultra-wealthy / no upper limit
+      #超级富裕 / 无上限
       #> 5,000,000 → 12%
       '-1': 0.12
 
-#Turn on this option will migrate shop owner to specified account when you set a shop to unlimited.
-#It won't affect exists shops, you will need switch to unlimited again to apply it.
+#启用此选项后，当你将商店设置为无限商店时，商店所有者将迁移到指定账户。
+#它不会影响已存在的商店，你需要再次切换为无限商店才能生效。
 unlimited-shop-owner-change: false
 
-#Set the account used by unlimited-shop-owner-change option
-#Only take effect when unlimited-shop-owner-change enabled
+#设置 unlimited-shop-owner-change 选项使用的账户
+#仅在启用 unlimited-shop-owner-change 时生效
 unlimited-shop-owner-change-account: quickshop
 
-#Whether to respect item flags (e.g. hide the enchantment info when item have HIDE_ENCHANTS flag).
+#是否遵循物品标志（例如当物品带有 HIDE_ENCHANTS 标志时隐藏附魔信息）。
 respect-item-flag: true
 
-#Should we try to send cross-server message for the player?
-#It could cause the kicking on some network (which have multiple server that using different minecraft versions)
+#我们是否尝试为玩家发送跨服务器消息？
+#在某些网络环境（拥有多个使用不同 Minecraft 版本的服务器）中可能会导致玩家被踢出服务器
 bungee-cross-server-msg: false
 
-#The currency used to create shops.
-#Set this to "" to use default currency.
-#Only required if you use multiple currencies.
+#用于创建商店的货币。
+#设置为 "" 以使用默认货币。
+#仅在使用多种货币时需要。
 currency: ''
 
 logging:
-  #Enable logging?
-  #The log file is located at "plugins/QuickShop/qs.log".
+  #是否启用日志记录？
+  #日志文件位于 "plugins/QuickShop/qs.log"。
   enable: true
-  #Should QuickShop log shop trading/creations?
+  #QuickShop 是否记录商店交易/创建？
   log-actions: true
-  #Should QuickShop log balance before and after when trading?
+  #交易时 QuickShop 是否记录交易前后的余额？
   log-balance: true
-  #The target size (in MB) to split log files to the "plugins\QuickShop\logs" folder.
+  #将日志文件拆分到 "plugins\QuickShop\logs" 文件夹的目标大小（以 MB 为单位）。
   file-size: 10.0
-  #Log data storage location (0 to file, 1 to database)
+  #日志数据存储位置（0 为文件，1 为数据库）
   location: 1
 
-#Force bukkit chat handler (https://github.com/KaiKikuchi/QuickShop/issues/10)
+#强制使用 bukkit 聊天处理器（https://github.com/KaiKikuchi/QuickShop/issues/10）
 force-bukkit-chat-handler: false
 
-#Should QS be allowed to check for updates on SpigotMC.org?
+#是否允许 QS 在 SpigotMC.org 上检查更新？
 updater: true
 
-#Should QS be allowed to automatically report errors to the author?
+#是否允许 QS 自动向作者报告错误？
 auto-report-errors: true
 
-#Should QS use OfflinePlayer list for TabComplete?
-#This might improve player experience, but may cause lag due to searching what can be a long list.
-#false = Only use the OnlinePlayer list.
-#true = A list of all players that have ever joined your server.
+#QS 是否在 TabComplete 中使用 OfflinePlayer 列表？
+#这可能会改善玩家体验，但由于搜索可能很长的列表，可能会导致卡顿。
+#false = 仅使用在线玩家列表。
+#true = 所有曾加入过你服务器的玩家列表。
 include-offlineplayer-list: false
 
-#What economy provider should QuickShop use?
-#0=Vault/VaultUnlocked - VaultUnlocked supports multi-currency if you economy plugin supports it.
-#DO NOT TOUCH THIS IF YOU DON'T KNOW WHAT IT DOES. ASK FOR SUPPORT BEFORE TOUCHING THIS!
+#QuickShop 应该使用哪个经济提供者？
+#0=Vault/VaultUnlocked - 如果你的经济插件支持，VaultUnlocked 支持多货币。
+#如果你不知道它是干什么的，请不要动它。动它之前请先寻求支持！
 economy-type: 0
 
-#Whether to use decimal format to display money.
+#是否使用小数格式显示金额。
 use-decimal-format: false
 
-#The decimal format to display money in.
-#The default is #,###.##
+#显示金额的小数格式。
+#默认为 #,###.##
 decimal-format: '#,###.##'
 
-#Allow QuickShop to send alerts when someone tries to make a displayItem exploit.
+#允许 QuickShop 在有人试图利用展示物品漏洞时发送警报。
 send-display-item-protection-alert: false
 
-#Allow QuickShop to send alerts when someone tries to steal from a shop.
+#允许 QuickShop 在有人试图从商店偷窃时发送警报。
 send-shop-protection-alert: false
 
-#MySQL database settings.
+#MySQL 数据库设置。
 database:
-  #false = use local H2 database.
-  #true = use local/remote MySQL database.
+  #false = 使用本地 H2 数据库。
+  #true = 使用本地/远程 MySQL 数据库。
   mysql: false
-  # The database address. (Only required if mysql is true)
+  # 数据库地址。（仅当 mysql 为 true 时需要）
   host: localhost
-  # The database port. (Only required if mysql is true)
+  # 数据库端口。（仅当 mysql 为 true 时需要）
   port: 3306
-  # The database names. (Only required if mysql is true)
+  # 数据库名称。（仅当 mysql 为 true 时需要）
   database: quickshop
-  # The database username. (Only required if mysql is true)
+  # 数据库用户名。（仅当 mysql 为 true 时需要）
   user: root
-  # The database password. (Only required if mysql is true)
+  # 数据库密码。（仅当 mysql 为 true 时需要）
   password: passwd
-  # Set prefix to "none" to remove prefix (Both local and remote will be used).
+  # 将前缀设置为 "none" 以移除前缀（本地和远程都会使用）。
   prefix: qs_
-  # Should QuickShop use SSL for database connections?  (Only required if mysql is true)
+  # QuickShop 是否应为数据库连接使用 SSL？（仅当 mysql 为 true 时需要）
   usessl: false
-  # Properties for creating connections, you can add your own properties for datasource here. (Both local and remote will be used).
+  # 创建连接的属性，你可以在此为数据源添加自己的属性。（本地和远程都会使用）。
   properties:
     connectionTimeout: 60000
     idleTimeout: 10000
@@ -218,31 +218,31 @@ database:
     allowPublicKeyRetrieval: true
     keepaliveTime: 60000
 
-#Limits the amount of shops a player can create and own.
+#限制玩家可以创建和拥有的商店数量。
 limits:
-  #Leave this as false if you're not using this feature! QuickShop will ignore the rest of this section.
+  #如果你不使用此功能，请保持 false！QuickShop 将忽略此部分的其余内容。
   use: false
   
-  #The default amount of shops a player can create.
+  #玩家可以创建的默认商店数量。
   default: 10
   
-  #Use old algorithm to calculate unlimited shops into limits.
+  #使用旧算法将无限商店计入限制。
   old-algorithm: false
   
-  #Here you can bind the limit to specific permissions.
-  #Using the same format, you can add as many as you want!
+  #你可以在此将限制绑定到特定的权限节点。
+  #使用相同的格式，你可以添加任意多的条目！
   ranks:
-    #Players with quickshop.example permission can create 20 shops.
+    #拥有 quickshop.example 权限的玩家可以创建 20 个商店。
     quickshop.example: 20
 
-#The list of blocks that can be used to create shops.
-#By default, chests are added to this list.
-#This will only work for blocks that implement an InventoryHolder!
-#In other words, You cannot create shops with normal blocks like dirt or stone.
-#May cause unexpected behavior with some blocks...eg:
-#-Hopper shops suck the display item in,
-#-Furnace shops allow players whatever item they want in all 3 slots,
-#-Dispenser shops aren't protected from redstone,
+#可用于创建商店的方块列表。
+#默认情况下，箱子会添加到该列表中。
+#这仅对实现了 InventoryHolder 的方块有效！
+#换句话说，你不能用泥土或石头等普通方块创建商店。
+#某些方块可能会导致意外行为……例如：
+#-漏斗商店会把展示物品吸进去，
+#-熔炉商店允许玩家在全部 3 个槽位中放入任意物品，
+#-发射器商店不受红石保护，
 #-Etc...
 shop-blocks:
 - CHEST
@@ -252,7 +252,7 @@ shop-blocks:
 
 shop:
   
-  #The components to use for the control panel if not set to the GUI-based control panel
+  #如果未设置为基于 GUI 的控制面板时，控制面板所使用的组件
   control-panel:
   - owner
   - unlimited
@@ -266,196 +266,196 @@ shop:
   - history
   - remove
   
-  #The layout of signs for shops.
+  #商店告示牌的布局。
   layout:
     
-    #The layout of BUYING shops.
+    #收购商店的布局。
     BUYING:
       line1: header
       line2: trading
       line3: item
       line4: price
     
-    #The layout of FROZEN shops.
+    #冻结商店的布局。
     FROZEN:
       line1: header
       line2: trading
       line3: item
       line4: price
     
-    #The layout of SELLING shops.
+    #出售商店的布局。
     SELLING:
       line1: header
       line2: trading
       line3: item
       line4: price
   
-  #The cost to make a shop.
+  #创建商店的费用。
   cost: 10
   
-  #Should QS refund the player when their shops are deleted/removed/broken?
+  #当玩家的商店被删除/移除/破坏时，QS 是否应退还费用？
   refund: false
   
-  # Should QS refund from the tax-account?
-  # refund is as much as possible, player may won't get all refund if the tax-account had no enough money.
+  # QS 是否从税收账户退款？
+  # 退款金额尽可能多，如果税收账户资金不足，玩家可能无法获得全额退款。
   refund-from-tax-account: false
   
-  #Should QS send stock messages to staffs?
+  #QS 是否应向工作人员发送库存消息？
   sending-stock-message-to-staffs: false
   
-  #Should QS disable trading in creative mode?
+  #QS 是否应禁用创造模式下的交易？
   disable-creative-mode-trading: false
   
-  #Should QS disable the super tool?
-  #The Super Tool is a Golden Axe that allows creative mode players to break shops.
+  #QS 是否应禁用超级工具？
+  #超级工具是一把金斧头，允许创造模式玩家破坏商店。
   disable-super-tool: false
   
-  #Should QS allow the owner of a shop to break the sign to let players replace the sign?
-  #This may cause a sign dupe when auto-sign is true!
+  #QS 是否允许商店所有者破坏告示牌以让玩家更换告示牌？
+  #当 auto-sign 为 true 时，这可能会导致告示牌复制！
   allow-owner-break-shop-sign: false
   
-  #Should there be a fee for changing shop prices?
-  #This can help with endless price undercutting.
+  #更改商店价格是否应收取费用？
+  #这有助于防止无止境的价格恶性竞争。
   price-change-requires-fee: true
-  #The amount of this fee.
+  #该费用的金额。
   fee-for-price-change: 50
   
-  #Should QS try to lock shops for other players?
-  #This prevents players from stealing from them.
+  #QS 是否应尝试为其他玩家锁定商店？
+  #这可以防止玩家从中偷窃。
   lock: true
   
-  #Should QS disable the quick creation of shop?
-  #To quickly create a shop click a chest with an Item.
+  #QS 是否应禁用商店的快速创建？
+  #要快速创建商店，请手持物品点击箱子。
   disable-quick-create: false
   
-  #Should we automatically create the sign for the chest?
+  #我们是否应为箱子自动创建告示牌？
   auto-sign: true
   
-  #Sign use glowing effects
+  #告示牌使用发光效果
   sign-glowing: false
   
-  #Should shop signs be waxed?
+  #商店告示牌是否应打蜡？
   sign-wax: false
   
-  #Sign use dye color  https://hub.spigotmc.org/javadocs/spigot/org/bukkit/DyeColor.html
+  #告示牌使用的染料颜色  https://hub.spigotmc.org/javadocs/spigot/org/bukkit/DyeColor.html
   #sign-dye-color: WHITE
   sign-dye-color: ''
   
-  #Should we pay/take money to/from unlimited shops owners?
+  #我们是否应向无限商店所有者支付/收取金钱？
   pay-unlimited-shop-owners: false
   
-  #Should we place display items on the chests?
-  #This may cause duped items, especially for modded servers if you're using Real DisplayItem!
+  #我们是否应在箱子上放置展示物品？
+  #这可能会导致物品复制，特别是对于使用真实展示物品的模组服务器！
   display-items: true
   
-  #The default status for display items.
+  #展示物品的默认状态。
   display-default: true
   
-  #QuickShop will check if the display item is in a valid position every specified amount of ticks.
-  #Set to 0 to disable it.
-  #It doesn't work under Virtual DisplayItem.
+  #QuickShop 将每隔指定数量的刻检查展示物品是否处于有效位置。
+  #设置为 0 以禁用它。
+  #它在虚拟展示物品模式下不起作用。
   display-items-check-ticks: 6000
   
-  #The display type you want use.
-  #Old mode, ArmorStand (display-type=1) is Outdated and could not be used
-  #2=Virtual Item (Requires ProtocolLib, fallback to type 0 if ProtocolLib is not installed)
+  #你想要使用的展示类型。
+  #旧模式，ArmorStand（display-type=1）已过时，不能使用
+  #2=虚拟物品（需要 ProtocolLib，如果未安装 ProtocolLib 则回退到类型 0）
   display-type: 2
   
-  #The preferred protocol to use for virtual item displays.
-  #The options are: protocollib and packetevents
+  #用于虚拟物品展示的首选协议。
+  #可选值为：protocollib 和 packetevents
   display-protocol: protocollib
   
-  #Allow QuickShop to automatically despawn displays when no players are in range of the shop.
+  #允许 QuickShop 在没有玩家位于商店范围内时自动移除展示物。
   display-auto-despawn: false
   
-  #The range at which displays will despawn.
+  #展示物将被移除的范围。
   display-despawn-range: 20
   
-  #The interval (in ticks) at which QS checks the shops range to despawn/spawn displays.
-  #It doesn't work under Virtual DisplayItem.
+  #QS 检查商店范围内展示物移除/生成的间隔（以刻为单位）。
+  #它在虚拟展示物品模式下不起作用。
   display-check-time: 40
   
-  #Allow displays to show stack effects when stack creation is turned on.
-  #It doesn't work under Virtual DisplayItem.
+  #允许展示物在启用堆叠创建时显示堆叠效果。
+  #它在虚拟展示物品模式下不起作用。
   display-allow-stacks: false
   
-  #Allows display items to show enchantments
+  #允许展示物品显示附魔
   display-allow-enchants: true
   
-  #The coordinates of the display for shop displays.
-  #These are added to the shop's container location
+  #商店展示物的坐标。
+  #这些坐标会添加到商店容器的位置上
   display-coords:
     
     x: 0.5
     y: 0.8
     z: 0.5
   
-  #[BETA] Enable beta per-player shop sign feature for i18n.
-  #Hikari will send an extra sign content packet to override original shop info sign text to the text that use player's locale
-  #ProtocolLib Required
+  #[BETA] 启用面向 i18n 的每玩家商店告示牌测试功能。
+  #Hikari 将发送额外的告示牌内容数据包，将原始商店信息告示牌文本覆盖为使用玩家语言环境的文本
+  #需要 ProtocolLib
   per-player-shop-sign: false
   
-  #/quickshop find <itemName> command settings.
-  #This command lets users shop quickly without wasting time searching.
+  #/quickshop find <itemName> 命令设置。
+  #此命令让用户无需浪费时间搜索即可快速购物。
   finding:
-    #Should QS use the old logic? (looking for closest shop and let players look at it)
+    #QS 是否使用旧逻辑？（寻找最近的商店并让玩家查看它）
     oldLogic: false
-    #How far should QS search? (in blocks)
+    #QS 应该搜索多远？（以方块为单位）
     distance: 45
-    #How many nearby shop should be displayed?
+    #应显示多少个附近的商店？
     limit: 10
-    #Should this ignore the distance?
+    #是否应忽略距离？
     global: false
-    #The cooldown between searches in seconds.
+    #搜索之间的冷却时间，以秒为单位。
     cooldown: 20
-    #Should non-loaded shops be incuded in the search?
+    #搜索中是否应包含未加载的商店？
     all: true
-    #Should QS exclude out-of-stock/space shops?
-    #This may improve performance.
+    #QS 是否应排除缺货/无空间的商店？
+    #这可能会提高性能。
     exclude-out-of-stock: false
   
-  #If vault doesn't return a currency symbol, QuickShop will use this symbol.
+  #如果 vault 未返回货币符号，QuickShop 将使用此符号。
   alternate-currency-symbol: $
   
-  #This setting is for multi-currency setups.
-  #If nothing matches in this list, it falls back to the name of currency itself.
+  #此设置适用于多货币配置。
+  #如果此列表中没有任何匹配项，则回退到货币本身的名称。
   alternate-currency-symbol-list:
   - USD;$
   - CNY;￥
   
-  #This should fix Vault or an economy plugin incorrectly processing the price and returning a "0" result.
-  #If you enable this setting, then QS will force use the "alternate-currency-symbol".
+  #这应该能修复 Vault 或经济插件错误处理价格并返回 "0" 结果的问题。
+  #如果你启用此设置，QS 将强制使用 "alternate-currency-symbol"。
   disable-vault-format: false
   
-  #If the currency symbol should be displayed on the right side (eg 1234$).
-  #By default, it is on the left side (eg $1234).
-  #Only works when disable-vault-format is true.
+  #货币符号是否显示在右侧（例如 1234$）。
+  #默认情况下，它位于左侧（例如 $1234）。
+  #仅在 disable-vault-format 为 true 时生效。
   currency-symbol-on-right: false
   
-  #Ignore trade messages if the shop is unlimited.
+  #如果商店是无限商店，则忽略交易消息。
   ignore-unlimited-shop-messages: true
   
-  #Allow auto fetching of player shops.
-  #If you disable this, then the players need to use "/quickshop fetchmessage" to fetch the shops history messages.
-  #Disabling it may cause database issues!
+  #允许自动获取玩家的商店消息。
+  #如果你禁用它，玩家需要使用 "/quickshop fetchmessage" 来获取商店历史消息。
+  #禁用它可能会导致数据库问题！
   auto-fetch-shop-messages: true
   
-  #Ignore cancelled chat event, can sometimes improve compatibility with some chat plugins.
+  #忽略已取消的聊天事件，有时可以提高与某些聊天插件的兼容性。
   ignore-cancel-chat-event: false
   
-  #Allow shops to be created in places where a sign cannot be placed?
-  #(e.g There are blocks on all sides of the shop / The player doesn't have permission to put down a sign at that location)
+  #是否允许在无法放置告示牌的地方创建商店？
+  #（例如商店四周都有方块 / 玩家没有在该位置放置告示牌的权限）
   allow-shop-without-space-for-sign: false
   
-  #The maximum number of digits after the decimal.
-  #Set this to -1 to disable it. (Unlimited maximum digits)
+  #小数点后的最大位数。
+  #设置为 -1 以禁用它。（不限最大位数）
   maximum-digits-in-price: -1
   
-  #If a player that has quickshop.setowner permission changes the owner of an adminshop,
-  #should the owner's uuid get printed in the control panel?
+  #如果拥有 quickshop.setowner 权限的玩家更改了管理商店的所有者，
+  #所有者 UUID 是否应在控制面板中打印？
   show-owner-uuid-in-controlpanel-if-op: false
   
-  #The wall sign material.
+  #墙壁告示牌材质。
   #ACACIA_WALL_SIGN
   #BIRCH_WALL_SIGN
   #DARK_OAK_WALL_SIGN
@@ -464,130 +464,130 @@ shop:
   #SPRUCE_WALL_SIGN
   sign-material: OAK_WALL_SIGN
   
-  #If this is enabled, the enchantment name will be shown
-  #in the sign instead of "Enchanted Book".
-  #NOTE: Only one enchantment is shown and is randomly chosen.
+  #如果启用，将在告示牌上显示附魔名称，
+  #而不是 "Enchanted Book"。
+  #注意：只显示一个附魔，并且是随机选择的。
   use-enchantment-for-enchanted-book: false
   
-  #If this is enabled, the effect name will be shown
-  #in the sign instead of "Potion".
-  #NOTE: Only one effect is shown and is randomly chosen.
+  #如果启用，将在告示牌上显示药水效果名称，
+  #而不是 "Potion"。
+  #注意：只显示一个效果，并且是随机选择的。
   use-effect-for-potion-item: false
   
-  #The list of worlds in which creating new shops is enabled.
-  #When this list is not empty, only worlds in this list will be allowed to create shops.
-  #This takes priority over blacklist-world.
+  #允许创建新商店的世界列表。
+  #当此列表不为空时，只允许此列表中的世界创建商店。
+  #此选项优先于 blacklist-world。
   whitelist-world: []
   
-  #The list of worlds in which creating new shops is disabled.
-  #This will only be checked when whitelist-world is empty.
+  #禁止创建新商店的世界列表。
+  #仅当 whitelist-world 为空时才会检查此选项。
   blacklist-world:
   - disabled_world_name
   
-  #The list of lore keywords that are blocked from being sold.
-  #This will not affect existing shops!
+  #禁止出售的 lore 关键词列表。
+  #这不会影响现有的商店！
   blacklist-lores:
   - SoulBound
   
-  #Protection check
-  #This will send a FAKE BlockBreakEvent to check if you can break a block.
-  #This may conflict with some protection plugins!
-  #Integration checking will be checked after this, so disable it when it's conflicting with integration
-  #If you don't want this, then please disable it and use the integration below instead.
+  #保护检查
+  #这将发送一个伪造的 BlockBreakEvent 来检查你是否可以破坏方块。
+  #这可能会与某些保护插件冲突！
+  #集成检查将在此之后进行，因此当它与集成冲突时请禁用它
+  #如果你不想要这个，请禁用它并改用下面的集成。
   protection-checking: true
   
-  # Cancel the fake BlockBreakEvent before it passed to MONITOR level listeners.
+  #在伪造的 BlockBreakEvent 传递给 MONITOR 级别的监听器之前取消它。
   cancel-protection-fake-event-before-reach-monitor-listeners: true
   
-  #The list of worlds in which protection checking is disabled.
+  #禁用保护检查的世界列表。
   protection-checking-blacklist:
   - disabled_world
   
-  #The listener list to skip when protection-checking.
-  #Examples:
+  #进行保护检查时跳过的监听器列表。
+  #示例：
   #- xx.xxx.xxx.xxxxx.BlockBreakListenerClass
-  #  This will skip calling the xx.xxx.xxx.xxxxx.BlockBreakListenerClass listener.
+  #  这将跳过调用 xx.xxx.xxx.xxxxx.BlockBreakListenerClass 监听器。
   #
   #- xx.xx.xxx.xxxxx
-  #  This will skip calling all listener that class name start with xx.xx.xxx.xxxxx.
+  #  这将跳过调用所有类名以 xx.xx.xxx.xxxxx 开头的监听器。
   #
   #- @PluginName
-  #  This will skip calling all listeners registered by this plugin.
+  #  这将跳过调用此插件注册的所有监听器。
   #
   #- REGEX
-  #  It also supports regex.
+  #  它也支持正则表达式。
   protection-checking-listener-blacklist:
   - ignored_listener
   
-  #How many shops should at max be checked at once for existance?
+  #一次最多检查多少个商店是否存在？
   max-shops-checks-in-once: 100
   
-  #Add display name to the spawned DisplayItem entity?
+  #是否将显示名称添加到生成的展示物品实体上？
   display-item-use-name: false
   
-  #Update the signs when something (eg Hoppers) triggers InventoryMoveItemEvent?
-  #Disable this if you think that it impacts your server performance.
+  #当有东西（例如漏斗）触发 InventoryMoveItemEvent 时是否更新告示牌？
+  #如果你认为它影响服务器性能，请禁用它。
   update-sign-when-inventory-moving: false
   
-  #Allow player loans? (Requires an economy plugin with support)
+  #允许玩家贷款吗？（需要一个支持此功能的经济插件）
   allow-economy-loan: false
   
-  #The word to trade all items in player inventory.
+  #交易玩家背包中所有物品的指令词。
   word-for-trade-all-items: all
   
-  #Sets the name cost
+  #设置命名费用
   name-fee: 0
-  #Sets the max length for shop naming
+  #设置商店命名的最大长度
   name-max-length: 32
   
-  #The shop ongoing fee.
-  #If the shop owner doesn't have enough money, the shop will automatically be removed.
+  #商店持续费用。
+  #如果商店所有者资金不足，商店将自动被移除。
   ongoing-fee:
     enable: false
-    #How often should the ongoing fee be due for payment?
+    #持续费用应多久支付一次？
     ticks: 42000
-    #How much should the ongoing fee be?
+    #持续费用应为多少？
     cost-per-shop: 2
-    #Should we ignore unlimited shops?
+    #我们是否应忽略无限商店？
     ignore-unlimited: true
   
-  #Allow QuickShop to use a hack util to force-load shops from higher Minecraft versions.
-  #WARNING: This may destroy your server data and QuickShop shops, backup before enabling it!
+  #允许 QuickShop 使用一个辅助工具强制加载来自更高 Minecraft 版本的商店。
+  #警告：这可能会破坏你的服务器数据和 QuickShop 商店，启用前请备份！
   force-load-downgrade-items:
     enable: false
-    #WorkMode
-    #0=Call Bukkit to try to update the ItemStack
-    #1=Call Bukkit to directly load the ItemStack
+    #工作模式
+    #0=调用 Bukkit 尝试更新 ItemStack
+    #1=调用 Bukkit 直接加载 ItemStack
     method: 0
   
-  #If a block/entity has trigged the protection, should QuickShop break/kill it?
+  #如果方块/实体触发了保护，QuickShop 是否应破坏/击杀它？
   remove-protection-trigger: true
   
-  #Allow QuickShop to sell/buy multiple items in one transaction?
+  #允许 QuickShop 在一次交易中出售/购买多个物品？
   allow-stacks: false
   
-  #This setting controls if QuickShop should ignore the item's custom display name.
+  #此设置控制 QuickShop 是否应忽略物品的自定义显示名称。
   force-use-item-original-name: false
   
-  #[BETA] Disable the quickshop /quickshop size command stack size check to allow stack size go up the vanilla limit
+  #[BETA] 禁用 /quickshop size 命令的堆叠数量检查，以允许堆叠数量超过原版上限
   disable-max-size-check-for-size-command: false
   
-  # Use shop cache if possible to improve shop lookup performance
+  #尽可能使用商店缓存以提高商店查找性能
   use-cache: true
   
-  # Control the entries that show in info-panel
+  #控制 info-panel 中显示的条目
   info-panel:
-    # Display the effects on the item (e.g. Potion)
+    #显示物品上的效果（例如药水）
     show-effects: true
-    # Display the enchantments on the item (e.g. Tools, Weapons, Armors)
+    #显示物品上的附魔（例如工具、武器、盔甲）
     show-enchantments: true
-    # Display the effects on the item (e.g. Tools)
+    #显示物品的耐久度（例如工具）
     show-durability: true
-#List of items that can't be sold in shops.
-#Anyone with the quickshop.bypass.<itemID> permission can bypass it.
-#Add the reference to the item lookup table by adding @ before the name.
-#For referenced item, the permission quickshop.bypass.reference will be used.
-#SUPPORT Item Expression!
+#不能在商店中出售的物品列表。
+#任何拥有 quickshop.bypass.<itemID> 权限的玩家都可以绕过它。
+#通过在名称前添加 @ 来将引用添加到物品查找表中。
+#对于被引用的物品，将使用 quickshop.bypass.reference 权限。
+#支持物品表达式！
 #https://quickshop-community.github.io/QuickShop-Hikari-Documents/docs/modules/item-expression
 blacklist:
 - Bedrock
@@ -597,100 +597,100 @@ database-loading-whitelist-worlds: []
 database-loading-blacklist-worlds:
 - the world that shop won't to be loaded
 
-#Enable or disable plugin support.
+#启用或禁用插件支持。
 plugin:
-  #If you have Multiverse-Core, QuickShop will try to load worlds when the shop's world doesn't exist.
-  #This will throw an exception and automatically repair the shops.
+  #如果你安装了 Multiverse-Core，当商店所在世界不存在时，QuickShop 将尝试加载世界。
+  #这将抛出异常并自动修复商店。
   Multiverse-Core: true
-  #If you have PlaceHolderAPI, QuickShop will use it to process all messages.
+  #如果你安装了 PlaceHolderAPI，QuickShop 将使用它来处理所有消息。
   PlaceHolderAPI:
     enable: true
-    # The PAPI request caching expire time. (ms)
-    # Low value may increase the database load and hurt server performance.
+    # PAPI 请求缓存过期时间。（毫秒）
+    # 较低的值可能会增加数据库负载并损害服务器性能。
     cache: 900000
-  #If you have WorldEdit, QuickShop will try migrating shops in EditSession. [BETA]
+  #如果你安装了 WorldEdit，QuickShop 将尝试在 EditSession 中迁移商店。[BETA]
   WorldEdit: true
-#Special in-game effect
+#特殊的游戏内效果
 effect:
-  #Sound related
+  #声音相关
   sound:
-    #Should we play sound while player trying tab completing?
+    #玩家尝试 Tab 补全时是否播放声音？
     ontabcomplete: true
-    #Should we play sound while player executing commands?
+    #玩家执行命令时是否播放声音？
     oncommand: true
-    #Should we play sound while player clicking shop container/sign?
+    #玩家点击商店容器/告示牌时是否播放声音？
     onclick: true
-#Item matcher.
-#Do not touch it if you don't know what you're doing!
+#物品匹配器。
+#如果你不知道自己在干什么，请不要动它！
 matcher:
-  #Matcher type
-  #0= QuickShop item matcher with configurable options below.
-  #1= Bukkit item matcher, can be more accurate.
-  #2= Stricter Bukkit matcher, equals method.
+  #匹配器类型
+  #0= QuickShop 物品匹配器，带有以下可配置选项。
+  #1= Bukkit 物品匹配器，可能更精确。
+  #2= 更严格的 Bukkit 匹配器，使用 equals 方法。
   work-type: 1
-  #For Item (Only works under QuickShop ItemMatcher)
+  #用于物品（仅在 QuickShop 物品匹配器下有效）
   item:
-    #Should the Plugin check the item damage?
+    #插件是否应检查物品的耐久度？
     damage: true
-    #Should the Plugin check the item repair cost?
+    #插件是否应检查物品的修复费用？
     repaircost: false
-    #Should the Plugin check the item display name?
+    #插件是否应检查物品的显示名称？
     displayname: true
-    #Should the Plugin check the item lores?
+    #插件是否应检查物品的 lore？
     lores: true
-    #Should the Plugin check the item enchs?
+    #插件是否应检查物品的附魔？
     enchs: true
-    #Should the Plugin check the item potions?
+    #插件是否应检查物品的药水效果？
     potions: true
-    #Should the Plugin check the item attributes?
+    #插件是否应检查物品的属性？
     attributes: true
-    #Should the Plugin check the item itemflags?
+    #插件是否应检查物品的物品标志？
     itemflags: true
-    #Should the Plugin check the item custommodeldata?
+    #插件是否应检查物品的自定义模型数据？
     custommodeldata: true
-    #Should the Plugin check the item bookmetas?
+    #插件是否应检查物品的成书元数据？
     books: true
-    #Should the Plugin check the banner meta?
+    #插件是否应检查旗帜元数据？
     banner: true
-    #Should the Plugin check the skull meta?
+    #插件是否应检查头颅元数据？
     skull: true
-    #Should the Plugin check the firework meta?
+    #插件是否应检查烟花元数据？
     firework: true
-    #Should the Plugin check the map meta?
+    #插件是否应检查地图元数据？
     map: true
-    #Should the Plugin check the leather armor meta?
+    #插件是否应检查皮革盔甲元数据？
     leatherArmor: true
-    #Should the Plugin check the fishBucket meta?
+    #插件是否应检查鱼桶元数据？
     fishBucket: true
-    #Should the Plugin check the suspiciousStew meta?
+    #插件是否应检查迷之炖菜元数据？
     suspiciousStew: true
-    #Should the Plugin check the shulkerBox contents?
+    #插件是否应检查潜影盒内容物？
     shulkerBox: true
-    #Should the Plugin check the bundle contents?
+    #插件是否应检查收纳袋内容物？
     bundle: true
 
-#The protection that a shop should check.
+#商店应检查的保护。
 protect:
   explode: true
   hopper: true
   hopper-owner-exclude: false
   entity: true
 
-# The policy that QuickShop-Hikari will backup the databases
+# QuickShop-Hikari 备份数据库的策略
 backup-policy:
-  # Backup before purge the shops
+  # 清除商店前进行备份
   shops-auto-purge: false
-  # Backup the database before perform database upgrade
+  # 执行数据库升级前备份数据库
   database-upgrade: true
-  # Backup on every startup
+  # 每次启动时备份
   startup: false
-  # Backup old databases when recovery the database from file
+  # 从文件恢复数据库时备份旧数据库
   recovery: true
 
-#This option allows you to set custom item max stacksizes.
-#If nothing matches, then all items (*) will be used.
-#* means all items.
-#Examples:
+#此选项允许你设置自定义的物品最大堆叠数量。
+#如果没有匹配项，则将使用所有物品（*）。
+#* 表示所有物品。
+#示例：
 #
 #custom-item-stacksize:
 # - "*:128"
@@ -698,37 +698,37 @@ backup-policy:
 #
 custom-item-stacksize: []
 
-# Shops purger
-# Will purge all shops that owner offline x days while use command or server startup
+# 商店清理器
+# 将清除所有所有者离线 x 天的商店（使用命令或服务器启动时）
 purge:
   enabled: false
-  #Whether to purge shops automatically when server started
+  #服务器启动时是否自动清除商店
   at-server-startup: true
-  # The days of offline need to be purged
+  # 需要清除的离线天数
   days: 60
-  # At this moment, QuickShop only compatible with Vanilla banning system (e.g Essentials using)
+  # 目前，QuickShop 仅与原版封禁系统兼容（例如 Essentials 所使用的）
   banned: true
-  # At this moment, QuickShop only compatible with Vanilla OP system, LuckPerms may need add in future.
+  # 目前，QuickShop 仅与原版 OP 系统兼容，将来可能需要添加 LuckPerms 支持。
   skip-op: true
 
 debug:
-  #Should we disable the debug logger?
-  #This will save a lot of execution time but will make reporting bugs
-  #and getting support harder because of the lack of information.
+  #我们是否应禁用调试日志记录器？
+  #这将节省大量执行时间，但会因缺少信息而
+  #使报告错误和获取支持变得更加困难。
   disable-debuglogger: false
-  #Log stacktrace when deleting shop?
+  #删除商店时是否记录堆栈跟踪？
   shop-deletion: false
-  #Delete corrupt shops while loading?
-  #Setting this to false will disable the loading of corrupt shops!
+  #加载时是否删除损坏的商店？
+  #将此设置为 false 将禁止加载损坏的商店！
   delete-corrupt-shops: false
 
-# Legacy data updater
-# Turn on this will make QuickShop to execute extra checks and may affect performance.
-# Only turn it on when you updating from old versions.
+# 旧版数据更新器
+# 启用它会使 QuickShop 执行额外的检查，并可能影响性能。
+# 仅当你从旧版本升级时才启用它。
 legacy-updater:
   shop-sign: false
 
-#Set the command alias for qs main command
+#设置 qs 主命令的命令别名
 # - playershop
 # - pshop
 custom-commands:
@@ -737,36 +737,36 @@ custom-commands:
 - chestshop
 - cshop
 
-#Set the command alias for qs sub command
+#设置 qs 子命令的命令别名
 custom-subcommands:
   help: help
 
-#Let this stay false, DO NOT TOUCH IT!
+#让它保持 false，不要动它！
 config-damaged: false
 
-#Specfic the translation key mapping to a fixed String.
-#Example:
+#将翻译键映射到固定的字符串。
+#示例：
 #  - "ecoenchants:enchantment.damage_artifact=Artifact Damage"
 custom-translation-key: []
 
 
-#Privacy Controller allows you turn on/off some options that related to privacy. This is our move towards privacy transparency.
-#By audit all privacy reviewing activities, execute `/quickshop paste` to generate a paste and check `Privacy Logs` section.
-#To out-put from bStats completely, go to /plugins/bStats/config.yml.
+#隐私控制器允许你开启/关闭一些与隐私相关的选项。这是我们迈向隐私透明的一步。
+#通过审计所有隐私审查活动，执行 `/quickshop paste` 生成一个粘贴内容并查看 `Privacy Logs` 部分。
+#要完全退出 bStats，请前往 /plugins/bStats/config.yml。
 privacy:
-  # Category Control
+  # 类别控制
   type:
-    # Including `/qs paste` and Auto Error Reporter, disable DIAGNOSTIC category will disable online paste, rollbar error reporter error reporting.
+    # 包括 `/qs paste` 和自动错误报告器，禁用 DIAGNOSTIC 类别将禁用在线粘贴、rollbar 错误报告器的错误报告。
     DIAGNOSTIC: true
-    # Including bStats metrics with `Statistic - ` prefix, see all metrics we collected on https://bstats.org/plugin/bukkit/QuickShop-Hikari/14281
+    # 包括带有 `Statistic - ` 前缀的 bStats 指标，查看我们在 https://bstats.org/plugin/bukkit/QuickShop-Hikari/14281 收集的所有指标
     STATISTIC: true
-    # Including bStats metrics with `Research - ` prefix, see all metrics we collected on https://bstats.org/plugin/bukkit/QuickShop-Hikari/14281
+    # 包括带有 `Research - ` 前缀的 bStats 指标，查看我们在 https://bstats.org/plugin/bukkit/QuickShop-Hikari/14281 收集的所有指标
     RESEARCH: true
   module: null
 #  SOME_MODULE_NAME_HERE: false
 
-# Record transactions for metric purpose,
-# all transaction will be record into database can used by other plugins for analyse trade activities.
-# Turn off this will stop recording transactions for metrics.
+# 出于指标统计目的记录交易，
+# 所有交易都将记录到数据库中，可供其他插件用于分析交易活动。
+# 关闭此选项将停止为指标统计记录交易。
 transaction-metric:
   enable: true

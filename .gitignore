@@ -2,4 +2,4 @@
 *.db
 reasonix.toml
 .reasonix
-.py
+*.py

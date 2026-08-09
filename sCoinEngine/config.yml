@@ -1,22 +1,22 @@
-# sCoinEngine Configuration
+# sCoinEngine 配置
 
-# Set the language file to use from the 'langs' folder.
-# Default is 'en' (English). You can create your own (e.g., 'custom.yml').
+# 设置要从 'langs' 文件夹中使用的语言文件。
+# 默认为 'en'（英文）。你也可以创建自己的语言文件（例如 'custom.yml'）。
 language: en
 
-# Database settings
-# Currently only 'SQLITE' is supported.
+# 数据库设置
+# 目前仅支持 'SQLITE'。
 database:
   type: SQLITE
 
-# Settings for the leaderboard
+# 排行榜（leaderboard）设置
 baltop:
-  # How many players to show per page
+  # 每页显示多少名玩家
   entries-per-page: 10
-  # Format for each line on the leaderboard (placeholders are in your lang file)
+  # 排行榜上每一行的格式（占位符位于你的语言文件中）
   format: "&e#%rank% &7- &a%player%&7: &f%formatted_balance%"
 
-# This is the prefix used in most plugin messages.
+# 这是大多数插件消息中使用的前缀。
 message-prefix: "&8[&6sCoinEngine&8] "
 
-# made by Saym. thanks for using our plugin
+# 由 Saym 制作，感谢使用我们的插件

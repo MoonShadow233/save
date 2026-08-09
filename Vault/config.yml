@@ -1,21 +1,21 @@
-# Vault 2.0 — internal economy compatible with the Vault API
-# Provides balance, player-to-player payments, and config/message reload.
-# Commands: /balance, /pay, /vault reload. No external Vault.jar required.
+# Vault 2.0 — 兼容 Vault API 的内置经济系统
+# 提供余额、玩家间转账以及配置/消息重载功能。
+# 命令：/balance、/pay、/vault reload。无需外部 Vault.jar。
 plugin_version: 1.7.0
 # languages_supported: ["en", "es", "fr", "de", "nl", "pl", "zh_CN", "zh_TW", "ru", "pt", "hi"]
 language: en
-# Vault 2.0 — internal economy compatible with the Vault API
-# Commands: /balance, /vault reload.
-# currency: global configuration for how money is displayed when the plugin formats amounts (when it uses economy.format()).
-# - You can also use text, for example "coins" or "€".
-# - Supports colors using & if you want (example: "&6$").
+# Vault 2.0 — 兼容 Vault API 的内置经济系统
+# 命令：/balance、/vault reload。
+# currency：插件格式化金额（使用 economy.format()）时货币显示方式的全局配置。
+# - 也可以使用文本，例如 "coins" 或 "€"。
+# - 如需支持颜色，可以使用 &（示例："&6$"）。
 # - position: suffix
-#   - Controls where the symbol is placed relative to the number.
-#   - suffix = after the number → 10 $
-#   - prefix = before the number → $ 10
+#   - 控制符号相对于数字的位置。
+#   - suffix = 数字之后 → 10 $
+#   - prefix = 数字之前 → $ 10
 # PlaceholderAPI:
-# - %vault_balance_formatted% uses this currency format automatically
-# - %vault_currency_symbol% returns currency.symbol
+# - %vault_balance_formatted% 会自动使用此货币格式
+# - %vault_currency_symbol% 返回 currency.symbol
 currency:
   symbol: $
   position: suffix
@@ -30,7 +30,7 @@ currency:
       b: b
       t: t
 storage:
-  # MySQL storage (set use_mysql: true to enable)
+  # MySQL 存储（将 use_mysql 设为 true 以启用）
   use_mysql: false
   mysql:
     host: localhost
@@ -47,10 +47,10 @@ storage:
 #   idle_timeout_ms: 600000
 #   max_lifetime_ms: 1800000
 
-# Worlds listed here use their own separate balances in the plugin's player-facing features.
-# Global economy calls without a world keep using the main balance for compatibility.
+# 列在此处的世界在插件面向玩家的功能中使用各自独立的余额。
+# 为兼容起见，不带世界的全局经济调用继续使用主余额。
 world_balances: {}
-# Example:
+# 示例：
 # separate_worlds:
 #   - world_nether
 #   - minas
@@ -58,135 +58,135 @@ world_balances: {}
 import:
   essentials:
     enabled: false
-    replace: false # true = overwrite existing balances; false = only create when missing
-# target: file  # Optional: "file" forces saving to balances.yml even if MySQL is enabled
+    replace: false # true = 覆盖现有余额；false = 仅在缺失时创建
+# target: file  # 可选："file" 即使启用了 MySQL 也会强制保存到 balances.yml
 
-# UUID resolution for offline-mode servers
-# true: allow operations with unseen players by generating offline UUIDs
+# 离线模式服务器的 UUID 解析
+# true：通过生成离线 UUID 允许对未见过玩家的操作
 offline-uuid-fallback: true
 
-# Check for updates on startup and notify OPs
+# 启动时检查更新并通知 OP
 update_check: true
 update_check_debug: false
 
-# /pay menu configuration
+# /pay 菜单配置
 pay_menu:
-  # Inventory size (multiple of 9)
+  # 背包大小（9 的倍数）
   size: 27
-  # Show your own head among players in the main menu
+  # 在主菜单的玩家列表中显示你自己的头颅
   show_self: false
 
-# Delivery of pending charge requests on join
+# 加入时投递待处理的收款请求
 pay_pending:
-  # Maximum requests delivered per login (remaining stay queued)
+  # 每次登录投递的最大请求数（其余保持排队）
   max_on_join: 5
 
-# Amount limits for pay/charge (≤0 disables)
+# 付款/收款金额限制（≤0 表示禁用）
 pay_limits:
   min: 1
   max: 100000
 
-# Loan system configuration
-# Used to enable player loans and control limits, installments, and automatic charge checks.
+# 贷款系统配置
+# 用于启用玩家贷款，并控制限额、分期付款和自动扣款检查。
 loans:
-  # Enables or disables the entire loan system.
+  # 启用或禁用整个贷款系统。
   enabled: true
-  # Maximum number of active loans a player can have at the same time.
+  # 玩家同一时间可拥有的最大活跃贷款数量。
   max_active_per_player: 1
-  # Minimum amount a player can request as a loan.
+  # 玩家可申请的最低贷款金额。
   min_amount: 1
-  # Maximum amount a player can request as a loan.
+  # 玩家可申请的最高贷款金额。
   max_amount: 100000
-  # Minimum installment allowed for any loan.
+  # 任何贷款允许的最低分期金额。
   min_installment: 1
-  # Raises the minimum installment based on the total loan amount.
-  # Format: loan_amount: minimum_installment
+  # 根据贷款总额提高最低分期金额。
+  # 格式：loan_amount: minimum_installment
   min_installment_by_amount:
     '1000': 50
     '5000': 250
-  # Maximum number of installments allowed when creating a loan.
+  # 创建贷款时允许的最大分期数。
   max_installments: 60
-  # Default time between installments in hours.
+  # 分期之间的默认间隔时间（小时）。
   default_interval_hours: 24
-  # How often the plugin checks if an installment should be charged.
+  # 插件检查应何时收取分期款项的频率。
   charge_check_seconds: 60
-  # Maximum failed automatic charges before the loan is marked as defaulted.
+  # 在贷款被标记为违约前允许的最大自动扣款失败次数。
   max_missed_payments: 3
-  # Effects applied to players whose loan is DEFAULTED (mora). Refreshed periodically so it persists.
+  # 对贷款已违约 (mora) 的玩家施加的效果。定期刷新以使其持续生效。
   defaulted_effects:
     enabled: true
     refresh_seconds: 5
     duration_seconds: 8
-    # Format: EFFECT_NAME:LEVEL (LEVEL is 1-based)
-    # Examples: SLOW:2, SLOW_DIGGING:1 (fatigue)
+    # 格式：EFFECT_NAME:LEVEL（LEVEL 从 1 开始）
+    # 示例：SLOW:2、SLOW_DIGGING:1（疲劳）
     effects:
     - SLOW:1
     - SLOW_DIGGING:1
 
-# docs (information only; not used by code)
+# 文档（仅供参考；代码不会使用）
 #
-# Commands
+# 命令
 # - /pay <player> <amount> | /pay | /pay <player>
-#   - Send money, charge (request payment), and open the menu/player submenu.
-#   - Actions: Pay, Charge (request payment), View target balance
+#   - 发送金钱、收款（请求付款），并打开菜单/玩家子菜单。
+#   - 操作：付款、收款（请求付款）、查看目标余额
 # - /balance
-#   - Show your current balance.
+#   - 显示你的当前余额。
 # - /vaultop [page]
-#   - Show the top players with the most money.
+#   - 显示拥有最多金钱的顶尖玩家。
 # - /vault | /vault reload | /vault update | /vault loan
-#   - Open the Vault menu. Admin actions: reload/update (OP only). Loans: /vault loan.
+#   - 打开 Vault 菜单。管理员操作：reload/update（仅 OP）。贷款：/vault loan。
 # - /vault loan
-#   - Open the loan menu (request, status, pay).
+#   - 打开贷款菜单（申请、状态、还款）。
 # - /eco give <player> <amount> | /eco take <player> <amount>
-#   - Give or take money from a player (admin only).
+#   - 从玩家处给予或扣除金钱（仅管理员）。
 #   - permission_required: op
-#   - notes: Supports subcommands: give and take. Example: /eco take <player> <amount>
+#   - notes：支持子命令 give 和 take。示例：/eco take <player> <amount>
 #   - permissions:
-#     - vault.eco (default: op) — Allows using /eco including give and take subcommands.
+#     - vault.eco（默认：op）— 允许使用 /eco，包括 give 和 take 子命令。
 #
-# Placeholders
-# - %vault_balance% - Current player's raw balance.
-# - %vault_balance_formatted% - Current player's balance formatted with the plugin's economy format.
-# - %vault_eco_balance% - Current player's raw economy balance.
-# - %vault_eco_balance_formatted% - Current player's formatted economy balance.
-# - %vault_eco_balance_fixed% - Current player's balance with exactly 2 decimal places.
-# - %vault_eco_balance_commas% - Current player's balance with comma thousand separators.
-# - %vault_eco_balance_short% - Current player's abbreviated balance, such as 1.2k or 3.4m.
-# - %vault_currency_symbol% - Currency symbol from the plugin config.
-# - %vault_balance_<player>% - Raw balance of the specified player.
-# - %vault_balance_formatted_<player>% - Formatted balance of the specified player.
-# - %vault_ecobalance<0-8>dp% - Current player's balance with a custom number of decimal places.
-# - %vault_top% - Top 10 richest players as a multiline list.
-# - %vault_top_<n>% - Full top entry for rank n.
-# - %vault_top_name_<n>% - Player name at rank n.
-# - %vault_top_amount_<n>% - Formatted balance at rank n.
+# 占位符
+# - %vault_balance% - 当前玩家的原始余额。
+# - %vault_balance_formatted% - 使用插件经济格式格式化的当前玩家余额。
+# - %vault_eco_balance% - 当前玩家的原始经济余额。
+# - %vault_eco_balance_formatted% - 当前玩家的格式化经济余额。
+# - %vault_eco_balance_fixed% - 精确到 2 位小数的当前玩家余额。
+# - %vault_eco_balance_commas% - 使用逗号千位分隔符的当前玩家余额。
+# - %vault_eco_balance_short% - 当前玩家的缩写余额，例如 1.2k 或 3.4m。
+# - %vault_currency_symbol% - 来自插件配置的货币符号。
+# - %vault_balance_<player>% - 指定玩家的原始余额。
+# - %vault_balance_formatted_<player>% - 指定玩家的格式化余额。
+# - %vault_ecobalance<0-8>dp% - 自定义小数位数的当前玩家余额。
+# - %vault_top% - 最富有的前 10 名玩家（多行列表）。
+# - %vault_top_<n>% - 排名 n 的完整上榜条目。
+# - %vault_top_name_<n>% - 排名 n 的玩家名。
+# - %vault_top_amount_<n>% - 排名 n 的格式化余额。
 #
-# Guides
+# 指南
 # - Pay
-#   - Select Pay in /pay (or player submenu) and type an amount.
-#   - Online: Money is transferred instantly to the online target.
-#   - Offline: Direct pay to offline targets is not available; use Charge.
-#   - Chat: Type 'cancel' to abort while entering the amount.
-#   - Limits: pay_limits apply; bypass nodes can ignore them.
+#   - 在 /pay（或玩家子菜单）中选择付款并输入金额。
+#   - 在线：金钱会立即转入在线目标账户。
+#   - 离线：无法直接向离线目标付款；请使用收款。
+#   - 聊天：输入金额时输入 'cancel' 可中止。
+#   - 限制：应用 pay_limits；绕过节点可忽略它们。
 # - Charge
-#   - Select Charge in /pay (or player submenu) and type an amount.
-#   - Online: The target receives a clickable message to pay.
-#   - Offline: The request is stored and delivered when the player joins.
-#   - Chat: Type 'cancel' to abort while entering the amount.
-#   - Limits: pay_limits apply; bypass nodes can ignore them in chat flow.
+#   - 在 /pay（或玩家子菜单）中选择收款并输入金额。
+#   - 在线：目标会收到可点击的付款消息。
+#   - 离线：请求会被保存，并在玩家加入时投递。
+#   - 聊天：输入金额时输入 'cancel' 可中止。
+#   - 限制：应用 pay_limits；绕过节点可在聊天流程中忽略它们。
 # - Menu
-#   - Open /pay to list players. Click a player to open the submenu.
-#   - Navigation: Use Previous/Next to move between pages.
-#   - Texts: Menu titles and item names are defined in messages/messages_*.yml.
-#   - Config keys: pay_menu.size and pay_menu.show_self
+#   - 打开 /pay 列出玩家。点击玩家打开子菜单。
+#   - 导航：使用上一页/下一页在页面间切换。
+#   - 文本：菜单标题和物品名称定义在 messages/messages_*.yml 中。
+#   - 配置键：pay_menu.size 和 pay_menu.show_self
 # - Eco
-#   - Use /eco to give or take money from a player.
-#   - Online: Balance is updated instantly for online targets.
-#   - Offline: Works for offline players; accounts are created automatically if needed.
-#   - Limits: Pay limits do not apply; operator-only administration command.
+#   - 使用 /eco 从玩家处给予或扣除金钱。
+#   - 在线：在线目标的余额会立即更新。
+#   - 离线：适用于离线玩家；如有需要会自动创建账户。
+#   - 限制：不适用付款限制；仅限管理员的运营命令。
 
 # permissions:
-#   vault.pay      # use /pay and open the payment menu (default: op)
-#   vault.eco      # give and take money (default: op)
-#   vault.balance  # use /balance (default: op)
-#   vault.loan     # use /vault loan and open the loan menu (default: true)
+#   vault.pay      # 使用 /pay 并打开付款菜单（默认：op）
+#   vault.eco      # 给予和扣除金钱（默认：op）
+#   vault.balance  # 使用 /balance（默认：op）
+#   vault.loan     # 使用 /vault loan 并打开贷款菜单（默认：true）

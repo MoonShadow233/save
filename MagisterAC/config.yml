@@ -1,9 +1,9 @@
 prefix: "&8[&bMagisterAC&8]&r"
 debug: false
-# Plugin language for all user-facing text.
-# Supported: ru (Russian), en (English), de (German), zh (Chinese), es (Spanish), ar (Arabic), uk (Ukrainian), pl (Polish).
-# "auto" follows the language built into this jar (e.g. MagisterAC-de.jar -> German).
-# Setting a concrete code here always overrides the jar's built-in language.
+# 所有面向用户文本所使用的插件语言。
+# 支持：ru（俄语）、en（英语）、de（德语）、zh（中文）、es（西班牙语）、ar（阿拉伯语）、uk（乌克兰语）、pl（波兰语）。
+# "auto" 将跟随此 jar 内建的语言（例如 MagisterAC-de.jar -> 德语）。
+# 在此设置具体代码将始终覆盖 jar 内建的语言。
 language: zh
 
 server:

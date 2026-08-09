@@ -1,22 +1,22 @@
-# Determines the value of items on the server.
-# Items not listed here cannot be sold.
-# Setting the value to 0 sells items for free; set to -1 or remove the item to disable selling.
-# Prices can be set in this file or via the '/setworth' command in-game.
+# 决定服务器上物品的价值。
+# 未在此列出的物品无法出售。
+# 将价值设为 0 表示物品免费出售；设为 -1 或移除该物品可禁用出售。
+# 价格可以在本文件中设置，也可以在游戏内通过 '/setworth' 命令设置。
 
 worth:
-  # This will set the worth of all logs to '2'.
+  # 这将把所有原木的价值设为 '2'。
   log: 2.0  
 
-  # This will work similar to the above syntax.
+  # 这与上述语法的作用类似。
   wool:
     '0': 20
 
-  # This will only allow selling leaves with datavalue '0' and '1'.
+  # 这将只允许出售数据值（datavalue）为 '0' 和 '1' 的树叶。
   leaves: 
     '0': 1.0
     '1': 1.0
 
-  # This will allow the selling of all, but sells '0' slightly cheaper.
+  # 这将允许出售所有树苗，但 '0' 的售价略低。
   sapling:
     '0': 2.0  
     '*': 2.5

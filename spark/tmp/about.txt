@@ -1,10 +1,10 @@
-# What is this directory?
+# 这是什么目录？
 
-* In order to perform certain functions, spark sometimes needs to write temporary data to the disk. 
-* Previously, a temporary directory provided by the operating system was used for this purpose. 
-* However, this proved to be unreliable in some circumstances, so spark now stores temporary data here instead!
+* 为了执行某些功能，spark 有时需要将临时数据写入磁盘。 
+* 此前，spark 使用操作系统提供的临时目录来存放这些数据。 
+* 然而，在某些情况下这被证明并不可靠，因此现在 spark 将临时数据存储在这里！
 
-spark will automatically cleanup the contents of this directory. 
-(but if for some reason it doesn't, if the server is stopped, you can freely delete any files ending in .tmp)
+spark 会自动清理此目录中的内容。 
+（但如果出于某种原因没有清理，在服务器已停止的情况下，你可以随意删除任何以 .tmp 结尾的文件）
 
-tl;dr: spark uses this folder to store some temporary data.
+tl;dr：spark 使用此文件夹存储一些临时数据。

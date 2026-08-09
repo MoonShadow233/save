@@ -1,6 +1,6 @@
-# Simplified Chinese messages (简体中文)
+# 简体中文消息
 pay:
-  # Command messages expected by code
+  # 代码所期望的命令消息
   only_players: "&c只有玩家可以使用 /pay。"
   no_permission: "&c你没有权限使用 /pay。"
   invalid_amount: "&c无效的金额。"
@@ -13,7 +13,7 @@ pay:
   received_ok: "&a你收到了来自 &f%player% 的 &6%amount%"
   cancelled: "&c付款请求已取消。"
 
-  # UI/menu and other messages
+  # UI/菜单及其他消息
   menu:
     title_main: "&8&l选择玩家"
     title_player: "&8&l操作: &f%player%"
@@ -92,7 +92,7 @@ cmd:
   vault:
     no_permission: "&c你没有权限重新加载插件。"
 
-# Keys expected by menu service (top-level)
+# 菜单服务期望的键（顶层）
 menu:
   title_main: "&8&l选择玩家"
   title_player: "&8&l操作: &f%player%"
@@ -101,7 +101,7 @@ menu:
   enter_amount: "&a输入金额"
   enter_amount_lore: "&a在聊天中输入金额"
 
-# Keys expected by balance command (top-level)
+# 余额命令期望的键（顶层）
 balance:
   no_permission: "&c你没有权限使用 /balance。"
   your_balance: "&6你的余额: %amount%"

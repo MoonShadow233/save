@@ -1,15 +1,15 @@
 # PlaceholderAPI
-# Version: 2.12.3
-# Created by: extended_clip
-# Contributors: https://github.com/PlaceholderAPI/PlaceholderAPI/graphs/contributors
-# Issues: https://github.com/PlaceholderAPI/PlaceholderAPI/issues
-# Expansions: https://placeholderapi.com/ecloud
-# Wiki: https://wiki.placeholderapi.com/
-# Discord: https://helpch.at/discord
-# If you're seeing performance issues with plugins that use component replacement, or things don't look quite right,
-# switch to the replacer provided by adventure itself by changing use_adventure_provided_replacer to true
-# No placeholders are provided with this plugin by default.
-# Download placeholders: /papi ecloud
+# 版本：2.12.3
+# 作者：extended_clip
+# 贡献者：https://github.com/PlaceholderAPI/PlaceholderAPI/graphs/contributors
+# 问题反馈：https://github.com/PlaceholderAPI/PlaceholderAPI/issues
+# 扩展：https://placeholderapi.com/ecloud
+# 维基：https://wiki.placeholderapi.com/
+# Discord：https://helpch.at/discord
+# 如果你在使用组件替换的插件时遇到性能问题，或者某些东西看起来不太对劲，
+# 可以通过将 use_adventure_provided_replacer 改为 true，改用 adventure 自身提供的替换器
+# 此插件默认不提供任何占位符。
+# 下载占位符：/papi ecloud
 check_updates: true
 cloud_enabled: true
 cloud_sorting: "name"
