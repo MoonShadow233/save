@@ -1,0 +1,85 @@
+# ------------------------------------------------ #
+#                   LHTab v1.0.0                   #
+#              作者: 领航云 (Linghang Cloud)        #
+# ------------------------------------------------ #
+
+settings:
+  # 更新间隔 (tick) (20 ticks = 1 秒)
+  # 较低的值意味着更流畅的动画，但会增加服务器负载。
+  update-interval: 20
+  # 日期和时间格式
+  date-format: "yyyy-MM-dd"
+  time-format: "HH:mm:ss"
+
+tab:
+  # Tab 列表头部
+  # 支持 PlaceholderAPI 变量
+  # 1.16+ 版本支持 HEX 颜色 (例如 &#FF0000)
+  header:
+    - "&bLynx &7- &a生存服"
+    - "&7&m-------------------------------------------------------------------------------------------"
+    - "&e玩家: &f%player_name%"
+    - "&e延迟: &f%player_ping% ms"
+    - ""
+
+  # Tab 列表底部
+  footer:
+    - ""
+    - "&7&m---------------------------------------------------------------------------------"
+    - "&7时间: %server_time%"
+  
+  # Tab 列表玩家名字格式化
+  # 这将改变玩家在列表中的显示方式 (前缀/后缀)
+  names:
+    enabled: true
+    # 排序优先级 (A-Z). 字母越靠前，排在列表越上面。
+    # 你可以在这里使用变量 (例如 %vault_group%) 如果你想按权限组排序。
+    # 简单排序我们直接使用 "A"。
+    sorting-group: "A"
+    # 默认玩家前缀 (当玩家没有自定义前缀时使用)
+    # 你可以在这里直接写死格式，例如 "&7[&b玩家&7] &f"
+    prefix: "&7[&b玩家&7] &f"
+    
+    # 自定义前缀格式包装器
+    # 当使用 /lhtab prefix 命令设置前缀时，会自动套用此格式。
+    # %prefix% 代表指令中输入的文本。
+    # 例如: 设置为 "&7[%prefix%&7] &f"，指令输入 "Admin"，最终显示为 "&7[Admin&7] &f"
+    prefix-wrapper: "&7[&b%prefix%&7] &f"
+    
+    suffix: ""
+
+sidebar:
+  # 启用或禁用侧边栏 (计分板)
+  enabled: true
+  
+  # 侧边栏标题
+  title: "&bLynx &f- &a生存服"
+  
+  # 侧边栏内容行
+  # 最多 15 行。
+  # 支持 PlaceholderAPI 变量。
+  # 
+  # LHTab 内部变量:
+  # %server_time% - 服务器时间
+  # %server_date% - 服务器日期
+  # %server_online% - 在线人数
+  # %server_max_players% - 最大人数
+  # %server_ram_used% - 已用内存 (MB)
+  # %server_ram_total% - 总内存 (MB)
+  # %server_ram_max% - 最大内存 (MB)
+  # %player_ping% - 玩家延迟 (ms)
+  # %player_health% - 玩家血量
+  # %player_displayname% - 玩家显示名称
+  lines:
+    - "&7&m--------------------"
+    - "&e玩家信息:"
+    - " &f名称: &a%player_name%"
+    - " &f世界: &e%multiverse-core_alias%"
+    - " &f金币: &e%vault_eco_balance%"
+    - " &f点券: &e%scoinengine_dq_balance%"
+    - ""
+    - "&e服务器信息:"
+    - " &f在线: &b%server_online%"
+    - " &f延迟: &a%player_ping% ms"
+    - ""
+    - "&7&m--------------------"

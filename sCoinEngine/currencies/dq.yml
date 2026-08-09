@@ -1,0 +1,35 @@
+
+
+# --- 显示设置 ---
+# 控制货币的外观和格式
+display:
+  name-singular: "dq"
+  name-plural: "dq"
+  symbol: "点券"
+  # true 表示显示为 $100，false 表示显示为 100$
+  symbol-is-prefix: false
+  # 小数点后保留几位。整数设为 0
+  decimal-places: 0
+
+# --- 玩法设置 ---
+# 控制货币与游戏的交互方式
+gameplay:
+  starting-balance: 10.0
+  # 玩家持有此货币的最大余额。设为 -1 表示无限制
+  max-balance: 1000000.0
+  # 玩家是否可以使用 /pay 指令转出此货币
+  payable: false
+  # 死亡时损失的余额百分比。设为 0 以禁用
+  lose-on-death-percentage: 0
+
+# --- 实物物品表示 ---
+# 将货币提取为 Minecraft 真实物品的相关设置
+# 需要配合新的 /withdraw 指令使用
+physical-item:
+  enabled: true
+  material: PAPER
+  # 可选：用于自定义资源包
+  custom-model-data: 1001
+  name: "&6%amount% 点券"
+  lore:
+    - "&7这是你持有的点券的实物形式"

@@ -1,0 +1,138 @@
+# Internal config version — do not edit. Enables one-time automatic migrations
+# (e.g. upgrading older installs onto engine-mode 2 + 'air' in hidden-blocks, the
+# only setting that hides cave-exposed ores). Deleting this file regenerates it
+# with the current defaults.
+config-version: 3
+
+xray:
+  enabled: true
+  hide-ores: true
+  mask-ores: true
+
+  # ─────────────────────────────────────────────────────────────────────────
+  #  Obfuscation engine
+  #
+  #  AUTO   — (recommended, default) On Paper and its forks (Purpur, Pufferfish,
+  #           Folia) this drives the server's NATIVE anti-xray engine — the ONLY
+  #           engine that truly defeats X-ray, because it rewrites chunk data
+  #           BEFORE it is sent, at full render distance. The first time it is
+  #           enabled the plugin writes the settings into the server config and
+  #           asks for ONE restart; until you restart, a built-in stopgap masks
+  #           fully-enclosed ores near players. After that one restart, no further
+  #           restarts are ever needed. On plain Spigot (no native engine) AUTO
+  #           uses the built-in stopgap directly.
+  #  PAPER  — identical to AUTO on Paper forks (kept as an explicit alias).
+  #  LEGACY — built-in stopgap engine ONLY (never native, never a restart). It
+  #           reacts AFTER chunks are sent, so it can only hide ores fully encased
+  #           near a player — it does NOT stop a determined X-ray client. Use it
+  #           only if you truly cannot restart the server even once.
+  #  OFF    — disable block obfuscation entirely.
+  #
+  #  Why a restart? Paper reads its anti-xray settings only at startup, so turning
+  #  the native engine on for the first time needs exactly one restart to apply.
+  # ─────────────────────────────────────────────────────────────────────────
+  obfuscation:
+    engine: AUTO
+
+    # Native Paper anti-xray settings — used by the AUTO/PAPER engine. Applied to
+    # config/paper-world-defaults.yml on Paper 1.19+, or paper.yml on 1.16–1.18,
+    # plus any per-world <world>/paper-world.yml that overrides anti-xray. A server
+    # RESTART is required the first time these change — Paper reads them only at
+    # startup. (The LEGACY stopgap engine does NOT need a restart.)
+    paper:
+      # engine-mode 2 (default) floods solid rock with FAKE ores and, because 'air'
+      # is in hidden-blocks below, also hides ores exposed to caves/air — the ONLY
+      # setup that truly defeats an XRay client (PaperMC docs). engine-mode 1 is
+      # lighter but CANNOT hide cave-exposed ores, so on cave-riddled 1.21 worlds a
+      # cheater still sees almost everything — do not use it to stop XRay.
+      # engine-mode 3 = like 2 but per-layer (about half the network cost, same hiding).
+      # Note: 'air' in hidden-blocks can cost some client FPS; remove it (and keep
+      # mode 2) if you must, but then cave-exposed ores become visible again.
+      engine-mode: 2
+      # Obfuscate everything from world-bottom up to this Y. Most ores, dungeon
+      # spawners and buried chests sit below 64. Raise toward 128+ to also cover
+      # high-mountain emerald/copper (heavier on CPU).
+      max-block-height: 64
+      update-radius: 2
+      # Ores that should never be revealed through walls (also used as the palette
+      # of fake ores under engine-mode 2). 'air' MUST stay here — it is what hides
+      # ores exposed to caves/air. NOTE: tile entities (spawner, chest, trapped_chest)
+      # are NOT valid here under engine-mode 2 — Paper silently ignores them. They go
+      # in replacement-blocks below instead.
+      hidden-blocks:
+        - air
+        - copper_ore
+        - deepslate_copper_ore
+        - coal_ore
+        - deepslate_coal_ore
+        - iron_ore
+        - deepslate_iron_ore
+        - gold_ore
+        - deepslate_gold_ore
+        - nether_gold_ore
+        - redstone_ore
+        - deepslate_redstone_ore
+        - lapis_ore
+        - deepslate_lapis_ore
+        - diamond_ore
+        - deepslate_diamond_ore
+        - emerald_ore
+        - deepslate_emerald_ore
+        - nether_quartz_ore
+        - ancient_debris
+      # Bulk terrain blocks that engine-mode 2 also replaces with fake ores, so a
+      # cheater cannot pick real veins out of the surrounding rock. Include every
+      # common stone variant or its tell-tale shape leaks. Tile entities placed here
+      # ARE masked when buried out of sight — this is how spawners/chests get hidden
+      # (only while not exposed to air).
+      replacement-blocks:
+        - stone
+        - deepslate
+        - netherrack
+        - end_stone
+        - granite
+        - diorite
+        - andesite
+        - tuff
+        - spawner
+        - chest
+        - trapped_chest
+
+    # LEGACY engine only (Spigot fallback):
+    enabled: true
+    move-threshold: 4.0
+    scan-radius: 20
+    reveal-radius: 2
+
+  # ─────────────────────────────────────────────────────────────────────────
+  #  Entity hiding — stops XRay/ESP clients from seeing mobs through walls.
+  #  Requires Paper 1.18+ (uses player.hideEntity). Players are never hidden.
+  # ─────────────────────────────────────────────────────────────────────────
+  entity-hide:
+    enabled: true
+    # How far (blocks) to evaluate entities for each player.
+    distance: 48
+    # Max entities processed per player per pass (perf cap).
+    max-per-player: 40
+    # Ticks between occlusion passes (lower = snappier, heavier).
+    interval-ticks: 4
+
+  track:
+    diamond: true
+    emerald: true
+    ancient_debris: true
+    gold: true
+    redstone: false
+
+  analysis:
+    min-ores-for-alert: 5
+    time-window-minutes: 10
+    suspicious-ratio: 0.7
+    min-blocks-mined: 100
+
+  vl:
+    max: 30
+    punish: 20
+    alert: 10
+
+  replace-with: STONE

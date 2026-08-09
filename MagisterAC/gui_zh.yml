@@ -1,0 +1,64 @@
+gui:
+  profile:
+    title: "&8档案: &b{player}"
+    size: 54
+    fill-item: "GRAY_STAINED_GLASS_PANE"
+    items:
+      head:
+        slot: 4
+        name: "&b{player}"
+        lore:
+          - "&7UUID: &f{uuid}"
+          - "&7版本: &f{version}"
+          - "&7延迟: &f{ping}ms"
+          - "&7可疑等级: &c{suspicion}%"
+        material: "PLAYER_HEAD"
+      violations:
+        slot: 19
+        name: "&c违规"
+        lore:
+          - "&7违规总数: &f{violations}"
+          - "&7点击查看"
+        material: "REDSTONE"
+      punishments:
+        slot: 20
+        name: "&e处罚"
+        lore:
+          - "&7处罚总数: &f{punishments}"
+          - "&7点击查看"
+        material: "IRON_AXE"
+      checks:
+        slot: 21
+        name: "&a检查历史"
+        lore:
+          - "&7检查总数: &f{checks}"
+          - "&7点击查看"
+        material: "PAPER"
+      pvp_stats:
+        slot: 22
+        name: "&6PvP 统计"
+        lore:
+          - "&7击杀: &f{kills}"
+          - "&7死亡: &f{deaths}"
+          - "&7K/D: &f{kd}"
+          - "&7平均 CPS: &f{avg_cps}"
+        material: "DIAMOND_SWORD"
+      xray_stats:
+        slot: 23
+        name: "&bXRay 统计"
+        lore:
+          - "&7钻石: &f{diamonds}"
+          - "&7绿宝石: &f{emeralds}"
+          - "&7远古残骸: &f{ancient_debris}"
+          - "&7金: &f{gold}"
+          - "&7红石: &f{redstone}"
+          - "&7XRay 等级: &c{xray_vl}"
+        material: "DIAMOND_ORE"
+
+  panel:
+    title: "&8MagisterAC &b— 控制面板"
+    size: 54
+
+  hud-editor:
+    title: "&8HUD 编辑器"
+    size: 54

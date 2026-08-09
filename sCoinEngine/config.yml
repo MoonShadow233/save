@@ -1,0 +1,22 @@
+# sCoinEngine Configuration
+
+# Set the language file to use from the 'langs' folder.
+# Default is 'en' (English). You can create your own (e.g., 'custom.yml').
+language: en
+
+# Database settings
+# Currently only 'SQLITE' is supported.
+database:
+  type: SQLITE
+
+# Settings for the leaderboard
+baltop:
+  # How many players to show per page
+  entries-per-page: 10
+  # Format for each line on the leaderboard (placeholders are in your lang file)
+  format: "&e#%rank% &7- &a%player%&7: &f%formatted_balance%"
+
+# This is the prefix used in most plugin messages.
+message-prefix: "&8[&6sCoinEngine&8] "
+
+# made by Saym. thanks for using our plugin

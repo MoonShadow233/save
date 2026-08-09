@@ -1,0 +1,39 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+flymode: false
+muted: false
+jailed: false
+ip-address: 192.168.0.41
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 1786288924843
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1786289630196
+  login: 1786288993593
+money: '0'
+last-account-name: LynOyo
+lastlocation:
+  world: 29e3d615-ff99-4638-ae48-2c9e44bc6835
+  world-name: spawn
+  x: 32.1221635179111
+  y: 61.203275093025496
+  z: 364.7035695168607
+  yaw: 176.50367736816406
+  pitch: 8.475503921508789
+logoutlocation:
+  world: 29e3d615-ff99-4638-ae48-2c9e44bc6835
+  world-name: spawn
+  x: -56.07250139046154
+  y: 80.5
+  z: 122.41280891136243
+  yaw: -77.77587890625
+  pitch: 44.12567138671875

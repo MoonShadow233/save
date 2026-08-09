@@ -1,0 +1,15 @@
+staff:
+  vanish-on-observe: true
+  fly-on-observe: true
+  hide-from-tab: true
+  no-collisions: true
+
+  frozen-player:
+    allowed-commands:
+      - "/ac"
+      - "/help"
+    blocked-teleport: true
+
+  notifications:
+    violation-sound: "ENTITY_EXPERIENCE_ORB_PICKUP"
+    violation-title: false

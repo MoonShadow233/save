@@ -1,0 +1,20 @@
+discord:
+  enabled: false
+  webhook-url: "https://discord.com/api/webhooks/YOUR_WEBHOOK_URL"
+
+  notifications:
+    violations: true
+    violations-min-vl: 10
+    checks: true
+    bans: true
+    watchlist-joins: true
+    high-vl: true
+    high-vl-threshold: 20
+
+  embed:
+    color-violation: 16711680
+    color-ban: 10038562
+    color-check: 16776960
+    color-watchlist: 16753920
+    footer: "MagisterAC | Professional AntiCheat"
+    thumbnail: "https://mc-heads.net/avatar/{player}"

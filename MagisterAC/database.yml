@@ -1,0 +1,25 @@
+database:
+  enabled: true
+  type: sqlite  # sqlite, mysql, mariadb
+
+  sqlite:
+    file: "magisterac.db"
+
+  mysql:
+    host: localhost
+    port: 3306
+    database: magisterac
+    username: root
+    password: password
+    ssl: false
+    pool-size: 10
+    connection-timeout: 30000
+
+  mariadb:
+    host: localhost
+    port: 3306
+    database: magisterac
+    username: root
+    password: password
+    pool-size: 10
+    connection-timeout: 30000

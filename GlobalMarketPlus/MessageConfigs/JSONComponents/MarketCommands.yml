@@ -1,0 +1,188 @@
+Simplified-Chinese:
+    'Market Help':
+        Placeholder: '%gmp_command_market_help%'
+        Text: '&2help'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp market help '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b关于 &c/gmp &6market &b的命令帮助'
+    'Market GUI':
+        Placeholder: '%gmp_command_market_gui%'
+        Text: '&2gui &7[商品类型] [页数]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market gui '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b打开全球市场主界面'
+            - '&b使用方法 &c/gmp &6market gui &7[商品类型] [页数]'
+    'Market Sell':
+        Placeholder: '%gmp_command_market_sell%'
+        Text: '&2sell [价格] &7[数量]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market sell '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b上架手中的物品'
+            - '&b使用方法 &c/gmp &6market sell [价格] &7[数量]'
+    'Market Buy':
+        Placeholder: '%gmp_command_market_buy%'
+        Text: '&2buy [定金] &7[数量]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market buy '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b以手中物品为根据发起同款物品的收购'
+            - '&b使用方法 &c/gmp &6market buy hand [定金] &7[数量]'
+    'Market Search':
+        Placeholder: '%gmp_command_market_search%'
+        Text: '&2search [参数]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market search '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b以特定的参数搜索商品'
+            - '&b使用方法 &c/gmp &6market search [参数]'
+    'Market Search Player':
+        Placeholder: '%gmp_command_market_search_player%'
+        Text: '&2player:[玩家名字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market search player:'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b商家的名字'
+    'Market Search Item':
+        Placeholder: '%gmp_command_market_search_item%'
+        Text: '&2item:[物品ID]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market search item:'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b物品的ID'
+    'Market Search Name':
+        Placeholder: '%gmp_command_market_search_name%'
+        Text: '&2name:[物品名字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market search name:'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b物品的名字'
+    'Market Search Description':
+        Placeholder: '%gmp_command_market_search_description%'
+        Text: '&2description:[物品描述]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market search description:'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b物品的描述（包含的文字）'
+    'Market Search Price':
+        Placeholder: '%gmp_command_market_search_price%'
+        Text: '&2price:[最小价格]:[最大价格]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market search price:'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b商品的价格范围'
+            - '&b如果只输入一个价格，则视为固定价格而非价格区间'
+    'Market Search Category':
+        Placeholder: '%gmp_command_market_search_category%'
+        Text: '&2category:[分类]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market search category:'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b物品所在的分类'
+    'Market Search Currency':
+        Placeholder: '%gmp_command_market_search_currency%'
+        Text: '&2currency:[货币单位]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market search currency:'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b商品所使用的货币单位'
+    'Market Search Type':
+        Placeholder: '%gmp_command_market_search_type%'
+        Text: '&2type:[商品类型]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market search type:'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b商品的类型（如出售、收购等）'
+    'Market Search Result':
+        Placeholder: '%gmp_command_market_search_result%'
+        Text: '&2result [页数]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market search result '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b打开查询结果页面'
+    'Market SellInventory':
+        Placeholder: '%gmp_command_market_sellinventory%'
+        Text: '&2sellInventory [价格]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market sellInventory '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b打开出售界面， 放置物品后可批量上架以目标价格进行出售'
+            - '&b使用方法 &c/gmp &6market sellInventory [价格]'
+    'Market BuyInventory':
+        Placeholder: '%gmp_command_market_buyinventory%'
+        Text: '&2buyInventory [定金]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp market buyInventory '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b打开收购界面， 放置物品后可批量上架以目标定金进行收购'
+            - '&b使用方法 &c/gmp &6market buyInventory [定金]'
+    'Market Edit':
+        Placeholder: '%gmp_command_market_edit%'
+        Text: '&6&l[点击编辑]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp merchandise gui {uid}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击编辑编号为 &e{uid} &5的商品'
+    'Market Transaction':
+        Placeholder: '%gmp_command_market_transaction%'
+        Text: '&8&l[&6&l点击打开交易界面&8&l]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp transaction gui {uid}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击打开编号为 &e{uid} &5的商品交易界面'

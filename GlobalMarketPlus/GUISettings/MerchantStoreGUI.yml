@@ -1,0 +1,228 @@
+Simplified-Chinese:
+    GUI-Title: '&8&l{target_storeName} &5&l| &9&l{page}&7&l/&9&l{maxpage}'
+    GUI-Size: 54
+    Allow-To-Return: true
+    Buttons-Label: false
+    Auto-Refresh:
+        Enabled: true
+        Delay: 0.5
+    Merchandise-Buttons:
+        Display-Item-Meta: true
+        Auto-Refresh: true
+        Lores:
+        - '!lores!'
+        - '&8&l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        - '  &f&l▶ &6商品类型: {type}'
+        - '  &f&l▶ &6商家名称: &a{player}'
+        - '  &f&l▶ &6商品价格: &e{displayPrice}￥'
+        - '  &f&l▶ &6零售价格: &e{displayRetailPrice}￥'
+        - '  &f&l▶ &6收支方式: &r{currency}'
+        - '  &f&l▶ &6上市时间: &3{uploadTime}'
+        - '  &f&l▶ &6到期时间: &c{expireTime}'
+        - '  &f&l▶ &6剩余时间: &d{expireTimeLeft}'
+        - '&8&l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+        - ''
+        - '&e点击打开交易页面'
+        Commands:
+        - 'gmp transaction gui {uid}'
+        Special-Click-Events:
+            'Right':
+                Commands:
+                - 'gmp merchandise gui {uid}'
+            'Shift_Left':
+                Refresh-GUI: true
+                Commands:
+                - 'gmp merchandise remove {uid}'
+        Location:
+            Slots-Of-X: [2, 3, 4, 5, 6, 7, 8]
+            Slots-Of-Y: [3, 4, 5]
+    Custom-Buttons:
+        '返回菜单':
+            Name: '&b&l返回上一个菜单'
+            Item: BOOK
+            Lores:
+            - ''
+            - '&e点击返回'
+            Commands:
+            - 'gmp gui back'
+            Location:
+                Slot-Of-X: 1
+                Slot-Of-Y: 1
+        '关闭界面':
+            Name: '&4&l关闭界面'
+            Item: RED_STAINED_GLASS_PANE
+            Lores:
+            - ''
+            - '&e点击关闭'
+            Close-GUI: true
+            Location:
+                Slot-Of-X: 9
+                Slot-Of-Y: 1
+        '背景黑板':
+            Name: '&f'
+            Item: BLACK_STAINED_GLASS_PANE
+            Location:
+                Slots: [2, 8, 10, 11, 12, 14, 15, 16, 17, 18, 19, 27, 28, 36, 37, 45, 47, 48, 52, 53]
+        '背景灰板':
+            Name: '&7空槽'
+            Item: LIGHT_GRAY_STAINED_GLASS_PANE
+            Lores:
+            - ''
+            - '&8&o等待新的商品上架...'
+            Location:
+                Slots-Of-X: [2, 3, 4, 5, 6, 7, 8]
+                Slots-Of-Y: [3, 4, 5]
+        '背景绿板':
+            Name: '&f'
+            Item: LIME_STAINED_GLASS_PANE
+            Options:
+            - 'HIDE_ENCHANTS'
+            Enchantments:
+            - UNBREAKING:10
+            Location:
+                Slot-Of-X: 4
+                Slot-Of-Y: 2
+        '个人邮箱':
+            Name: '&d&l个人邮箱'
+            Item: CHEST
+            Lores:
+            - ''
+            - '&e点击打开'
+            Commands:
+            - 'gmp mailbox gui {player}'
+            Location:
+                Slot-Of-X: 3
+                Slot-Of-Y: 1
+        '个人商店':
+            Name: '&3&l个人商店'
+            Item: ENDER_CHEST
+            Options:
+            - 'HIDE_ENCHANTS'
+            Enchantments:
+            - UNBREAKING:10
+            Lores:
+            - ''
+            - '&a已是当前页面'
+            Location:
+                Slot-Of-X: 4
+                Slot-Of-Y: 1
+        '个人档案':
+            Name: '&c个人档案'
+            Item: PLAYER_HEAD
+            Options:
+            - 'HIDE_ENCHANTS'
+            Enchantments:
+            - UNBREAKING:10
+            Head-Owner: '{player}'
+            Lores:
+            - '&8&l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &f&l▶ &6商家名字: &d{player}'
+            - '  &f&l▶ &6用户组名: &c{group}'
+            - '  &f&l▶ &6当前分类: &3{category}'
+            - '  &f&l▶ &6账户余额: &e{displayBalance}￥'
+            - '  &f&l▶ &6邮箱物品: &a{mails}件'
+            - '  &f&l▶ &6商品件数: &5{merchandises}件'
+            - '  &f&l▶ &6交易次数: &9{statistics_totalTransactionsNumber}次'
+            - '  &f&l▶ &6拍卖次数: &b{statistics_totalAuctionNumber}次'
+            - '&8&l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - ''
+            - '&e点击打开档案页面'
+            Commands:
+            - 'gmp profile gui {player}'
+            Location:
+                Slot-Of-X: 5
+                Slot-Of-Y: 1
+        '设置分类':
+            Name: '&5&l设置分类'
+            Item: ENCHANTING_TABLE
+            Lores:
+            - '&8&l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &c&l说明: &7只有特定权限组能使用'
+            - '  &7分类可用于指定查看商品、邮件等物品'
+            - ''
+            - '  &f&l▶ &6当前分类: {category}'
+            - '&8&l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - ''
+            - '&e点击打开设置界面'
+            Commands:
+            - 'gmp category gui {player}'
+            Location:
+                Slot-Of-X: 6
+                Slot-Of-Y: 1
+        '所有商店':
+            Name: '&9&l所有商店'
+            Item: COMPASS
+            Lores:
+            - ''
+            - '&e点击查看所有玩家商店'
+            Commands:
+            - 'gmp store list 1 GUI'
+            Location:
+                Slot-Of-X: 7
+                Slot-Of-Y: 1
+        '说明':
+            Name: '&e&l说明'
+            Item: MAP
+            Lores:
+            - '&8&l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            - '  &7这里是 &c&lGlobal&4&lMarket&6&lPlus &7的玩家市场界面，'
+            - '  &7当前页面是来自玩家 &e{player} &7的个人商店界面，'
+            - '  &7你可以在这里购买他人或出售自己的商品。'
+            - ''
+            - '  &7这里是一些基础的 &b&l命令帮助 &7:'
+            - '  &f&l▶ &c/market &6sell &8[&e价格&8] &8[数量] &5&l| &e出售手中的商品'
+            - '  &f&l▶ &c/market &6buy &8[&e定金&8] &8[数量] &5&l| &e发起手中物品的收购'
+            - '  &f&l▶ &c/market &6bid &8[&e价格&8] &8[数量] &5&l| &e发起新的拍卖'
+            - ''
+            - '  &7本界面的 &a&l操作按键 &7说明:'
+            - '  &f&l▶ &6左键单击: &b跳转到购买界面'
+            - '  &f&l▶ &6Shift+左键: &b移除商品&7（无权限者仅能移除自己的商品）'
+            - '  &f&l▶ &6右键单击: &b打开商品编辑页面&7（无权限者仅能操作自己的商品）'
+            - '&8&l▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬'
+            Location:
+                Slot-Of-X: 1
+                Slot-Of-Y: 6
+        '上一页':
+            Name: '&a&l上一页'
+            Item: ARROW
+            Lores:
+            - ''
+            - '&e点击打开第 &a{previousPage} &e页'
+            Commands:
+            - 'gmp store view {target_player} {previousPage}'
+            Location:
+                Slot-Of-X: 4
+                Slot-Of-Y: 6
+        '刷新':
+            Name: '&6&l刷新'
+            Item: SUNFLOWER
+            Lores:
+            - ''
+            - '&e点击刷新'
+            Refresh-GUI: true
+            Location:
+                Slot-Of-X: 5
+                Slot-Of-Y: 6
+        '下一页':
+            Name: '&a&l下一页'
+            Item: ARROW
+            Lores:
+            - ''
+            - '&e点击打开第 &a{nextPage} &e页'
+            Commands:
+            - 'gmp store view {target_player} {nextPage}'
+            Location:
+                Slot-Of-X: 6
+                Slot-Of-Y: 6
+        '打开市场':
+            Name: '&c&l打开全球市场'
+            Item: PLAYER_HEAD
+            Head-Textures: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDdjYzY2ODc0MjNkMDU3MGQ1NTZhYzUzZTA2NzZjYjU2M2JiZGQ5NzE3Y2Q4MjY5YmRlYmVkNmY2ZDRlN2JmOCJ9fX0='
+            Lores:
+            - ''
+            - '&e点击打开'
+            Commands:
+            - 'gmp market gui'
+            Location:
+                Slot-Of-X: 9
+                Slot-Of-Y: 6

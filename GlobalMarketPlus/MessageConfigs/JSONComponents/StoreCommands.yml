@@ -1,0 +1,233 @@
+Simplified-Chinese:
+    'Store Help':
+        Placeholder: '%gmp_command_store_help%'
+        Text: '&2help'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp store help'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b关于 &c/gmp &6store &b的命令帮助'
+    'Store View':
+        Placeholder: '%gmp_command_store_view%'
+        Text: '&2view &7[玩家] [页数]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp store view'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b查看自己或他人的商店界面'
+            - '&b使用方法 &c/gmp &6store view &7[玩家] [页数]'
+    'Store List':
+        Placeholder: '%gmp_command_store_list%'
+        Text: '&2list &7[页数] GUI'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp store list'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出所有的商店'
+            - '&b使用方法 &c/gmp &6store list &7[页数] GUI'
+    'Store Info':
+        Placeholder: '%gmp_command_store_info%'
+        Text: '&2info &7[玩家] [页数]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp store info'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b查看自己或他人的商店信息'
+            - '&b使用方法 &c/gmp &6store info &7[玩家] [页数]'
+    'Store Style':
+        Placeholder: '%gmp_command_store_style%'
+        Text: '&2style'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp store style'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b商店风格综合命令'
+            - '&b使用方法 &c/gmp &6store style'
+    'Store Style Use':
+        Placeholder: '%gmp_command_store_style_use%'
+        Text: '&2use [风格] &7[玩家]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp store style use '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b使用某个商店风格'
+            - '&b使用方法 &c/gmp &6store style use [风格] &7[玩家]'
+    'Store Style Reset':
+        Placeholder: '%gmp_command_store_style_reset%'
+        Text: '&2reset &7[玩家]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp store style reset'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b重置商店风格'
+            - '&b使用方法 &c/gmp &6store style reset &7[玩家]'
+    'Store Style List':
+        Placeholder: '%gmp_command_store_style_list%'
+        Text: '&2list &7[页数]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp store style list'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b列出所有可用的商店风格'
+            - '&b使用方法 &c/gmp &6store style list &7[页数]'
+    'Store Style List PreviousPage':
+        Placeholder: '%gmp_command_store_style_list_previous%'
+        Text: '&b&l上一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp store style list {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到上一页'
+            - '&7当前页数: &e{page}'
+            - '&7上一页: &e{previousPage}'
+    'Store Style List NextPage':
+        Placeholder: '%gmp_command_store_style_list_next%'
+        Text: '&b&l下一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp store style list {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到下一页'
+            - '&7当前页数: &e{page}'
+            - '&7下一页: &e{nextPage}'
+    'Store Style Create':
+        Placeholder: '%gmp_command_store_style_create%'
+        Text: '&2create [名字] &7[权限]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp store style create '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b创建一个新的商店风格'
+            - '&b使用方法 &c/gmp &6store style create [名字] &7[权限]'
+    'Store Style Delete':
+        Placeholder: '%gmp_command_store_style_delete%'
+        Text: '&2delete [名字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp store style delete '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b删除指定的的商店风格'
+            - '&b使用方法 &c/gmp &6store style delete [名字]'
+    'Store Style View':
+        Placeholder: '%gmp_command_store_style_view%'
+        Text: '&2view [名字]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp store style view '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b查看某个商店风格的视图'
+            - '&b使用方法 &c/gmp &6store style view [名字]'
+    'Store Style View Layout':
+        Placeholder: '%gmp_command_store_style_view_layout%'
+        Text: '&b[查看视图]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp store style view {style}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击查看 &e{style} &5的视图'
+    'Store Info SwitchState':
+        Placeholder: '%gmp_command_store_info_close%'
+        Text: '&8[&5&l切换状态&8]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp profile set storeclosed switch'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击切换商店状态'
+    'Store Info Merchandise':
+        Placeholder: '%gmp_command_store_info_merchandise%'
+        Text: '&8[&e&l商品编辑&8]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp merchandise gui {uid}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击打开商品编号 &e{uid} &5的编辑页面'
+    'Store Info PreviousPage':
+        Placeholder: '%gmp_command_store_info_previous%'
+        Text: '&b&l上一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp store info {player} {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到上一页'
+            - '&7当前页数: &e{page}'
+            - '&7上一页: &e{previousPage}'
+    'Store Info NextPage':
+        Placeholder: '%gmp_command_store_info_next%'
+        Text: '&b&l下一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp store info {player} {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到下一页'
+            - '&7当前页数: &e{page}'
+            - '&7下一页: &e{nextPage}'
+    'Store List View':
+        Placeholder: '%gmp_command_store_list_view%'
+        Text: '&8[&e&l打开商店&8]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp store view {player}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5打开玩家 &e{player} &5的商店'
+    'Store List PreviousPage':
+        Placeholder: '%gmp_command_store_list_previous%'
+        Text: '&b&l上一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp store list {previousPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到上一页'
+            - '&7当前页数: &e{page}'
+            - '&7上一页: &e{previousPage}'
+    'Store List NextPage':
+        Placeholder: '%gmp_command_store_list_next%'
+        Text: '&b&l下一页'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp store list {nextPage}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击转到下一页'
+            - '&7当前页数: &e{page}'
+            - '&7下一页: &e{nextPage}'

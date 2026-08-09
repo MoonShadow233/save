@@ -1,0 +1,18 @@
+replay:
+  enabled: true
+  storage-path: "replays"
+  max-storage-mb: 500
+
+  durations:
+    - 5
+    - 10
+    - 30
+
+  record:
+    movements: true
+    rotations: true
+    interactions: true
+    blocks: true
+    packets: false
+
+  auto-cleanup-days: 30

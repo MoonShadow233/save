@@ -1,0 +1,48 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+flymode: true
+muted: false
+jailed: false
+ip-address: 192.168.0.101
+afk: true
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 1786291827352
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1786287092973
+  login: 1786287161843
+money: '1000600.0'
+last-account-name: ShiveKey
+logoutlocation:
+  world: 29e3d615-ff99-4638-ae48-2c9e44bc6835
+  world-name: spawn
+  x: -16.190968960569492
+  y: 84.0
+  z: 47.44824965901087
+  yaw: -1.59417724609375
+  pitch: 43.74309539794922
+lastlocation:
+  world: 29e3d615-ff99-4638-ae48-2c9e44bc6835
+  world-name: spawn
+  x: -54.903097060917126
+  y: 82.5
+  z: 122.6620997444327
+  yaw: 141.01995849609375
+  pitch: 17.863080978393555
+homes:
+  home:
+    world: 09be0b0d-73f1-4ec1-8b4f-106e18d86e8e
+    world-name: world
+    x: 49995.23837029085
+    y: 66.0
+    z: 49962.39873458136
+    yaw: -10.88613510131836
+    pitch: 11.10533332824707

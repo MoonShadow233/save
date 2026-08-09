@@ -1,0 +1,24 @@
+prefix: "&8[&bMagisterAC&8]&r"
+debug: false
+# Plugin language for all user-facing text.
+# Supported: ru (Russian), en (English), de (German), zh (Chinese), es (Spanish), ar (Arabic), uk (Ukrainian), pl (Polish).
+# "auto" follows the language built into this jar (e.g. MagisterAC-de.jar -> German).
+# Setting a concrete code here always overrides the jar's built-in language.
+language: zh
+
+server:
+  name: "My Server"
+  timezone: "Europe/Moscow"
+
+notifications:
+  violation-threshold: 10
+  alert-cooldown: 3000
+
+checks:
+  enabled: true
+  global-bypass-permission: "magisterac.bypass"
+
+log:
+  violations: true
+  joins: true
+  commands: true

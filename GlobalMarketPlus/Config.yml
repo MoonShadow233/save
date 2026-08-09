@@ -1,0 +1,432 @@
+#插件前缀
+Prefix: '&c&lGlobal&4&lMarket&6&lPlus &f&l>>> '
+
+#插件语言
+#可用语言: Simplified-Chinese（简体中文）、Traditional-Chinese（繁體中文）、English
+Language: Simplified-Chinese
+
+#货币系统设置
+Economy-Settings:
+    #默认货币系统，用于获取与判断玩家在全球市场的账户余额
+    #以下为可选的货币模式: 
+    #  1. Default: 插件自带的货币系统（命令为/gmp money）
+    #  2. Vault: 以Vault插件作为经济前置的插件（例如Essentials、CMI等）
+    #  3. PlayerPoints: 经典点数经济插件
+    Default-Currency-System: Vault
+    #是否启用多货币模式
+    #启用后，玩家可自己选择以哪款货币系统作为商品的价格单位
+    #注意，若启用该选项，“默认货币模式”将不可再使用“Default”，请更改为其他货币系统
+    Multiple-Currencies-System: false
+    #多货币模式对应的各个插件的开关
+    #此功能仅在启用上方Multiple-Currencies-System选项时生效
+    Multiple-Currencies-System-List:
+        Vault: true
+        PlayerPoints: true
+    #多货币对应的符号（也可以是其它的词语）
+    #用于在上架商品时快速识别对应货币，无需再经过手动设置目标货币系统
+    #例：当下方设置Vault: "$" 时，"/market sell 100$" 可直接被识别为以Vault为货币单位上架商品
+    #例：当下方设置PlayerPoints: "金币" 时，"/market sell 100金币" 可直接被识别为以PlayerPoints为货币单位上架商品
+    #此功能仅在启用上方Multiple-Currencies-System选项时生效
+    Multiple-Currencies-Symbols:
+        Vault: "$"
+        PlayerPoints: "€"
+    #分隔服务器（对市场上的商品生效）
+    #启用该选项后，交易与拍卖的钱将发往上架时商家所在服务器的商家账户中
+    #例如，如果商家在Server1上架了商品，买家在Server2购买了商品，那么钱将发往Server1的商家的账户中，而不是Server2的商家账户中
+    Separate-Servers:
+        Enabled: false
+        #当前服务器的名字（不能与其他服务器重复）
+        Server-Name: Server1
+    #经济系统管理员列表，支持填写玩家名字或UUID
+    #在此列表中的玩家将不会进行余额操作与新增邮件，
+    #通常只有将某个商家作为系统商店的时候需要将商家名写入此列表中。
+    Operators: []
+
+#PlaceholderAPI设置
+PlaceholderAPI:
+    #是否使用
+    Enabled: true
+    #占位符缓存更新的延迟（秒）
+    #由于部分占位符需要不断地读取数据库的数据，
+    #此选项用于防止频繁调用PAPI占位符对数据库IO造成的巨大负担
+    Cache-Update-Delay: 10.0
+    #例外的占位符（不进行缓存的）
+    Exceptions: 
+    #指%gmpapi_merchant_balance%
+    - 'merchant_balance'
+
+#日志记录器（设为false则不记录）
+#本功能可用于记录插件所有数据库数据的操作记录
+#例如全球市场的交易记录、邮件来往、转账记录等
+#使用命令: /gmp admin recorder 可查看所有记录
+Recorder:
+    #邮件交互（玩家发送、商品到期下架等邮件）
+    Mail-Exchange: true
+    #邮件签收（玩家领取、管理员领取）
+    Mail-Pickup: true
+    #商品下架（玩家下架、管理员下架）
+    Merchandise-Remove: true
+    #商品上架（玩家上架）
+    Merchandise-Upload: true
+    #转账记录（仅使用本插件的/gmp money 、/money 命令时有效）
+    #若使用其他的货币系统， 可以禁用其他插件的转账命令权限， 只允许玩家使用本插件的转账命令
+    Payment: true
+    #商品交易
+    Transaction: true
+    #拍卖交易
+    Auction: true
+    #余额变动
+    Balance-Change: true
+    #删除过时记录（每次启动服务端后执行删除）
+    Delete-Outdated-Records:
+        #是否启用
+        Enabled: true
+        #过时时间（超过这个时间会被自动删除）
+        Outdate-Time: 60d
+    
+#文本元件开关设置
+#文本元件指的是关于本插件在处理一切与显示类文字相关时所执行的文字处理函数，
+#运行时会产生额外的运算，文本量少时可忽略不计，但文本内容量特别大的时候可能有明显性能差异。
+#你可以在这里选择性启用它们。
+Text-Components:
+    #是否启用消息元件 (详见官方 Wiki -> 消息元件)
+    Message-Components: false
+    #颜色组件
+    Color-Components:
+        #16进制颜色代码（RGB）解析
+        #格式: #[R值][G值][B值]
+        #示例: "#FF0000 这里是示例文本"
+        Hex-Color-Parser: true
+        #多功能颜色标签解析
+        #目前可以使用的颜色标签有: 
+        #1. 颜色标签: <color:[颜色]>、<[颜色]>
+        #   示例: <color:dark_red>、<color:#FF0000>
+        #2. 颜色渐变: <gradient:[颜色]:[颜色]:...> (需要2个及以上颜色)
+        #   示例: <gradient:#0000FF:#FF0000>、<gradient:red:green:blue>
+        #3. 颜色转换: <transition:[颜色]:[颜色]:...:[值]> (需要两个及以上颜色，值的范围只能是0到1之间的任意小数)
+        #   示例: <transition:#0000FF:#FF0000:0.5>、<transition:red:green:blue:0.8>
+        #4. 彩虹效果: <rainbow>、<rainbow:[偏移值]>
+        #注: 
+        #   [颜色] 可以是 颜色名(例如red)、字体类型(例如underline)、颜色代号(例如&a、a)、16进制颜色符号(例如#FF0000)，
+        #   如果标签闭合（<标签名>[文本]</标签名>）则仅对闭合范围内文本进行染色。
+        #   1.7.10 - 1.15.2 服务器版本下使用了官方16色以外的颜色时，会被自动转换成最接近的官方16色。
+        Functional-Color-Parser: true
+
+#序列化设置
+#序列化指的是将对象的状态信息转换为可以存储或传输的形式的过程，
+#本插件的各项储存数据，例如商品数据、商家档案等对象都需要序列化成JSON后再储存至数据库中。
+#注意：若启用了MySQL模式且多个服务端连接到同一个MySQL，以下设置需要同步，否则可能出现意料之外的问题。
+Serialization-Settings:
+    #是否启用各项序列化对象的Unicode解析器
+    #启用后，对应的可序列化对象将在储存和读取数据时对除英文字母、数字、符号（英文）以外的一切特殊字符进行Unicode编码。
+    #并在反序列化时对Unicode字符串进行解码，以避免因特殊字符产生的乱码影响插件数据的操作。
+    #特殊字符指的是例如中文、特殊ASCII符号、图形符号等。
+    Unicode-Parser: 
+        #市场上的商品（物品数据）
+        GlobalMarket: false
+        #商家档案（个人信息、商店设置、权限组等）
+        Merchant: false
+        #玩家邮箱
+        Mailbox: false
+        #记录器
+        Recorder: false
+    
+#异步线程的设置
+#若不清楚这什么是异步线程，请不要修改这个选项！
+Async-Thread-Settings: 
+    #更新执行器的执行延迟（单位是秒，可以有小数）
+    #主要处理动态GUI、邮件和商品的状态更新
+    #例如检测商品是否过期，过期了就自动下架
+    Updater-Thread-Delay: 1.0
+    #任务执行器的执行延迟（单位是秒，可以有小数）
+    #主要处理提交的新任务（主要是命令、事件、数据库IO操作等任务）
+    Task-Thread-Delay: 0.05
+    #是否启用全局异步任务
+    #启用后，插件中的各个任务将自动基于其性能开销智能切换线程运行。
+    #注: 该功能在数据量大、启用了外部数据库的情况下效果显著，
+    #    但会导致部分功能的响应速度偏慢。（例如一些命令会有较高的执行延迟）
+    #    推荐启用的情况：
+    #    - 插件数据量较大（例如上百个商品在售、注册玩家较多的情况）
+    #    - 启用了外部数据库或跨服数据同步（通过MySQL使多个服务端同步数据）
+    #    可不启用的情况：服务器内人较少 & 商品较少 & 默认储存模式
+    Global-Async-Task: true
+
+#SQLite 数据储存设置（默认）
+SQLite-Storage:
+    #数据库文件名
+    Database-File: 'Database.db'
+    #数据库文件夹路径（不可以多个服务器使用同一个数据库文件）
+    Database-Path: 'plugins/GlobalMarketPlus'
+    #数据表名称
+    Tables:
+        GlobalMarket: GlobalMarket
+        Merchant: Merchant
+        Mailbox: Mailbox
+        Recorder: Recorder
+    #多数据库储存模式，用于把不同类型的数据区分为多个数据库文件
+    #与默认储存模式的区别在于，默认所有数据都会存入同一个数据库中
+    #而此功能可以将不同类型的数据区分拆分为不同的数据库文件进行储存
+    Multi-Storage:
+        Enabled: true
+        #数据库文件夹路径
+        Database-Path:
+            GlobalMarket: 'plugins/GlobalMarketPlus'
+            Merchant: 'plugins/GlobalMarketPlus'
+            Mailbox: 'plugins/GlobalMarketPlus'
+            Recorder: 'plugins/GlobalMarketPlus/Database'
+        #数据库文件名称（允许不同的数据类型储存使用同一个数据库文件）
+        Database-File:
+            GlobalMarket: 'Database.db'
+            Merchant: 'Database.db'
+            Mailbox: 'Database.db'
+            Recorder: 'Recorder.db'
+
+#分裂储存，可将不同类型的数据分为不同的储存模式
+Split-Storage:
+    Enabled: false
+    #数据库类型
+    #可选: SQLite（本地数据库）、MySQL（联网数据库）
+    Database-Type:
+        GlobalMarket: MySQL
+        Merchant: MySQL
+        Mailbox: MySQL
+        Recorder: SQLite
+
+#MySQL 数据库设置
+#提示：如果数据存储出现了乱码、序列化失败导致无法保存、读取数据等问题，
+#可以尝试启用上方的“Serialization-Settings”选项中的“Unicode-Parser”的各选项，作用详见对应选项注释说明。
+MySQL-Storage:
+    #是否启用（若分裂储存启用且填写数据库类型为MySQL，将自动启用MySQL）
+    Enabled: false
+    #主机名
+    Hostname: localhost
+    #端口
+    Port: 3306
+    #用户名
+    Username: 'root'
+    #密码
+    Password: 'password'
+    #数据库名称（将自动创建数据库，无需手动创建）
+    Database: 'GlobalMarketPlus'
+    #连接超时时间
+    Wait-Timeout: 18000
+    #自动刷新缓存（单位: 秒）
+    #若有多个MC服务器共用同一个MySQL，建议启用
+    #Tip: 进行数据库操作时会自动刷新缓存（商品交易、发送邮件等）
+    #     改为 -1 即为不刷新
+    Auto-Refresh:
+        Enabled: false
+        GlobalMarket: 5.0
+        Merchant: 5.0
+        Mailbox: 5.0
+    #数据表名称
+    Tables:
+        GlobalMarket: GlobalMarket
+        Merchant: Merchant
+        Mailbox: Mailbox
+        Recorder: Recorder
+        MessageChannel: MessageChannel
+    #连接参数，如果你不是一名开发者，并且不熟知JDBC，请不要修改它
+    Options:
+        useSSL: false
+        useUnicode: true
+        allowMultiQueries: true
+        allowPublicKeyRetrieval: true
+        characterEncoding: 'utf8'
+        autoReconnect: true
+    #多数据库储存模式，用于把不同类型的数据区分为多个数据库
+    #与默认储存模式的区别在于，默认所有数据都会存入同一个数据库中
+    #而此功能可以将不同类型的数据区分拆分为不同的数据库进行储存
+    Multi-Storage:
+        Enabled: false
+        Databases:
+            GlobalMarket: GlobalMarketPlus_GlobalMarket
+            Merchant: GlobalMarketPlus_Merchant
+            Mailbox: GlobalMarketPlus_Mailbox
+            Recorder: GlobalMarketPlus_Recorder
+            MessageChannel: GlobalMarketPlus_MessageChannel
+
+#多服务器消息频道
+#该功能需要启用MySQL储存模式，并且消息频道下的服务器需要连接到同一个MySQL服务器。
+#你可以在任意消息文本里加入“!broadcast!”的标签使当前文本成为广播消息。
+#示例：
+#Text: '这条文本只能够被当前服务器看到'
+#Text: '!broadcast!这条文本可以被启用多服务器消息频道的服务器看到'
+Multi-Server-Message-Channel:
+    #是否启用该功能
+    Enabled: false
+    #消息刷新间隔
+    Refresh-Time: 5s
+    #服务器名字（不可与其他服务器重名）
+    Server-Name: 'Server1'
+    #服务器展示名字（被广播的消息设置中可以加入占位符{serverName}以显示消息来自哪个服务器）
+    Server-Display-Name: '&7[&6市场广播一号&7]'
+    #是否广播至控制台
+    Broadcast-To-Console: false
+    #消息过期时间（过期消息会被自动从数据库中删除）
+    Expiration-Time: 30s
+    #检查过期消息的间隔（设置为-1即为不检查，通常只要有其中一个服务端设置了该过期检查时间即可）
+    Check-Interval: 30s
+    #服务器列表（可选，填入所有参与广播的服务器的名字，用于判定消息是否已经被全部服务器处理并自动删除）
+    Server-List: []
+    #广播消息配置路径
+    #在此处填入 [配置文件名:文本路径]，可以使该消息块成为广播消息。
+    #注意：部分占位符可能无法生效！
+    #示例：
+    #Broadcast-Messages-Config-Path:
+    #- 'Messages.yml:Command-Messages.Help' #使Messages.yml文件中路径为Command-Messages.Help的消息成为广播消息
+    Broadcast-Messages-Config-Path: []
+
+#进入服务器后的命令冷却（单位：秒）
+#玩家进入服务器后需要等待多少秒才能够使用本插件的命令
+Commands-Cooldown-After-Login: 3
+
+#是否启用全部GUI里的按钮标签
+#该功能将会在Lore上为每个GUI中的按钮添加上识别码，
+#以防止玩家在特殊环境或模组的影响下将GUI内的按钮取出至背包中。
+#建议模组服务器、插件较为混杂的服务器启用该选项
+#你也可以在GUI设置中启用“Buttons-Label”选项以单独对某个GUI生效
+Enabled-All-GUI-Buttons-Label: false
+
+#执行命令的冷却（单位：秒）
+#在这里写上需要添加冷却的子命令，可以防止玩家频繁执行命令
+Commands-Cooldown:
+    Enabled: true
+    #命令列表，格式为：“[命令]:[冷却时间]”
+    List:
+    - 'mailbox pickup': 5.0
+    - 'mailbox send': 5.0
+    - 'mailbox delete': 1.0
+    - 'market sell': 1.0
+    - 'market buy': 1.0
+    - 'market bid': 1.0
+    - 'market sellinventory': 3.0
+    - 'market buyinventory': 3.0
+    - 'transaction confirm': 1.0
+    - 'auction start': 1.0
+    - 'auction bid': 1.0
+    - 'auction confirm': 1.0
+    - 'money pay': 1.0
+    - 'category set': 1.0
+    - 'profile set': 1.0
+    
+#模块开关（功能开关）
+#你可以选择禁用一些不需要的功能模块
+#此选项不会影响到其他插件的使用，仅能控制本插件的功能
+Module-Switches:
+    #全球市场（命令/gmp market）
+    GlobalMarket: true
+    #玩家邮箱（命令/gmp mailbox）
+    #若“全球市场”模块开启，此模块也会自动开启
+    Mailbox: true
+    #记录器（命令/gmp admin recorder）
+    Recorder: true
+    #玩家档案（命令/gmp profile）
+    #若“全球市场”模块开启，此模块也会自动开启
+    Profile: true
+    #余额操作（命令/gmp money）
+    #若“玩家档案”模块关闭，请使用其他插件的货币系统
+    Money: true
+    #自定义GUI（命令/gmp gui）
+    #不包含其他模块自带的GUI
+    Custom-GUI: true
+    #牌子商店（在配置文件SignStore.yml中设置相关参数）
+    Sign-Store: false
+
+#数据管理设置
+#配合命令/gmp admin database 使用
+Database-Management:
+    #备份
+    Backup:
+        #是否开启自动备份（每一次服务器关闭时进行）
+        Auto-Backup: false
+        #自动备份的类型（默认备份市场）
+        #备份类型可以是ALL（全部）, GLOBALMARKET（全球市场）, MERCHANT（商家/玩家数据）, MAILBOX（邮件）, RECORDER（记录器）
+        Auto-Backup-Types:
+        - GLOBALMARKET
+        #备份文件夹路径（不可以包含以下字符: * " ? : > < |）
+        Backup-Folder-Path: 'plugins/GlobalMarketPlus/Database/Backup/'
+        #备份文件名称（不可以包含以下字符: * " ? : > < |）
+        Backup-File: 'Backup-{types}-{time}'
+        #时间格式（不可以包含以下字符: * " ? : > < |）
+        Time-Format: 'yyyy-MM-dd-HH-mm-ss'
+    #回档
+    RollBack:
+        #备份文件夹路径（将从此处选择备份文件进行回档）
+        Backup-Folder-Path: 'plugins/GlobalMarketPlus/Database/Backup/'
+        #执行回档前，是否先进行备份
+        Rollback-With-Backup: true
+    #下载
+    Download:
+        #时间格式（不可以包含以下字符: * " ? : > < |）
+        Time-Format: 'yyyy-MM-dd-HH-mm-ss'
+        #下载的文件的目录（不可以包含以下字符: * " ? : > < |）
+        Download-Folder-Path:
+            GlobalMarket: 'plugins/GlobalMarketPlus/Database/Downloads/GlobalMarket/'
+            Merchant: 'plugins/GlobalMarketPlus/Database/Downloads/Merchant/'
+            Mailbox: 'plugins/GlobalMarketPlus/Database/Downloads/Mailbox/'
+        #下载的文件名（不可以包含以下字符: * " ? : > < |）
+        Download-File: 
+            GlobalMarket: 'UID={uid}-{time}.yml'
+            Merchant: '{name}-{uuid}.yml'
+            Mailbox: '{name}-{uuid}.yml'
+    #上传
+    Upload:
+        #当数据库中不存在与上传的文件的标识码相匹配的数据时，是否重新写入
+        #例如欲上传名为Player的玩家档案，而数据库中不存在这个玩家，则新建并使用上传的这份数据
+        Rewrite: true
+        #下载的文件的目录（不可以包含以下字符: * " ? : > < |）
+        #执行上传命令后，将从这个路径中选择文件进行上传
+        Download-Folder-Path:
+            GlobalMarket: 'plugins/GlobalMarketPlus/Database/Downloads/GlobalMarket/'
+            Merchant: 'plugins/GlobalMarketPlus/Database/Downloads/Merchant/'
+            Mailbox: 'plugins/GlobalMarketPlus/Database/Downloads/Mailbox/'
+    #清空数据库
+    Clear:
+        #是否在清除数据前下载一份数据到本地作为备份
+        Backup-Before-Cleaning: true
+        #是否在清空数据库前备份
+        Backup-Before-Cleaning-All: true
+    
+#命令延迟
+#当玩家执行命令后，命令会进入延迟，并在延迟后重新检查玩家在线状态再执行命令。
+#此选项用于防止玩家触发只有某些特殊环境下存在的Bug，建议在开发者的帮助下使用。
+Commands-Delay:
+    Enabled: false 
+    #命令列表，格式为：“[命令]:[延迟时间刻]”
+    #服务器的1刻=20秒，会受服务器卡顿影响
+    List:
+    - 'mailbox pickup': 40
+    - 'mailbox send': 40
+    - 'market sell': 40
+    - 'market buy': 40
+    - 'market bid': 40
+    - 'transaction confirm': 40
+    - 'auction start': 40
+    - 'auction confirm': 40
+
+    
+#是否自动更新物品显示名字
+#启用后，当启动服务器时如果Items.yml文件内不包含当前选定的语言时，将自动从MojangAPI下载对应的语言。
+#该功能依附于命令 /gmp admin updateItemDisplayName，详见该命令的使用帮助。
+Auto-Update-Item-Display-Name: true
+    
+#是否检查更新
+#仅在启动服务器时运行，将自动检测插件的最新版本及信息，并汇报给控制台及有拥有对应权限的玩家
+#此功能并不会造成服务器产生过多流量（每次检测产生约不到1kb网络流量）
+#注意: 某些旧版本可能会在某个版本更新后被禁用！
+Updater: true
+
+#是否启用Metrics
+#详见https://bstats.org/plugin/bukkit/GlobalMarketPlus/
+Metrics: true
+
+#物品的序列化方法
+#部分模组服务器中无法正常序列化模组物品，因此插件对部分核心做了特殊兼容以解决问题
+#此选项一般不需要修改，如有以上情况，请在工作人员或帮助文档的指示下进行修改
+#更改此选项后可能会导致现有的所有物品数据不再可用，因此建议在初始化插件时修改
+#设置参考:
+#    Bukkit/Spigot 系列的插件端核心: DEFAULT
+#    CatServer/Arclight 等其他混合核心: DEFAULT
+#    Crucible: io.github.crucible.util.ItemUtil
+Item-Serialization-Method: DEFAULT

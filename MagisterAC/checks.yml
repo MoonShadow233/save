@@ -1,0 +1,287 @@
+# ════════════════════════════════════════════════════════════════════════════
+#  MagisterAC — check configuration
+#
+#  Every check below is ENABLED BY DEFAULT (enabled: true). Set enabled: false on
+#  any check to turn it off. Categories: combat, movement, world, packet.
+#
+#  ProtocolLib: MOST checks use plain Bukkit events and need NOTHING extra. Only
+#  these PACKET checks require the ProtocolLib plugin and are silently inactive
+#  without it:
+#      packet.badpackets, packet.timer, packet.blink,
+#      packet.pingspoof, packet.antibot, packet.antidisabler
+#  (combat.phantomtrap also needs ProtocolLib.) Everything else — including
+#  packet.freecam and packet.replaymod — works WITHOUT ProtocolLib.
+# ════════════════════════════════════════════════════════════════════════════
+combat:
+  killaura:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+    rotations-per-tick: 3
+    # Max angle (degrees) between the player's look direction and the target.
+    # Vanilla combat is always well under this; a larger angle means the player
+    # hit something they were not aiming at — the classic KillAura tell.
+    max-angle: 60.0
+    # Distinct OTHER entities a player may hit inside one short window before the
+    # multi-aura signal fires (vanilla PvP can only hit one target at a time).
+    max-targets-per-window: 1
+    # Internal strikes required before an attack is actually cancelled (a clean
+    # hit decays this), so a single false positive never blocks legit combat.
+    cancel-vl: 2
+  reach:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+    max-reach: 3.2
+    max-reach-creative: 5.0
+    # VL buffer before flagging (absorbs single-tick lag spikes).
+    vl-threshold: 2
+  aimassist:
+    enabled: true
+    max-vl: 25
+    punish-vl: 20
+    cancel: false
+    deviation-threshold: 0.15
+    # Rotation-GCD heuristic (combat only). Flags unquantised (cheat-injected)
+    # rotations. Alert-first: high punish-vl, no cancel. Tune gcd-min up if noisy.
+    gcd-enabled: true
+    gcd-min: 0.0006
+    gcd-streak: 6
+  autoclicker:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: false
+    max-cps: 20
+    min-tick-diff: 2
+  triggerbot:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+    react-time-threshold: 40
+  criticals:
+    enabled: true
+    max-vl: 15
+    punish-vl: 10
+    cancel: true
+  velocity:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+    min-velocity-percent: 70
+    # Consecutive missed-knockback ticks before flagging (lag tolerance).
+    vl-threshold: 3
+  hitbox:
+    enabled: true
+    max-vl: 15
+    punish-vl: 10
+    cancel: true
+    expand: 0.1
+  # Phantom trap (KillAura/Aimbot). Staff-armed only, via the player panel.
+  # Spawns an invisible fake player behind the suspect (ProtocolLib required);
+  # attacking it raises a KillAura "PhantomHit" alert. Manual review only — never auto-bans.
+  phantomtrap:
+    enabled: true
+    distance: 2.0
+    despawn-seconds: 8
+
+movement:
+  fly:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+    max-y-speed: 0.42
+  speed:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+    max-speed-multiplier: 0.3
+  nofall:
+    enabled: true
+    max-vl: 15
+    punish-vl: 10
+    cancel: true
+    min-fall-distance: 3.0
+  jesus:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+  spider:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+  step:
+    enabled: true
+    max-vl: 15
+    punish-vl: 10
+    cancel: true
+    max-step-height: 0.6
+  glide:
+    enabled: true
+    max-vl: 15
+    punish-vl: 10
+    cancel: true
+  elytrafly:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+    max-elytra-speed: 1.5
+  # GroundSpoof — client claims onGround=true with no block beneath it.
+  # Alert-first: high punish-vl, no cancel (cancelling could rubber-band on lag).
+  groundspoof:
+    enabled: true
+    max-vl: 30
+    punish-vl: 25
+    cancel: false
+    vl-threshold: 5
+  # NoSlow — keeping (near) full speed while using an item (eat/drink/bow/shield).
+  noslow:
+    enabled: true
+    max-vl: 30
+    punish-vl: 25
+    cancel: false
+    use-speed-factor: 0.36
+    vl-threshold: 4
+  # Sprint — omnidirectional sprint (moving backward) or sprinting while using an item.
+  sprint:
+    enabled: true
+    max-vl: 30
+    punish-vl: 25
+    cancel: false
+    min-forward-dot: -0.6
+    vl-threshold: 4
+
+world:
+  scaffold:
+    enabled: true
+    max-vl: 25
+    punish-vl: 20
+    cancel: true
+    min-place-time: 50
+  fastbreak:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+  fastplace:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+    max-place-per-second: 10
+  nuker:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+    max-blocks-per-tick: 2
+  autotool:
+    enabled: true
+    max-vl: 15
+    punish-vl: 10
+    cancel: false
+    min-switch-time: 100
+  autoarmor:
+    enabled: true
+    max-vl: 15
+    punish-vl: 10
+    cancel: false
+  inventorymove:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+
+# NOTE: badpackets, timer, blink, pingspoof, antibot and antidisabler below
+# REQUIRE ProtocolLib (silently inactive without it). freecam and replaymod do NOT.
+packet:
+  badpackets:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+  timer:
+    enabled: true
+    max-vl: 25
+    punish-vl: 20
+    cancel: true
+    # Token-bucket timer: movement packets should average ~50ms apart (20/s).
+    # Flags only when a client runs sustained-fast and banks this many ms of
+    # "ahead-of-real-time" surplus. Higher = fewer false positives on lag/LAN.
+    balance-limit-ms: 1000
+  blink:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+    cancel: true
+    max-position-buffer: 20
+  pingspoof:
+    enabled: true
+    max-vl: 15
+    punish-vl: 10
+    cancel: false
+    max-ping: 800
+    # Keep-alive round-trip jitter must stay above 'min-variance', but a low
+    # variance is only treated as a spoof once mean ping >= 'min-mean-for-spoof'.
+    # Low-ping / LAN players have naturally low jitter and must NOT be flagged.
+    min-variance: 4.0
+    min-mean-for-spoof: 80.0
+    max-reported-deviation: 200.0
+  antibot:
+    enabled: true
+    max-joins-per-second: 5
+    similar-name-threshold: 3
+  antidisabler:
+    enabled: true
+    max-vl: 20
+    punish-vl: 15
+  # Freecam (detached free-look camera) detection. Alert-first ONLY: it never
+  # cancels gameplay and is intentionally absent from punishments.yml, so staff
+  # are merely notified — there is no auto-kick/ban. Toggle with 'enabled'.
+  # Works without ProtocolLib. Two layers, both alert-only:
+  #   - HEURISTIC: flags the freecam tell — the body sits frozen in place while
+  #     the view rotates and the player reaches a block/entity well beyond normal
+  #     reach, plus a blink/rewind snap-back (big jump after a frozen window).
+  #     Spectator, creative and in-vehicle players are exempt.
+  #   - SIGNATURE: builds that announce a "freecam" plugin-channel or client brand.
+  # Per-player bypass: magisterac.bypass.freecam.
+  freecam:
+    enabled: true
+    cancel: false
+    # --- heuristic thresholds ---
+    # Body counts as "still" when it moves at/below this many blocks per sample.
+    pos-epsilon: 0.08
+    # Body must stay frozen at least this long (ms) before it can be flagged.
+    min-frozen-ms: 1500
+    # Cumulative view rotation (degrees) required during the frozen window.
+    rotation-threshold: 25.0
+    # Interaction distance (blocks) that counts as "remote" (normal reach ~4.5).
+    reach-threshold: 6.5
+    # A position jump larger than this (blocks) right after a frozen window is
+    # treated as a blink/rewind snap-back.
+    snapback-distance: 5.0
+    # Substrings (case-insensitive) matched against the client brand and any
+    # registered plugin channels. Add more if you know a specific build's name.
+    signatures:
+      - freecam
+      - free-cam
+      - freelook
+      - free-look
+  # ReplayMod (client-side recording) detection. Alert-first ONLY — see freecam
+  # above. Per-player bypass: magisterac.bypass.replaymod.
+  replaymod:
+    enabled: true
+    cancel: false
+    signatures:
+      - replaymod
+      - replay-mod
+      - replay_mod

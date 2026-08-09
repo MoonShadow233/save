@@ -1,0 +1,53 @@
+prefix: "&8[&bMagisterAC&8]&r "
+
+check:
+  freeze-chat: "&c&lВы заморожены для проверки. Не двигайтесь и ожидайте модератора."
+  freeze-title: "&c&lПРОВЕРКА"
+  freeze-subtitle: "&7Ожидайте модератора"
+  freeze-actionbar: "&e⚠ Вы заморожены | Модератор: &f{moderator}"
+  freeze-sound: "ENTITY_ENDERMAN_TELEPORT"
+  unfreeze-chat: "&a✓ Проверка завершена. Спасибо за понимание."
+  unfreeze-title: "&a&lПРОВЕРКА ЗАВЕРШЕНА"
+  unfreeze-subtitle: "&7Вы свободны"
+  case-created: "&7Дело создано: &b{case_id}"
+  already-frozen: "&cИгрок {player} уже заморожен."
+  not-frozen: "&cИгрок {player} не заморожен."
+  player-frozen: "&aИгрок &f{player} &aуспешно заморожен. Дело: &b{case_id}"
+  player-unfrozen: "&aИгрок &f{player} &aразморожен."
+  frozen-move: "&c&lНЕ ДВИГАЙТЕСЬ! &cВы на проверке у модератора &f{moderator}"
+  frozen-cmd-blocked: "&cКоманда запрещена во время проверки!"
+
+observe:
+  start: "&aВы начали наблюдение за &f{player}"
+  stop: "&aВы прекратили наблюдение за &f{player}"
+  target-start: "&7За вами наблюдает модератор."
+  staff-notify: "&7{observer} &fначал наблюдение за &7{player}"
+
+violations:
+  alert: "&8[&cMagisterAC&8] &f{player} &7совершил &c{check} &7x{vl} &8| &7{info}"
+  ban: "&8[&cMagisterAC&8] &f{player} &cавтоматически наказан за &f{check}"
+
+watchlist:
+  joined: "&8[&eMagisterAC&8] &e⚠ &fИгрок из списка наблюдения вошёл: &e{player}"
+  added: "&aИгрок &f{player} &aдобавлен в список наблюдения."
+  removed: "&aИгрок &f{player} &aудалён из списка наблюдения."
+  not-in-list: "&cИгрок &f{player} &cне найден в списке наблюдения."
+  list-header: "&8--- &bСписок наблюдения &8---"
+  list-entry: "&7- &f{player} &8| &7Причина: &f{reason}"
+  list-empty: "&7Список наблюдения пуст."
+
+staff:
+  toggled-on: "&aРежим стаф включён."
+  toggled-off: "&cРежим стаф выключен."
+  joined: "&7{player} &fвошёл в стаф-режим."
+  left: "&7{player} &fвышел из стаф-режима."
+
+adminchat:
+  format: "&8[&bStaff&8] &f{player}&8: &7{message}"
+
+general:
+  no-permission: "&cНет прав для выполнения команды."
+  player-not-found: "&cИгрок &f{player} &cне найден."
+  player-only: "&cЭта команда только для игроков."
+  usage: "&cИспользование: &f{usage}"
+  reloaded: "&aКонфигурация успешно перезагружена."

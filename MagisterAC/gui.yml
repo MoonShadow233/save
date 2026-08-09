@@ -1,0 +1,64 @@
+gui:
+  profile:
+    title: "&8Профиль: &b{player}"
+    size: 54
+    fill-item: "GRAY_STAINED_GLASS_PANE"
+    items:
+      head:
+        slot: 4
+        name: "&b{player}"
+        lore:
+          - "&7UUID: &f{uuid}"
+          - "&7Версия: &f{version}"
+          - "&7Пинг: &f{ping}ms"
+          - "&7Уровень подозрительности: &c{suspicion}%"
+        material: "PLAYER_HEAD"
+      violations:
+        slot: 19
+        name: "&cНарушения"
+        lore:
+          - "&7Всего нарушений: &f{violations}"
+          - "&7Нажмите для просмотра"
+        material: "REDSTONE"
+      punishments:
+        slot: 20
+        name: "&eНаказания"
+        lore:
+          - "&7Всего наказаний: &f{punishments}"
+          - "&7Нажмите для просмотра"
+        material: "IRON_AXE"
+      checks:
+        slot: 21
+        name: "&aИстория проверок"
+        lore:
+          - "&7Всего проверок: &f{checks}"
+          - "&7Нажмите для просмотра"
+        material: "PAPER"
+      pvp_stats:
+        slot: 22
+        name: "&6PvP Статистика"
+        lore:
+          - "&7Убийств: &f{kills}"
+          - "&7Смертей: &f{deaths}"
+          - "&7K/D: &f{kd}"
+          - "&7Среднее CPS: &f{avg_cps}"
+        material: "DIAMOND_SWORD"
+      xray_stats:
+        slot: 23
+        name: "&bXRay Статистика"
+        lore:
+          - "&7Алмазы: &f{diamonds}"
+          - "&7Изумруды: &f{emeralds}"
+          - "&7Древние обломки: &f{ancient_debris}"
+          - "&7Золото: &f{gold}"
+          - "&7Редстоун: &f{redstone}"
+          - "&7Уровень XRay: &c{xray_vl}"
+        material: "DIAMOND_ORE"
+
+  panel:
+    title: "&8MagisterAC &b— Панель управления"
+    size: 54
+
+  hud-editor:
+    title: "&8HUD Редактор"
+    size: 54

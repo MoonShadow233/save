@@ -1,0 +1,35 @@
+hud:
+  enabled: true
+  update-interval: 2
+
+  elements:
+    keys:
+      enabled: true
+      x: 2
+      y: 2
+      scale: 1.0
+      opacity: 1.0
+      color: "WHITE"
+    bottom-panel:
+      enabled: true
+      show-date: true
+      show-time: true
+      show-tps: true
+      show-ping: true
+      show-player: true
+
+presets:
+  default:
+    name: "默认"
+    keys-x: 2
+    keys-y: 2
+    keys-scale: 1.0
+    keys-opacity: 1.0
+    keys-color: "WHITE"
+  minimal:
+    name: "极简"
+    keys-x: 1
+    keys-y: 1
+    keys-scale: 0.8
+    keys-opacity: 0.8
+    keys-color: "GRAY"

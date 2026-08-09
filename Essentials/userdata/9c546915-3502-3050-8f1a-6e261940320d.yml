@@ -1,0 +1,31 @@
+teleportenabled: true
+teleportauto: false
+godmode: false
+flymode: false
+muted: false
+jailed: false
+ip-address: 192.168.0.101
+afk: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true
+baltop-exempt: false
+timestamps:
+  lastteleport: 0
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+  logout: 1786272799541
+  login: 1786272144455
+money: '1.0'
+last-account-name: MoonShadow233
+logoutlocation:
+  world: 731fa264-a5c4-477a-813d-645de1411e9e
+  world-name: world
+  x: 33.23753125730187
+  y: 87.0
+  z: -22.307676574103862
+  yaw: -169.4102783203125
+  pitch: 26.3262882232666

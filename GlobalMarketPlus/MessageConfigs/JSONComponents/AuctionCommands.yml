@@ -1,0 +1,86 @@
+Simplified-Chinese:
+    'Auction Help':
+        Placeholder: '%gmp_command_auction_help%'
+        Text: '&2help'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp auction help '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b关于 &c/gmp &6auction &b的命令帮助'
+    'Auction Start':
+        Placeholder: '%gmp_command_auction_start%'
+        Text: '&2start [起拍价] &7[数量]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp auction start '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b发起新的商品拍卖'
+            - '&b使用方法 &c/gmp &6auction &2start [起拍价] &7[数量]'
+    'Auction Bid':
+        Placeholder: '%gmp_command_auction_bid%'
+        Text: '&2bid [商品UID] [竞拍价]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp auction bid '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b竞标/投标某个商品'
+            - '&b使用方法 &c/gmp &6auction &2bid [商品UID] [竞拍价]'
+    'Auction GUI':
+        Placeholder: '%gmp_command_auction_gui%'
+        Text: '&2gui [商品UID]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp auction gui '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b打开某场拍卖的GUI'
+            - '&b使用方法 &c/gmp &6auction &2gui [商品UID]'
+    'Auction Overtime':
+        Placeholder: '%gmp_command_auction_overtime%'
+        Text: '&2overtime [商品UID] [时间]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp auction overtime '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b为某场拍卖加时'
+            - '&b使用方法 &c/gmp &6auction &2overtime [商品UID] [时间]'
+    'Auction Confirm':
+        Placeholder: '%gmp_command_auction_confirm%'
+        Text: '&2confirm [商品UID]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp auction confirm '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b成交/结束拍卖'
+            - '&b使用方法 &c/gmp &6auction &2confirm [商品UID]'
+    'Auction Bidding':
+        Placeholder: '%gmp_auction_bidding%'
+        Text: '&8&l[&c&l&n拍卖界面&8&l]'
+        ClickEvent:
+            Action: RUN_COMMAND
+            Value: '/gmp auction gui {uid}'
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&5点击打开商品编号为 &e{uid} &5的拍卖界面'
+    'Auction GUI Bidding':
+        Placeholder: '%gmp_auction_gui_bidding%'
+        Text: '&8&l[&c&l&n点击输入你想竞标的价格&8&l]'
+        ClickEvent:
+            Action: SUGGEST_COMMAND
+            Value: '/gmp auction bid {uid} '
+        HoverEvent:
+            Action: SHOW_TEXT
+            Hover-Values: 
+            - '&b使用方法 &c/gmp &6auction bid {uid} [价格]'

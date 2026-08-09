@@ -1,0 +1,53 @@
+prefix: "&8[&bMagisterAC&8]&r "
+
+check:
+  freeze-chat: "&c&l你已被冻结以进行检查。请不要移动并等待管理员。"
+  freeze-title: "&c&l检查"
+  freeze-subtitle: "&7等待管理员"
+  freeze-actionbar: "&e⚠ 你已被冻结 | 管理员: &f{moderator}"
+  freeze-sound: "ENTITY_ENDERMAN_TELEPORT"
+  unfreeze-chat: "&a✓ 检查完成。感谢你的耐心等待。"
+  unfreeze-title: "&a&l检查完成"
+  unfreeze-subtitle: "&7你可以走了"
+  case-created: "&7案件已创建: &b{case_id}"
+  already-frozen: "&c玩家 {player} 已被冻结。"
+  not-frozen: "&c玩家 {player} 未被冻结。"
+  player-frozen: "&a玩家 &f{player} &a已成功冻结。案件: &b{case_id}"
+  player-unfrozen: "&a玩家 &f{player} &a已解除冻结。"
+  frozen-move: "&c&l不要移动！&c你正在被管理员 &f{moderator} 检查"
+  frozen-cmd-blocked: "&c检查期间命令被禁用！"
+
+observe:
+  start: "&a你开始观察 &f{player}"
+  stop: "&a你停止观察 &f{player}"
+  target-start: "&7一名管理员正在观察你。"
+  staff-notify: "&7{observer} &f开始观察 &7{player}"
+
+violations:
+  alert: "&8[&cMagisterAC&8] &f{player} &7触发了 &c{check} &7x{vl} &8| &7{info}"
+  ban: "&8[&cMagisterAC&8] &f{player} &c因 &f{check} &c被自动处罚"
+
+watchlist:
+  joined: "&8[&eMagisterAC&8] &e⚠ &f一名监视列表中的玩家加入了: &e{player}"
+  added: "&a玩家 &f{player} &a已添加到监视列表。"
+  removed: "&a玩家 &f{player} &a已从监视列表移除。"
+  not-in-list: "&c玩家 &f{player} &c未在监视列表中找到。"
+  list-header: "&8--- &b监视列表 &8---"
+  list-entry: "&7- &f{player} &8| &7原因: &f{reason}"
+  list-empty: "&7监视列表为空。"
+
+staff:
+  toggled-on: "&a管理模式已启用。"
+  toggled-off: "&c管理模式已禁用。"
+  joined: "&7{player} &f进入了管理模式。"
+  left: "&7{player} &f离开了管理模式。"
+
+adminchat:
+  format: "&8[&bStaff&8] &f{player}&8: &7{message}"
+
+general:
+  no-permission: "&c你没有权限运行此命令。"
+  player-not-found: "&c玩家 &f{player} &c未找到。"
+  player-only: "&c此命令仅限玩家使用。"
+  usage: "&c用法: &f{usage}"
+  reloaded: "&a配置已成功重新加载。"

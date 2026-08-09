@@ -1,0 +1,33 @@
+punishments:
+  enabled: true
+
+  actions:
+    warn:
+      command: "msg {player} {reason}"
+    kick:
+      command: "kick {player} {reason}"
+    tempban:
+      command: "tempban {player} {duration} {reason}"
+    ban:
+      command: "ban {player} {reason}"
+
+  default-reasons:
+    killaura: "使用 KillAura"
+    reach: "异常的攻击距离"
+    speed: "作弊移动速度"
+    fly: "使用飞行"
+    scaffold: "Scaffold 作弊"
+    timer: "Timer 作弊"
+
+  auto-punish:
+    enabled: true
+    checks:
+      killaura:
+        action: kick
+        reason: "{default-reasons.killaura}"
+      fly:
+        action: kick
+        reason: "{default-reasons.fly}"
+      speed:
+        action: kick
+        reason: "{default-reasons.speed}"

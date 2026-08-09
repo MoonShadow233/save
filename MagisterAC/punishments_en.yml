@@ -1,0 +1,33 @@
+punishments:
+  enabled: true
+
+  actions:
+    warn:
+      command: "msg {player} {reason}"
+    kick:
+      command: "kick {player} {reason}"
+    tempban:
+      command: "tempban {player} {duration} {reason}"
+    ban:
+      command: "ban {player} {reason}"
+
+  default-reasons:
+    killaura: "Using KillAura"
+    reach: "Abnormal attack reach"
+    speed: "Cheat movement speed"
+    fly: "Using fly"
+    scaffold: "Scaffold hack"
+    timer: "Timer hack"
+
+  auto-punish:
+    enabled: true
+    checks:
+      killaura:
+        action: kick
+        reason: "{default-reasons.killaura}"
+      fly:
+        action: kick
+        reason: "{default-reasons.fly}"
+      speed:
+        action: kick
+        reason: "{default-reasons.speed}"

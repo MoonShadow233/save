@@ -1,0 +1,64 @@
+gui:
+  profile:
+    title: "&8Profile: &b{player}"
+    size: 54
+    fill-item: "GRAY_STAINED_GLASS_PANE"
+    items:
+      head:
+        slot: 4
+        name: "&b{player}"
+        lore:
+          - "&7UUID: &f{uuid}"
+          - "&7Version: &f{version}"
+          - "&7Ping: &f{ping}ms"
+          - "&7Suspicion level: &c{suspicion}%"
+        material: "PLAYER_HEAD"
+      violations:
+        slot: 19
+        name: "&cViolations"
+        lore:
+          - "&7Total violations: &f{violations}"
+          - "&7Click to view"
+        material: "REDSTONE"
+      punishments:
+        slot: 20
+        name: "&ePunishments"
+        lore:
+          - "&7Total punishments: &f{punishments}"
+          - "&7Click to view"
+        material: "IRON_AXE"
+      checks:
+        slot: 21
+        name: "&aCheck history"
+        lore:
+          - "&7Total checks: &f{checks}"
+          - "&7Click to view"
+        material: "PAPER"
+      pvp_stats:
+        slot: 22
+        name: "&6PvP Statistics"
+        lore:
+          - "&7Kills: &f{kills}"
+          - "&7Deaths: &f{deaths}"
+          - "&7K/D: &f{kd}"
+          - "&7Average CPS: &f{avg_cps}"
+        material: "DIAMOND_SWORD"
+      xray_stats:
+        slot: 23
+        name: "&bXRay Statistics"
+        lore:
+          - "&7Diamonds: &f{diamonds}"
+          - "&7Emeralds: &f{emeralds}"
+          - "&7Ancient debris: &f{ancient_debris}"
+          - "&7Gold: &f{gold}"
+          - "&7Redstone: &f{redstone}"
+          - "&7XRay level: &c{xray_vl}"
+        material: "DIAMOND_ORE"
+
+  panel:
+    title: "&8MagisterAC &b— Control panel"
+    size: 54
+
+  hud-editor:
+    title: "&8HUD Editor"
+    size: 54
